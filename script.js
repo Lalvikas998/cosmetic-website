@@ -21,7 +21,7 @@ nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
 }));
 
 /* ── Profession tabs ────────────────────────────────────── */
-function showProf(type) {
+function showProf(type, skipScroll) {
   document.querySelectorAll('.prof-card').forEach(c => c.classList.remove('active'));
   document.querySelectorAll('.prof-panel').forEach(p => p.classList.remove('active'));
   const card  = document.getElementById('tab-' + type);
@@ -29,8 +29,20 @@ function showProf(type) {
   if (!card || !panel) return;
   card.classList.add('active');
   panel.classList.add('active');
-  setTimeout(() => panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 80);
+  if (!skipScroll) {
+    setTimeout(() => panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 80);
+  }
 }
+
+/* Hover previews panel without scrolling; last hovered/clicked stays visible */
+document.querySelectorAll('.prof-card').forEach(card => {
+  card.addEventListener('mouseenter', () => {
+    showProf(card.id.replace('tab-', ''), true);
+  });
+});
+
+/* Show nurses panel by default so the feature is immediately visible */
+showProf('nurses', true);
 
 /* ── FAQ accordion ──────────────────────────────────────── */
 function toggleFAQ(btn) {
@@ -110,85 +122,154 @@ const counterObs = new IntersectionObserver(entries => {
 }, { threshold: 0.4 });
 document.querySelectorAll('.hero-kpis').forEach(el => counterObs.observe(el));
 
-/* ── Market Chart ───────────────────────────────────────── */
-const chartData = [
-  { year: '2021', val: 2.1,  proj: false },
-  { year: '2022', val: 2.9,  proj: false },
-  { year: '2023', val: 3.5,  proj: false },
-  { year: '2024', val: 4.2,  proj: false },
-  { year: '2026', val: 5.9,  proj: true  },
-  { year: '2028', val: 7.2,  proj: true  },
-  { year: '2030', val: 9.08, proj: true  },
-];
-const maxVal = Math.max(...chartData.map(d => d.val));
-
+/* ── Market Chart — animated SVG line ───────────────────── */
 function buildChart() {
   const area = document.getElementById('market-chart');
   if (!area) return;
 
-  const wrap = document.createElement('div');
-  wrap.style.cssText = 'position:relative;height:240px;padding-left:48px;padding-bottom:32px';
+  const data = [
+    { year: '2021', val: 2.1,  proj: false },
+    { year: '2022', val: 2.9,  proj: false },
+    { year: '2023', val: 3.5,  proj: false },
+    { year: '2024', val: 4.2,  proj: false },
+    { year: '2026', val: 5.9,  proj: true  },
+    { year: '2028', val: 7.2,  proj: true  },
+    { year: '2030', val: 9.08, proj: true  },
+  ];
 
-  // Grid lines
-  [2, 4, 6, 8, 10].forEach(v => {
-    const pct = (v / maxVal) * 200;
-    if (pct > 200) return;
-    const y = 200 - pct;
-    const line = document.createElement('div');
-    line.style.cssText = `position:absolute;left:48px;right:0;top:${y}px;border-top:1px dashed rgba(0,0,0,.07)`;
-    const lbl = document.createElement('span');
-    lbl.textContent = '$' + v + 'B';
-    lbl.style.cssText = 'position:absolute;right:100%;padding-right:8px;font-size:.61rem;color:#96A8B6;transform:translateY(-50%);white-space:nowrap;top:0';
-    line.appendChild(lbl);
-    wrap.appendChild(line);
+  const W = 760, H = 260;
+  const padL = 56, padR = 44, padT = 28, padB = 44;
+  const chartW = W - padL - padR, chartH = H - padT - padB, maxV = 10;
+  const xS = i => padL + (i / (data.length - 1)) * chartW;
+  const yS = v => padT + chartH - (v / maxV) * chartH;
+  const ns = 'http://www.w3.org/2000/svg';
+  const mk = (tag, attrs) => {
+    const e = document.createElementNS(ns, tag);
+    Object.entries(attrs).forEach(([k, v]) => e.setAttribute(k, String(v)));
+    return e;
+  };
+  const an = attrs => mk('animate', attrs);
+
+  const svg = mk('svg', { viewBox: `0 0 ${W} ${H}` });
+  svg.style.cssText = 'width:100%;height:auto;overflow:visible;display:block';
+
+  /* defs */
+  const defs = mk('defs', {});
+  const grad = mk('linearGradient', { id:'lcFill', x1:'0', y1:'0', x2:'0', y2:'1' });
+  [['0%','0.16'],['100%','0.01']].forEach(([off, op]) => {
+    grad.appendChild(mk('stop', { offset:off, 'stop-color':'#0F766E', 'stop-opacity':op }));
+  });
+  defs.appendChild(grad);
+  const clip = mk('clipPath', { id:'lcClip' });
+  const clipR = mk('rect', { id:'lcClipRect', x: padL - 4, y:0, width:0, height:H });
+  clip.appendChild(clipR);
+  defs.appendChild(clip);
+  svg.appendChild(defs);
+
+  /* grid lines + Y labels */
+  [0,2,4,6,8,10].forEach(v => {
+    const y = yS(v);
+    const gl = mk('line', { x1:padL, x2:W-padR, y1:y, y2:y,
+      stroke: v===0 ? 'rgba(15,118,110,.22)' : 'rgba(0,0,0,.06)',
+      'stroke-width': v===0 ? '1.5' : '1' });
+    if (v > 0) gl.setAttribute('stroke-dasharray', '4 4');
+    svg.appendChild(gl);
+    const tl = mk('text', { x:padL-9, y:y+4, 'text-anchor':'end',
+      'font-size':'11', 'font-family':'Inter,sans-serif', fill:'#96A8B6' });
+    tl.textContent = v===0 ? '$0' : `$${v}B`;
+    svg.appendChild(tl);
   });
 
-  // Bars container
-  const bars = document.createElement('div');
-  bars.style.cssText = 'display:flex;align-items:flex-end;gap:6px;height:200px;position:relative;z-index:1';
+  /* Y axis */
+  svg.appendChild(mk('line', { x1:padL, x2:padL, y1:padT-4, y2:yS(0),
+    stroke:'rgba(0,0,0,.12)', 'stroke-width':'1.5' }));
 
-  chartData.forEach(d => {
-    const col = document.createElement('div');
-    col.style.cssText = 'display:flex;flex-direction:column;align-items:center;flex:1;position:relative';
+  /* data points */
+  const pts = data.map((d, i) => ({ ...d, x:xS(i), y:yS(d.val) }));
+  const pathD = pts.map((p,i) => `${i===0?'M':'L'}${p.x},${p.y}`).join(' ');
+  const splitIdx = pts.findIndex(p => p.proj);
 
-    const bar = document.createElement('div');
-    const targetH = Math.round((d.val / maxVal) * 200);
-    bar.style.cssText = `width:72%;height:0;border-radius:5px 5px 0 0;transition:height 1.1s cubic-bezier(.22,.68,0,1.1);cursor:default;position:relative`;
-    bar.className = d.proj ? 'cb-bar pjt' : 'cb-bar act';
-    bar.dataset.h = targetH;
-    bar.style.background = d.proj ? 'var(--teal-lt)' : 'var(--teal)';
-    if (d.proj) { bar.style.border = '2px solid var(--teal)'; }
+  /* area fill */
+  svg.appendChild(mk('path', {
+    d: pathD + ` L${pts[pts.length-1].x},${yS(0)} L${pts[0].x},${yS(0)} Z`,
+    fill:'url(#lcFill)', 'clip-path':'url(#lcClip)'
+  }));
 
-    // Tooltip
-    const tip = document.createElement('div');
-    tip.textContent = '$' + d.val + 'B';
-    tip.style.cssText = 'position:absolute;top:-28px;left:50%;transform:translateX(-50%);background:var(--teal-dk);color:#fff;font-size:.68rem;font-weight:700;padding:3px 8px;border-radius:6px;white-space:nowrap;opacity:0;transition:opacity .2s;pointer-events:none';
-    bar.appendChild(tip);
-    bar.addEventListener('mouseenter', () => tip.style.opacity = '1');
-    bar.addEventListener('mouseleave', () => tip.style.opacity = '0');
+  /* solid segment (actual data 2021–2024) */
+  svg.appendChild(mk('path', {
+    d: pts.slice(0,splitIdx).map((p,i) => `${i===0?'M':'L'}${p.x},${p.y}`).join(' '),
+    fill:'none', stroke:'#0F766E', 'stroke-width':'2.5',
+    'stroke-linecap':'round', 'stroke-linejoin':'round', 'clip-path':'url(#lcClip)'
+  }));
 
-    const yr = document.createElement('div');
-    yr.textContent = d.year;
-    yr.style.cssText = 'font-size:.67rem;color:#96A8B6;font-weight:500;position:absolute;bottom:-26px;left:50%;transform:translateX(-50%);white-space:nowrap';
+  /* dashed segment (projected 2024–2030) */
+  svg.appendChild(mk('path', {
+    d: pts.slice(splitIdx-1).map((p,i) => `${i===0?'M':'L'}${p.x},${p.y}`).join(' '),
+    fill:'none', stroke:'#0F766E', 'stroke-width':'2.5',
+    'stroke-linecap':'round', 'stroke-linejoin':'round',
+    'stroke-dasharray':'8 5', opacity:'0.65', 'clip-path':'url(#lcClip)'
+  }));
 
-    col.appendChild(bar);
-    col.appendChild(yr);
-    bars.appendChild(col);
+  /* X axis labels */
+  pts.forEach(p => {
+    svg.appendChild(mk('line', { x1:p.x, x2:p.x, y1:yS(0), y2:yS(0)+5, stroke:'rgba(0,0,0,.12)' }));
+    const lb = mk('text', { x:p.x, y:yS(0)+20, 'text-anchor':'middle',
+      'font-size':'11', 'font-family':'Inter,sans-serif',
+      fill: p.year==='2030'?'#0F766E':'#96A8B6',
+      'font-weight': p.year==='2030'?'700':'400' });
+    lb.textContent = p.year;
+    svg.appendChild(lb);
   });
 
-  wrap.appendChild(bars);
-  area.appendChild(wrap);
+  /* dots on non-last points */
+  pts.slice(0,-1).forEach(p => svg.appendChild(mk('circle', {
+    cx:p.x, cy:p.y, r:'3.5', fill:'#fff', stroke:'#0F766E',
+    'stroke-width':'2', 'clip-path':'url(#lcClip)'
+  })));
 
-  // Animate on scroll into view
-  const obs = new IntersectionObserver(entries => {
-    if (entries[0].isIntersecting) {
-      bars.querySelectorAll('.cb-bar').forEach((bar, i) => {
-        setTimeout(() => { bar.style.height = bar.dataset.h + 'px'; }, i * 100);
-      });
-      obs.disconnect();
-    }
-  }, { threshold: 0.3 });
-  obs.observe(area);
+  /* ── SPARKLE GROUP at $9.08B endpoint ── */
+  const lp = pts[pts.length - 1];
+  const sg = mk('g', { 'clip-path':'url(#lcClip)' });
+
+  /* ripple rings */
+  ['0s','1s'].forEach(begin => {
+    const ring = mk('circle', { cx:lp.x, cy:lp.y, r:'7', fill:'none',
+      stroke:'#0F766E', 'stroke-width':'1.5' });
+    ring.appendChild(an({ attributeName:'r', from:'7', to:'26', dur:'2s', begin, repeatCount:'indefinite' }));
+    ring.appendChild(an({ attributeName:'opacity', from:'0.6', to:'0', dur:'2s', begin, repeatCount:'indefinite' }));
+    sg.appendChild(ring);
+  });
+
+  /* core pulsing dot */
+  const core = mk('circle', { cx:lp.x, cy:lp.y, r:'5.5', fill:'#0F766E' });
+  core.appendChild(an({ attributeName:'opacity', values:'1;0.75;1', dur:'1.6s', repeatCount:'indefinite' }));
+  sg.appendChild(core);
+  sg.appendChild(mk('circle', { cx:lp.x, cy:lp.y, r:'2.5', fill:'#fff' }));
+
+  /* value label above endpoint */
+  const vl = mk('text', { x:lp.x, y:lp.y-16, 'text-anchor':'middle',
+    'font-size':'12', 'font-weight':'700', 'font-family':'Inter,sans-serif',
+    fill:'#0F766E', 'clip-path':'url(#lcClip)' });
+  vl.textContent = '$9.08B';
+  svg.appendChild(vl);
+  svg.appendChild(sg);
+  area.appendChild(svg);
+
+  /* animate: expand clip rect from left on scroll */
+  new IntersectionObserver(entries => {
+    if (!entries[0].isIntersecting) return;
+    const rect = document.getElementById('lcClipRect');
+    if (!rect) return;
+    let t0 = null;
+    const dur = 1900;
+    (function step(ts) {
+      if (!t0) t0 = ts;
+      const raw = Math.min((ts - t0) / dur, 1);
+      const ease = raw < 0.5 ? 2*raw*raw : 1 - Math.pow(-2*raw+2, 2)/2;
+      rect.setAttribute('width', String(ease * (chartW + 8)));
+      if (raw < 1) requestAnimationFrame(step);
+    })(performance.now());
+  }, { threshold: 0.3 }).observe(area);
 }
 buildChart();
 

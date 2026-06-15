@@ -8,6 +8,10 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet"/>
+<style>
+  .hero-img-wrap{position:relative}
+  .hero-right{overflow:visible}
+</style>
 </head>
 <body>
 
@@ -24,9 +28,10 @@
       <a href="#professional">Pathways</a>
       <a href="#why">Industry</a>
       <a href="#careers-section">Careers</a>
-      <a href="#training">Training</a>
-      <a href="#compare">Compare</a>
-      <a href="#faq">FAQ</a>
+      <a href="#jobs">RN Jobs</a>
+      <a href="#business">Business</a>
+      <a href="#scope">Scope</a>
+      <a href="#queensland">Queensland</a>
     </nav>
     <a href="#contact" class="btn-cta">Get Guidance</a>
     <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
@@ -38,39 +43,52 @@
   <div class="hero-bg" aria-hidden="true"></div>
   <div class="container hero-wrap">
     <div class="hero-left">
-      <div class="hero-pill"><span class="pulse-dot"></span>For Nurses · Doctors · Dentists in Australia</div>
+      <div class="hero-pill"><span class="pulse-dot"></span>For Nurses · Doctors · Dentists</div>
       <h1>Considering a Career in<br><em>Cosmetic Injectables?</em></h1>
-      <p class="hero-p">Explore pathways, opportunities, and industry guidance for healthcare professionals in Australia. No sales pitch — just clear, honest information.</p>
+      <p class="hero-p">Your independent guide to pathways, opportunities and business ownership in the cosmetic injectables industry.</p>
       <div class="hero-actions">
-        <a href="#professional" class="btn-primary">Find Your Pathway <span class="btn-arr">→</span></a>
-        <a href="#why" class="btn-ghost">Why Professionals Are Moving</a>
+        <a href="#professional" class="btn-primary">Explore Pathways <span class="btn-arr">→</span></a>
+        <a href="#why" class="btn-ghost"><span class="btn-play"><svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M5 3l14 9-14 9V3z"/></svg></span>Why Professionals Choose This Field</a>
       </div>
-      <div class="hero-kpis">
-        <div class="kpi"><span class="kpi-n" data-count="9.08" data-prefix="$" data-suffix="B">$9.08B</span><span class="kpi-l">AU market by 2030</span></div>
-        <div class="kpi-sep"></div>
-        <div class="kpi"><span class="kpi-n" data-count="19.3" data-suffix="%">19.3%</span><span class="kpi-l">Annual growth rate</span></div>
-        <div class="kpi-sep"></div>
-        <div class="kpi"><span class="kpi-n">3</span><span class="kpi-l">Eligible professions</span></div>
+      <div class="hero-stats">
+        <div class="hstat">
+          <div class="hstat-ico"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+          <div><strong>AHPRA Registered Pathways</strong><span>Nurses · Doctors · Dentists</span></div>
+        </div>
+        <div class="hstat-sep"></div>
+        <div class="hstat">
+          <div class="hstat-ico"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div>
+          <div><strong>Growing Industry</strong><span>Strong Demand</span></div>
+        </div>
+        <div class="hstat-sep"></div>
+        <div class="hstat">
+          <div class="hstat-ico"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div>
+          <div><strong>Business &amp; Career</strong><span>Opportunities</span></div>
+        </div>
       </div>
     </div>
     <div class="hero-right">
       <div class="hero-img-wrap">
-        <div class="hero-ring r1" aria-hidden="true"></div>
-        <div class="hero-ring r2" aria-hidden="true"></div>
-        <div class="hero-img-slot img-slot" id="hero-img-slot" onclick="triggerUpload('hero-file')" tabindex="0" role="button" onkeydown="if(event.key==='Enter'||event.key===' ')triggerUpload('hero-file')">
+        <div class="hero-img-bg" aria-hidden="true"></div>
+        <div class="hero-img-slot img-slot has-image" id="hero-img-slot" onclick="triggerUpload('hero-file')" tabindex="0" role="button" onkeydown="if(event.key==='Enter'||event.key===' ')triggerUpload('hero-file')">
           <input type="file" id="hero-file" accept="image/*" style="display:none" onchange="previewImg(this,'hero-img-slot')"/>
+          <img src="images/Hero%20section.png" alt="Healthcare professionals in cosmetic injectables" class="preview">
           <div class="slot-ph">
             <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-            <p>Upload hero image</p><small>700 × 540px recommended</small>
+            <p>Upload hero image</p><small>Click to replace</small>
           </div>
         </div>
         <div class="hfloat hf1">
-          <div class="hf-ico" style="background:#e6f4f4;color:#1e6866">🩺</div>
+          <div class="hf-ico" style="background:rgba(15,118,110,.1);color:#0F766E"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
           <div><strong>AHPRA Registered Only</strong><p>Nurses · Doctors · Dentists</p></div>
         </div>
         <div class="hfloat hf2">
-          <div class="hf-ico" style="background:#faeeda;color:#854f0b">📋</div>
-          <div><strong>NMBA Guidelines</strong><p>Updated Sept 2025</p></div>
+          <div class="hf-ico" style="background:rgba(15,118,110,.1);color:#0F766E"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+          <div><strong>Independent Guidance</strong><p>No sales pitch. Just facts.</p></div>
+        </div>
+        <div class="hfloat hf3">
+          <div class="hf-ico" style="background:rgba(15,118,110,.1);color:#0F766E"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="10" r="3"/><path d="M12 2a8 8 0 0 0-8 8c0 5.4 7 12 8 12s8-6.6 8-12a8 8 0 0 0-8-8z"/></svg></div>
+          <div><strong>Australia Focused</strong><p>Industry insights &amp; local pathways</p></div>
         </div>
       </div>
     </div>
@@ -93,45 +111,69 @@
 <!-- ▸ PROFESSION SELECTOR -->
 <section class="section" id="professional">
   <div class="container">
-    <div class="sec-head reveal">
-      <p class="eyebrow">Start Here</p>
+    <div class="sec-head center">
+      <p class="eyebrow">Choose Your Professional Path</p>
       <h2>Which healthcare professional are you?</h2>
-      <p class="sub-t">Each profession has a different eligibility pathway, scope of practice, and career opportunities. Select yours to explore.</p>
+      <p class="sub-t center-sub">Each profession has a different eligibility pathway, scope of practice, and career opportunities. Select yours to explore.</p>
     </div>
     <div class="prof-cards">
-      <div class="prof-card reveal" id="tab-nurses" onclick="showProf('nurses')" tabindex="0" role="button" onkeydown="if(event.key==='Enter'||event.key===' ')showProf('nurses')">
+
+      <!-- NURSES -->
+      <div class="prof-card" id="tab-nurses" onclick="showProf('nurses')" tabindex="0" role="button" onkeydown="if(event.key==='Enter'||event.key===' ')showProf('nurses')">
         <div class="pc-accent-bar"></div>
-        <span class="pc-hint">Tap to expand</span>
-        <div class="pc-ico teal">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="7" r="4"/><path d="M5 21v-1a7 7 0 0 1 14 0v1"/><path d="M10 14v5M7.5 16.5h5"/></svg>
+        <div class="pc-content">
+          <div class="pc-ico teal">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="7" r="4"/><path d="M5 21v-1a7 7 0 0 1 14 0v1"/><path d="M10 14v5M7.5 16.5h5"/></svg>
+          </div>
+          <h3>Nurses</h3>
+          <p class="pc-subtitle">NP · RN · EN</p>
+          <p class="pc-desc">Multiple career pathways with diverse opportunities.</p>
+          <span class="pc-link">Explore Nurse Pathways →</span>
         </div>
-        <h3>Nurse</h3>
-        <div class="pc-tags"><span>NP</span><span>RN</span><span>EN</span></div>
-        <p>Three distinct categories — each with different scope, requirements, and career opportunities.</p>
-        <div class="pc-foot">Explore Nursing Pathways <span class="pc-arr">→</span></div>
+        <div class="pc-img-side">
+          <img src="images/Nurse.png" alt="Nurse">
+        </div>
+        <div class="pc-nurse-badges">
+          <div class="pc-nbadge"><span>NP</span><small>Nurse Practitioner</small></div>
+          <div class="pc-nbadge"><span>RN</span><small>Registered Nurse</small></div>
+          <div class="pc-nbadge en"><span>EN</span><small>Enrolled Nurse</small></div>
+        </div>
       </div>
-      <div class="prof-card reveal" id="tab-doctors" onclick="showProf('doctors')" tabindex="0" role="button" onkeydown="if(event.key==='Enter'||event.key===' ')showProf('doctors')">
+
+      <!-- DOCTORS -->
+      <div class="prof-card" id="tab-doctors" onclick="showProf('doctors')" tabindex="0" role="button" onkeydown="if(event.key==='Enter'||event.key===' ')showProf('doctors')">
         <div class="pc-accent-bar"></div>
-        <span class="pc-hint">Tap to expand</span>
-        <div class="pc-ico blue">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="7" r="4"/><path d="M5 21v-1a7 7 0 0 1 14 0v1"/><line x1="12" y1="13" x2="12" y2="19"/><line x1="9" y1="16" x2="15" y2="16"/></svg>
+        <div class="pc-content">
+          <div class="pc-ico blue">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="7" r="4"/><path d="M5 21v-1a7 7 0 0 1 14 0v1"/><line x1="12" y1="13" x2="12" y2="19"/><line x1="9" y1="16" x2="15" y2="16"/></svg>
+          </div>
+          <h3>Doctors</h3>
+          <p class="pc-subtitle blue-sub">GP · Specialist</p>
+          <p class="pc-desc">Expand your medical career with aesthetic medicine.</p>
+          <span class="pc-link blue-link">Explore Doctor Pathways →</span>
         </div>
-        <h3>Doctor</h3>
-        <div class="pc-tags"><span>GP</span><span>Specialist</span></div>
-        <p>Broadest prescribing authority — a natural and accessible clinical extension of your practice.</p>
-        <div class="pc-foot">Explore Doctor Pathways <span class="pc-arr">→</span></div>
+        <div class="pc-img-side">
+          <img src="images/Doctor.png" alt="Doctor">
+        </div>
       </div>
-      <div class="prof-card reveal" id="tab-dentists" onclick="showProf('dentists')" tabindex="0" role="button" onkeydown="if(event.key==='Enter'||event.key===' ')showProf('dentists')">
+
+      <!-- DENTISTS -->
+      <div class="prof-card" id="tab-dentists" onclick="showProf('dentists')" tabindex="0" role="button" onkeydown="if(event.key==='Enter'||event.key===' ')showProf('dentists')">
         <div class="pc-accent-bar"></div>
-        <span class="pc-hint">Tap to expand</span>
-        <div class="pc-ico amber">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3C8 3 5 6 5 9c0 3 .5 5 2 8 1.5 3 2 6 5 6s3.5-3 5-6c1.5-3 2-5 2-8 0-3-3-6-7-6z"/></svg>
+        <div class="pc-content">
+          <div class="pc-ico purple">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3C8 3 5 6 5 9c0 3 .5 5 2 8 1.5 3 2 6 5 6s3.5-3 5-6c1.5-3 2-5 2-8 0-3-3-6-7-6z"/></svg>
+          </div>
+          <h3>Dentists</h3>
+          <p class="pc-subtitle purple-sub">General · Specialist</p>
+          <p class="pc-desc">Integrate facial aesthetics into your dental practice.</p>
+          <span class="pc-link purple-link">Explore Dentist Pathways →</span>
         </div>
-        <h3>Dentist</h3>
-        <div class="pc-tags"><span>General</span><span>Specialist</span></div>
-        <p>Exceptional facial anatomy expertise — especially advantageous for Masseter treatments.</p>
-        <div class="pc-foot">Explore Dentist Pathways <span class="pc-arr">→</span></div>
+        <div class="pc-img-side">
+          <img src="images/Dentist.png" alt="Dentist">
+        </div>
       </div>
+
     </div>
 
     <div class="prof-panel" id="detail-nurses">
@@ -149,77 +191,6 @@
     <div class="prof-panel" id="detail-dentists">
       <div class="pp-bar"><h3>Dentist Pathways</h3><span class="pp-pill">Dental Board of Australia Applies</span></div>
       <div class="two-col"><div><h4>Unique Strengths</h4><ul class="sl"><li>Deep knowledge of facial anatomy, nerves, and vascular structures</li><li>Masseter/TMJ treatments within dental scope — very high demand</li><li>Natural cross-referral from existing patient relationships</li><li>Can expand lower-face aesthetics within existing dental practice</li></ul></div><div><h4>Regulatory Requirements</h4><ul class="sl"><li>Current AHPRA registration with Dental Board required</li><li>Must be within your scope of practice and clinical competence</li><li>State/territory drugs and poisons legislation applies</li><li>Indemnity insurance must specifically cover cosmetic procedures</li></ul></div></div>
-    </div>
-  </div>
-</section>
-
-<!-- ▸ PHOTO BREAK 1 -->
-<div class="photo-band img-slot" id="photo-band-1" onclick="triggerUpload('pb1-file')" tabindex="0" role="img" aria-label="Upload clinical or team photo">
-  <input type="file" id="pb1-file" accept="image/*" style="display:none" onchange="previewImg(this,'photo-band-1')"/>
-  <div class="pb-overlay">
-    <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.5)" stroke-width="1.3"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-    <p>Click to upload a full-width clinical or team photo</p>
-    <small>Recommended: 1400 × 500px</small>
-  </div>
-</div>
-
-<!-- ▸ WHY — Market + Benefits -->
-<section class="section section-soft" id="why">
-  <div class="container">
-    <div class="sec-head reveal">
-      <p class="eyebrow">The Opportunity</p>
-      <h2>Why healthcare professionals are entering this field</h2>
-      <p class="sub-t">A rapidly growing industry that rewards clinical expertise with flexibility, income potential, and genuine career diversity.</p>
-    </div>
-
-    <div class="chart-block reveal">
-      <div class="chart-meta">
-        <p class="chart-title">Australian Cosmetic Injectables Market</p>
-        <p class="chart-sub">Market value in USD Billion · 2021–2030</p>
-        <div class="chart-legend">
-          <div class="cl-row"><div class="cl-swatch solid"></div><span>Actual growth</span></div>
-          <div class="cl-row"><div class="cl-swatch proj"></div><span>Projected (19.3% CAGR)</span></div>
-        </div>
-      </div>
-      <div class="chart-area" id="market-chart"></div>
-    </div>
-
-    <div class="benefits-strip">
-      <div class="ben-item reveal" style="--bd:0s">
-        <div class="ben-ico-wrap">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-        </div>
-        <h4>Flexible Hours</h4>
-        <p>Work full-time, part-time, or casual — or contract across multiple clinics on your schedule.</p>
-      </div>
-      <div class="ben-item reveal" style="--bd:.07s">
-        <div class="ben-ico-wrap">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
-        </div>
-        <h4>Growing Industry</h4>
-        <p>19.3% annual growth — one of Australia's fastest-growing healthcare segments with no signs of slowing.</p>
-      </div>
-      <div class="ben-item reveal" style="--bd:.14s">
-        <div class="ben-ico-wrap">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-        </div>
-        <h4>Competitive Income</h4>
-        <p>Private-pay field — income is linked to your skill and volume, not capped by Medicare rebate schedules.</p>
-      </div>
-      <div class="ben-item reveal" style="--bd:.21s">
-        <div class="ben-ico-wrap">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="20" width="4" height="4"/><rect x="9" y="14" width="4" height="10"/><rect x="16" y="8" width="4" height="16"/></svg>
-        </div>
-        <h4>Career Advancement</h4>
-        <p>Progress from injector to clinic director, educator, or medical director as your experience builds.</p>
-      </div>
-      <div class="ben-item reveal" style="--bd:.28s">
-        <div class="ben-ico-wrap">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-        </div>
-        <h4>Be Your Own Boss</h4>
-        <p>Establish your own cosmetic clinic or work as a contractor — business ownership is genuinely accessible.</p>
-      </div>
     </div>
   </div>
 </section>
@@ -249,75 +220,237 @@
         <div class="ec-row"><span>Allied Health (other)</span><span class="etag a">Check Scope</span></div>
         <p class="ec-note">Always verify with your regulatory board. Eligibility depends on registration type and scope of practice under the National Law.</p>
       </div>
-      <div class="elig-img img-slot" id="elig-img" onclick="triggerUpload('elig-file')" tabindex="0" role="button" onkeydown="if(event.key==='Enter'||event.key===' ')triggerUpload('elig-file')">
-        <input type="file" id="elig-file" accept="image/*" style="display:none" onchange="previewImg(this,'elig-img')"/>
-        <div class="slot-ph sm">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-          <p>Upload clinical image</p>
+      <div class="elig-cta">
+        <div class="elig-cta-left">
+          <div class="elig-cta-ico">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><line x1="9" y1="12" x2="15" y2="12"/><line x1="9" y1="16" x2="13" y2="16"/></svg>
+          </div>
+          <h4>Not sure if you're eligible or what's possible?</h4>
+          <p>Get personalised guidance tailored to your profession and goals.</p>
+          <a href="#contact" class="btn-primary btn-sm">Get My Free Guidance <span class="btn-arr">→</span></a>
+        </div>
+        <div class="elig-cta-right">
+          <div class="elig-cta-grid">
+            <div class="elig-cta-item">
+              <div class="elig-cta-item-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="7" r="4"/><path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/><polyline points="16 11 18 13 22 9"/></svg></div>
+              <span>Understand your eligibility</span>
+            </div>
+            <div class="elig-cta-item">
+              <div class="elig-cta-item-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+              <span>Explore pathways and training</span>
+            </div>
+            <div class="elig-cta-item">
+              <div class="elig-cta-item-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+              <span>Know your scope and limitations</span>
+            </div>
+            <div class="elig-cta-item">
+              <div class="elig-cta-item-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+              <span>Plan your next steps with clarity</span>
+            </div>
+          </div>
+          <div class="cta-dots" aria-hidden="true"></div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ▸ CAREERS TREE -->
-<section class="section section-dark-teal" id="careers-section">
+<!-- ▸ WHY — Market + Benefits -->
+<section class="section section-soft" id="why">
   <div class="container">
-    <div class="sec-head light reveal">
-      <p class="eyebrow lt">Career Landscape</p>
-      <h2 class="wh">Discover Cosmetic Injectables Career Opportunities</h2>
-      <p class="sub-t lt">The industry offers far more than just clinical injecting. Explore the full range of roles for practitioners at every stage.</p>
+    <div class="sec-head reveal">
+      <p class="eyebrow">The Opportunity</p>
+      <h2>Why healthcare professionals are entering this field</h2>
+      <p class="sub-t">A rapidly growing industry that rewards clinical expertise with flexibility, income potential, and genuine career diversity.</p>
     </div>
 
-    <div class="tree-wrap">
-      <div class="tree-spine"></div>
-      <div class="tree-pair">
-        <div class="tree-card left reveal-left">
-          <div class="tc-num">01</div>
-          <h5>Cosmetic Nurse / Injector</h5>
-          <p>Working in a Cosmetic Practice or Clinic — the most common and accessible entry point into the industry.</p>
-        </div>
-        <div class="tree-mid"><div class="tree-dot"></div></div>
-        <div class="tree-card right reveal-right">
-          <div class="tc-num">02</div>
-          <h5>Contractor</h5>
-          <p>Working across one or more cosmetic clinics as a visiting or contracted practitioner — flexible and varied.</p>
+    <div class="chart-block reveal">
+      <div class="chart-meta">
+        <p class="chart-title">Australian Cosmetic Injectables Market</p>
+        <p class="chart-sub">Market value in USD Billion · 2021–2030</p>
+        <div class="chart-legend">
+          <div class="cl-row"><div class="cl-swatch solid"></div><span>Actual growth</span></div>
+          <div class="cl-row"><div class="cl-swatch proj"></div><span>Projected (19.3% CAGR)</span></div>
         </div>
       </div>
-      <div class="tree-pair">
-        <div class="tree-card left reveal-left">
-          <div class="tc-num">03</div>
-          <h5>Industry Representative</h5>
-          <p>Representing a cosmetic pharmaceutical or equipment company — this usually encompasses an education/training role.</p>
-        </div>
-        <div class="tree-mid"><div class="tree-dot"></div></div>
-        <div class="tree-card right reveal-right">
-          <div class="tc-num">04</div>
-          <h5>Cosmetic Nurse Educator</h5>
-          <p>Academic or clinical training role — sharing expertise and shaping the next generation of cosmetic practitioners.</p>
-        </div>
-      </div>
-      <div class="tree-pair">
-        <div class="tree-card left reveal-left">
-          <div class="tc-num">05</div>
-          <h5>Nurse Practitioner</h5>
-          <p>Working in a Cosmetic Practice with full prescribing authority — the highest clinical pathway available to nurses.</p>
-        </div>
-        <div class="tree-mid"><div class="tree-dot"></div></div>
-        <div class="tree-card right reveal-right">
-          <div class="tc-num">06</div>
-          <h5>Clinic Owner</h5>
-          <p>Running your own aesthetics business — achievable within 1–2 years for motivated, well-prepared practitioners.</p>
-        </div>
-      </div>
+      <div class="chart-area" id="market-chart"></div>
     </div>
 
-    <div class="tree-img img-slot" id="tree-img" onclick="triggerUpload('tree-file')" tabindex="0" role="button" onkeydown="if(event.key==='Enter'||event.key===' ')triggerUpload('tree-file')" style="margin-top:40px">
-      <input type="file" id="tree-file" accept="image/*" style="display:none" onchange="previewImg(this,'tree-img')"/>
-      <div class="slot-ph">
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.45)" stroke-width="1.3"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-        <p>Upload a team or clinic photo here</p>
+    <div class="benefits-strip">
+      <div class="ben-item reveal" style="--bd:0s">
+        <div class="ben-ico-wrap">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+        </div>
+        <h4>Growing Industry</h4>
+        <p>19.3% annual growth — one of Australia's fastest-growing healthcare segments with no signs of slowing.</p>
       </div>
+      <div class="ben-item reveal" style="--bd:.06s">
+        <div class="ben-ico-wrap">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>
+        </div>
+        <h4>Flexible Lifestyle</h4>
+        <p>Work full-time, part-time, or casual — or contract across multiple clinics entirely on your schedule.</p>
+      </div>
+      <div class="ben-item reveal" style="--bd:.12s">
+        <div class="ben-ico-wrap">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </div>
+        <h4>Meaningful Impact</h4>
+        <p>Make a real difference in how patients feel — boosting confidence through evidence-based cosmetic care.</p>
+      </div>
+      <div class="ben-item reveal" style="--bd:.18s">
+        <div class="ben-ico-wrap">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        </div>
+        <h4>Diverse Opportunities</h4>
+        <p>Clinical practice, education, training, and clinic ownership — the pathways are genuinely diverse.</p>
+      </div>
+      <div class="ben-item reveal" style="--bd:.24s">
+        <div class="ben-ico-wrap">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+        </div>
+        <h4>Business Potential</h4>
+        <p>Private-pay field — income linked to skill and volume, not capped by Medicare rebate schedules.</p>
+      </div>
+      <div class="ben-item reveal" style="--bd:.30s">
+        <div class="ben-ico-wrap">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+        </div>
+        <h4>Continuous Growth</h4>
+        <p>Progress from injector to clinic director, educator, or medical director as your experience builds.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ▸ GALLERY -->
+<section class="section gallery-section" id="gallery">
+  <div class="container">
+    <div class="sec-head reveal">
+      <p class="eyebrow">Life in the Industry</p>
+      <h2>A look inside cosmetic injectables practice</h2>
+      <p class="sub-t">Modern clinics, skilled practitioners, and patients who leave feeling their best — this is the environment you'd be stepping into.</p>
+    </div>
+    <div class="gallery-grid reveal">
+      <div class="gallery-main">
+        <img src="images/3rd%20section%201.jpeg" alt="Cosmetic injectables clinic environment">
+      </div>
+      <div class="gallery-cell g-top">
+        <img src="images/3rd%20section%202.jpeg" alt="Healthcare professional consultation">
+      </div>
+      <div class="gallery-cell g-bot-l">
+        <img src="images/3rd%20section%203.jpeg" alt="Clinical procedure">
+      </div>
+      <div class="gallery-cell g-bot-r">
+        <img src="images/3rd%20section%204.jpeg" alt="Cosmetic clinic team">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ▸ CAREERS GRID -->
+<section class="section section-careers" id="careers-section">
+  <div class="container">
+
+    <div class="sec-head reveal">
+      <p class="eyebrow">Career Landscape</p>
+      <h2>Six ways this career can look for you</h2>
+      <p class="sub-t">From your first employed position to running your own clinic — every path below is a real outcome for registered practitioners in Australia.</p>
+    </div>
+
+    <!-- 3 × 2 equal career cards -->
+    <div class="career-grid">
+
+      <!-- 01 -->
+      <div class="cg-card cg-lv-entry reveal-left">
+        <div class="cg-top"><span class="cg-badge entry">Entry Level</span><span class="cg-num">01</span></div>
+        <div class="cg-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 2l4 4-3 3-4-4 3-3z"/><line x1="15" y1="5" x2="19" y2="9"/><line x1="3" y1="21" x2="15" y2="9"/><circle cx="6" cy="18" r="2"/></svg></div>
+        <div class="cg-body">
+          <h3>Cosmetic Nurse / Injector</h3>
+          <p>The most common and accessible entry into the industry. Work within an established clinic under an existing prescriber, building your technique and a loyal client base from day one.</p>
+        </div>
+        <div class="cg-foot">
+          <div class="cg-tags"><span>Clinical Practice</span><span>Employed</span><span>Prescriber Supported</span></div>
+          <div class="cg-timeline">↗ Accessible within 0–6 months post-training</div>
+        </div>
+        <div class="cg-shine"></div>
+      </div>
+
+      <!-- 02 -->
+      <div class="cg-card cg-lv-growth reveal">
+        <div class="cg-top"><span class="cg-badge growth">Growth</span><span class="cg-num">02</span></div>
+        <div class="cg-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg></div>
+        <div class="cg-body">
+          <h3>Contractor</h3>
+          <p>Work across one or more clinics as a visiting practitioner. Higher autonomy, broader exposure — you set the schedule and the terms.</p>
+        </div>
+        <div class="cg-foot">
+          <div class="cg-tags"><span>Flexible</span><span>Multi-Clinic</span><span>Independent</span></div>
+          <div class="cg-timeline">↗ 1–2 years experience recommended</div>
+        </div>
+        <div class="cg-shine"></div>
+      </div>
+
+      <!-- 03 -->
+      <div class="cg-card cg-lv-growth reveal-right">
+        <div class="cg-top"><span class="cg-badge growth">Growth</span><span class="cg-num">03</span></div>
+        <div class="cg-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <div class="cg-body">
+          <h3>Industry Representative</h3>
+          <p>Represent a cosmetic pharmaceutical or device company. Combines clinical credibility with education, events, and business development.</p>
+        </div>
+        <div class="cg-foot">
+          <div class="cg-tags"><span>Corporate</span><span>Education</span><span>Travel</span></div>
+          <div class="cg-timeline">↗ 2+ years clinical experience</div>
+        </div>
+        <div class="cg-shine"></div>
+      </div>
+
+      <!-- 04 -->
+      <div class="cg-card cg-lv-senior reveal-left">
+        <div class="cg-top"><span class="cg-badge senior">Senior</span><span class="cg-num">04</span></div>
+        <div class="cg-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div>
+        <div class="cg-body">
+          <h3>Cosmetic Nurse Educator</h3>
+          <p>Shape the next generation of practitioners through clinical teaching, curriculum development, and ongoing industry influence.</p>
+        </div>
+        <div class="cg-foot">
+          <div class="cg-tags"><span>Training</span><span>Academic</span><span>High Impact</span></div>
+          <div class="cg-timeline">↗ 3+ years clinical experience</div>
+        </div>
+        <div class="cg-shine"></div>
+      </div>
+
+      <!-- 05 -->
+      <div class="cg-card cg-lv-adv reveal">
+        <div class="cg-top"><span class="cg-badge adv">Advanced</span><span class="cg-num">05</span></div>
+        <div class="cg-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l10 4v7c0 6-10 11-10 11S2 19 2 13V6l10-4z"/><polyline points="9 12 11 14 15 10"/></svg></div>
+        <div class="cg-body">
+          <h3>Nurse Practitioner</h3>
+          <p>Full prescribing authority within scope — the most autonomous clinical role available to nurses. The pinnacle of the nursing pathway.</p>
+        </div>
+        <div class="cg-foot">
+          <div class="cg-tags"><span>Full Prescribing</span><span>Highest Scope</span><span>NMBA Endorsed</span></div>
+          <div class="cg-timeline">↗ NP endorsement pathway required</div>
+        </div>
+        <div class="cg-shine"></div>
+      </div>
+
+      <!-- 06 -->
+      <div class="cg-card cg-lv-lead reveal-right">
+        <div class="cg-top"><span class="cg-badge lead">Leadership</span><span class="cg-num">06</span></div>
+        <div class="cg-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+        <div class="cg-body">
+          <h3>Clinic Owner</h3>
+          <p>Own and operate your own aesthetics business. Many practitioners make this transition within 1–2 years — with the right preparation, financial independence is within reach.</p>
+        </div>
+        <div class="cg-foot">
+          <div class="cg-tags"><span>Business Ownership</span><span>Brand Building</span><span>Financial Freedom</span></div>
+          <div class="cg-timeline">↗ Achievable within 1–2 years with preparation</div>
+        </div>
+        <div class="cg-shine"></div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -325,330 +458,607 @@
 <!-- ▸ JOBS FOR RNs -->
 <section class="section" id="jobs">
   <div class="container jobs-wrap">
-    <div class="jobs-img img-slot" id="jobs-img" onclick="triggerUpload('jobs-file')" tabindex="0" role="button" onkeydown="if(event.key==='Enter'||event.key===' ')triggerUpload('jobs-file')">
-      <input type="file" id="jobs-file" accept="image/*" style="display:none" onchange="previewImg(this,'jobs-img')"/>
-      <div class="slot-ph">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-        <p>Upload clinical photo</p><small>Click to add</small>
-      </div>
-    </div>
+
+    <!-- Left: content -->
     <div class="jobs-content">
-      <p class="eyebrow">For Registered Nurses</p>
-      <h2>RN Job Opportunities</h2>
-      <p class="sub-t sm">RNs are among the most sought-after practitioners in cosmetic clinics across Australia.</p>
+      <div class="sec-head reveal">
+        <p class="eyebrow">For Registered Nurses</p>
+        <h2>RN Job Opportunities</h2>
+        <p class="sub-t">RNs are among the most sought-after practitioners in cosmetic clinics across Australia.</p>
+      </div>
+
       <div class="job-list">
+
         <div class="jl-item reveal">
-          <div class="jl-n">01</div>
-          <div><h5>Employed Injector</h5><p>The most accessible entry point. Work within an established clinic under an existing prescriber arrangement with built-in training support.</p></div>
+          <div class="jl-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          </div>
+          <div class="jl-body">
+            <div class="jl-title-row">
+              <span class="jl-n">01</span>
+              <h5>Employed Injector</h5>
+            </div>
+            <p>The most common starting point for RNs entering the cosmetic space. You work within an established clinic under a prescriber arrangement, focusing entirely on building clinical skill and client relationships without the overhead of running a business. Most clinics offer structured mentorship, product training, and a ready-made client base — making this the lowest-risk, highest-support way to enter the industry.</p>
+            <div class="jl-tags"><span>Entry Level</span><span>Training Support</span><span>Established Path</span></div>
+          </div>
         </div>
+
         <div class="jl-item reveal">
-          <div class="jl-n">02</div>
-          <div><h5>Mobile / Contractor</h5><p>Work across multiple clinics as a visiting practitioner. Requires your own prescriber arrangement and insurance — flexible and varied.</p></div>
+          <div class="jl-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>
+          </div>
+          <div class="jl-body">
+            <div class="jl-title-row">
+              <span class="jl-n">02</span>
+              <h5>Mobile / Contractor</h5>
+            </div>
+            <p>Once you've built solid clinical foundations, contracting gives you the freedom to work across multiple clinics on your own schedule. You'll need your own prescriber arrangement, professional indemnity insurance, and the discipline to manage your own bookings and income. In return, you gain exposure to a broader range of clients, techniques, and clinic cultures — and typically earn more per hour than an employed injector.</p>
+            <div class="jl-tags"><span>Flexible</span><span>Multiple Clinics</span><span>Independent</span></div>
+          </div>
         </div>
+
         <div class="jl-item reveal">
-          <div class="jl-n">03</div>
-          <div><h5>Cosmetic Nurse → Business Owner</h5><p>Many RNs begin as employees and within 1–2 years establish their own practice. Business knowledge from day one accelerates this path.</p></div>
+          <div class="jl-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+          </div>
+          <div class="jl-body">
+            <div class="jl-title-row">
+              <span class="jl-n">03</span>
+              <h5>Cosmetic Nurse → Business Owner</h5>
+            </div>
+            <p>Many RNs who enter this industry with a clear business mindset transition to clinic ownership within 1–2 years — faster than almost any other healthcare pathway. Understanding compliance requirements, prescriber arrangements, and client acquisition from the start puts you miles ahead. The practitioners who succeed here treat their employed phase as a paid apprenticeship, not just a job, and arrive at ownership fully prepared rather than figuring it out on the fly.</p>
+            <div class="jl-tags"><span>Leadership</span><span>Business Growth</span><span>Long-Term Impact</span></div>
+          </div>
         </div>
+
+      </div>
+
+      <!-- Next-step CTA bar -->
+      <div class="jobs-cta reveal">
+        <div class="jcta-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
+        </div>
+        <div class="jcta-text">
+          <strong>Your next step starts here.</strong>
+          <p>Get personalised career guidance tailored to your goals, experience and lifestyle.</p>
+        </div>
+        <a href="#contact" class="jcta-link">Explore Your Pathway →</a>
       </div>
     </div>
+
+    <!-- Right: dark panel -->
     <div class="dark-panel reveal">
-      <div class="dp-head">What Clinic Owners Look For</div>
+      <div class="dp-star">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </div>
+      <h3 class="dp-title">What Clinic Owners Look For</h3>
+      <div class="dp-rule"></div>
       <ul class="dp-list">
-        <li>Current AHPRA registration (RN)</li>
-        <li>Completed cosmetic injectables training</li>
-        <li>Sound knowledge of facial anatomy</li>
-        <li>Patient communication skills</li>
-        <li>Willingness to work under supervision initially</li>
-        <li>Understanding of AHPRA/NMBA compliance</li>
+        <li><span class="dp-chk"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></span>Current AHPRA registration (RN)</li>
+        <li><span class="dp-chk"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></span>Completed cosmetic injectables training</li>
+        <li><span class="dp-chk"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></span>Sound knowledge of facial anatomy</li>
+        <li><span class="dp-chk"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></span>Patient communication skills</li>
+        <li><span class="dp-chk"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></span>Willingness to work under supervision initially</li>
+        <li><span class="dp-chk"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></span>Understanding of AHPRA/NMBA compliance</li>
       </ul>
       <a href="#contact" class="dp-btn">Get Job Guidance →</a>
+      <div class="dp-note">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        100% Free &bull; No Obligation
+      </div>
     </div>
+
   </div>
 </section>
 
 <!-- ▸ BUSINESS STEPS -->
-<section class="section section-navy" id="business">
+<section class="section section-biz" id="business">
   <div class="container">
-    <div class="sec-head light reveal">
-      <p class="eyebrow lt">Business Ownership</p>
-      <h2 class="wh">Thinking about starting your own clinic?</h2>
-      <p class="sub-t lt">An achievable goal — but it requires planning, compliance knowledge, and supervised experience first.</p>
+
+    <!-- Two-column header: text left, image right -->
+    <div class="biz-head-wrap">
+      <p class="eyebrow reveal">Business Ownership</p>
+      <div class="biz-head-cols">
+        <div class="biz-head-left reveal">
+          <h2>Thinking about starting your own clinic?</h2>
+          <p class="sub-t">An achievable goal — but it requires planning, compliance knowledge, and supervised experience first.</p>
+        </div>
+        <div class="biz-img-wrap reveal-right">
+          <div class="biz-img-frame">
+            <img src="images/own%20clinic.png" alt="Modern cosmetic clinic interior">
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="biz-grid">
-      <div class="biz-card reveal" data-num="01"><div class="biz-n">1</div><h4>Build Clinical Competence</h4><p>Min. 6–12 months supervised experience recommended before independent practice. Patient safety always comes first.</p></div>
-      <div class="biz-card reveal" data-num="02"><div class="biz-n">2</div><h4>Prescriber Requirements</h4><p>RNs and ENs cannot self-prescribe. A formal prescriber arrangement with a doctor or NP is required by law.</p></div>
-      <div class="biz-card reveal" data-num="03"><div class="biz-n">3</div><h4>Facility and Compliance</h4><p>Premises must meet state, territory, and council requirements. Infection control and emergency protocols mandatory.</p></div>
-      <div class="biz-card reveal" data-num="04"><div class="biz-n">4</div><h4>Insurance and Legal</h4><p>Professional indemnity covering cosmetic procedures, ABN, and business registration required before opening.</p></div>
-      <div class="biz-card reveal" data-num="05"><div class="biz-n">5</div><h4>Advertising Compliance</h4><p>AHPRA and TGA advertising rules apply. Cannot glamorise procedures or overstate outcomes in marketing.</p></div>
-      <div class="biz-card reveal" data-num="06"><div class="biz-n">6</div><h4>Ongoing CPD</h4><p>AHPRA requires ongoing CPD including cosmetic-specific activities. The industry evolves rapidly — stay current.</p></div>
+
+    <!-- 3×2 card grid -->
+    <div class="biz-grid-wrap reveal">
+      <div class="biz-grid">
+
+        <div class="biz-card">
+          <div class="bc-ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/><polyline points="16 11 17.5 13 20 10"/></svg></div>
+          <div class="bc-body">
+            <span class="bc-num">01</span>
+            <h4>Build Clinical Competence</h4>
+            <p>Min. 6–12 months supervised experience recommended before independent practice. Patient safety always comes first.</p>
+          </div>
+        </div>
+
+        <div class="biz-card">
+          <div class="bc-ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="2"/><line x1="12" y1="11" x2="12" y2="17"/><line x1="9" y1="14" x2="15" y2="14"/></svg></div>
+          <div class="bc-body">
+            <span class="bc-num">02</span>
+            <h4>Prescriber Requirements</h4>
+            <p>RNs and ENs cannot self-prescribe. A formal prescriber arrangement with a doctor or NP is required by law.</p>
+          </div>
+        </div>
+
+        <div class="biz-card">
+          <div class="bc-ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/><circle cx="18" cy="8" r="3"/><polyline points="16.5 8 18 9.5 20 7"/></svg></div>
+          <div class="bc-body">
+            <span class="bc-num">03</span>
+            <h4>Facility and Compliance</h4>
+            <p>Premises must meet state, territory, and council requirements. Infection control and emergency protocols mandatory.</p>
+          </div>
+        </div>
+
+        <div class="biz-card">
+          <div class="bc-ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><path d="M12 18v-6"/><path d="M9 15l3 3 3-3"/><path d="M9 11h6"/></svg></div>
+          <div class="bc-body">
+            <span class="bc-num">04</span>
+            <h4>Insurance and Legal</h4>
+            <p>Professional indemnity covering cosmetic procedures, ABN, and business registration required before opening.</p>
+          </div>
+        </div>
+
+        <div class="biz-card">
+          <div class="bc-ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+          <div class="bc-body">
+            <span class="bc-num">05</span>
+            <h4>Advertising Compliance</h4>
+            <p>AHPRA and TGA advertising rules apply. Cannot glamorise procedures or overstate outcomes in marketing.</p>
+          </div>
+        </div>
+
+        <div class="biz-card">
+          <div class="bc-ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div>
+          <div class="bc-body">
+            <span class="bc-num">06</span>
+            <h4>Ongoing CPD</h4>
+            <p>AHPRA requires ongoing CPD including cosmetic-specific activities. The industry evolves rapidly — stay current.</p>
+          </div>
+        </div>
+
+      </div>
     </div>
-    <div class="disc-note"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>Educational only. Requirements vary by state and profession. Always seek qualified professional advice.</div>
+
+    <div class="disc-note reveal">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      Educational only. Requirements vary by state and profession. Always seek qualified professional advice.
+    </div>
+
   </div>
 </section>
 
-<!-- ▸ JOURNEY TIMELINE -->
-<section class="section" id="journey">
+<!-- ▸ SCOPE & COMPLIANCE -->
+<section class="section section-scope" id="scope">
   <div class="container">
-    <div class="sec-head center reveal">
-      <p class="eyebrow">The Pathway</p>
-      <h2>Your cosmetic injectables journey</h2>
-    </div>
-    <div class="timeline">
-      <div class="tl-line"></div>
-      <div class="tl-steps">
-        <div class="tl-step reveal"><div class="tl-dot"><span>1</span></div><div class="tl-body"><h4>Confirm Eligibility</h4><p>Verify AHPRA registration is current and your registration type allows cosmetic injectable practice.</p></div></div>
-        <div class="tl-step reveal"><div class="tl-dot"><span>2</span></div><div class="tl-body"><h4>Complete Foundational Training</h4><p>Theory modules followed by in-person practical training with live models under experienced, actively-practising supervision.</p></div></div>
-        <div class="tl-step reveal"><div class="tl-dot"><span>3</span></div><div class="tl-body"><h4>Gain Supervised Experience</h4><p>Work in a compliant clinical setting. 6–12 months builds the genuine confidence and competence patients deserve.</p></div></div>
-        <div class="tl-step reveal"><div class="tl-dot"><span>4</span></div><div class="tl-body"><h4>Establish Your Practice</h4><p>Once clinically confident, explore business ownership — prescriber arrangement, insurance, facility, compliance.</p></div></div>
-        <div class="tl-step reveal"><div class="tl-dot"><span>5</span></div><div class="tl-body"><h4>Continue Developing</h4><p>CPD, advanced techniques, industry networks. Long-term success belongs to those who treat learning as ongoing.</p></div></div>
+
+    <!-- Scope comparison table -->
+    <div class="scope-wrap">
+
+      <div class="scope-left reveal">
+        <p class="eyebrow">Understanding Your Scope</p>
+        <h2>Can you inject, prescribe or own a clinic?</h2>
+        <p class="scope-intro">Your scope of practice depends on your registration type, qualifications, and the laws in your state or territory.</p>
+        <p class="scope-intro">The table alongside provides a general overview. Always check with your regulatory body for specific guidance before making decisions.</p>
+        <div class="scope-note">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          <div>
+            <strong>Important</strong>
+            <p>Requirements vary by state and individual circumstances. Supervision or collaborative arrangements may be required.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="scope-table-wrap reveal-right">
+        <table class="scope-table">
+          <thead>
+            <tr>
+              <th class="st-role-h">Role</th>
+              <th>
+                <div class="sth-inner">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 2l4 4-3 3-4-4 3-3z"/><line x1="15" y1="5" x2="19" y2="9"/><line x1="3" y1="21" x2="15" y2="9"/></svg>
+                  Inject<small>(Schedule 4)</small>
+                </div>
+              </th>
+              <th>
+                <div class="sth-inner">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="2"/><line x1="12" y1="11" x2="12" y2="17"/><line x1="9" y1="14" x2="15" y2="14"/></svg>
+                  Prescribe<small>(Schedule 4)</small>
+                </div>
+              </th>
+              <th>
+                <div class="sth-inner">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                  Own &amp; Operate<small>a Clinic</small>
+                </div>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+
+            <tr>
+              <td class="st-role">
+                <div class="str-inner">
+                  <div class="str-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+                  <div class="str-text"><strong>Registered Nurse</strong><span>(RN)</span></div>
+                </div>
+              </td>
+              <td><div class="sc-cell"><div class="sc-ico yes"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></div><div class="sc-text"><strong>Yes</strong><p>With training &amp; within scope. May require supervision initially.</p></div></div></td>
+              <td><div class="sc-cell"><div class="sc-ico no"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round"><line x1="3" y1="3" x2="9" y2="9"/><line x1="9" y1="3" x2="3" y2="9"/></svg></div><div class="sc-text"><strong>No</strong><p>RNs cannot prescribe. A formal prescriber arrangement with a doctor or NP is required.</p></div></div></td>
+              <td><div class="sc-cell"><div class="sc-ico yes"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></div><div class="sc-text"><strong>Yes</strong><p>Can own and operate a clinic providing non-prescriptive cosmetic services.</p></div></div></td>
+            </tr>
+
+            <tr>
+              <td class="st-role">
+                <div class="str-inner">
+                  <div class="str-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/><path d="M9 11l2 2 4-4"/></svg></div>
+                  <div class="str-text"><strong>Nurse Practitioner</strong><span>(NP)</span></div>
+                </div>
+              </td>
+              <td><div class="sc-cell"><div class="sc-ico yes"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></div><div class="sc-text"><strong>Yes</strong><p>Can inject independently within scope of NP endorsement.</p></div></div></td>
+              <td><div class="sc-cell"><div class="sc-ico yes"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></div><div class="sc-text"><strong>Yes</strong><p>Can prescribe Schedule 4 medications with NMBA endorsement.</p></div></div></td>
+              <td><div class="sc-cell"><div class="sc-ico yes"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></div><div class="sc-text"><strong>Yes</strong><p>Full ownership rights. Can own and operate a clinic independently.</p></div></div></td>
+            </tr>
+
+            <tr>
+              <td class="st-role">
+                <div class="str-inner">
+                  <div class="str-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/><line x1="9" y1="11" x2="15" y2="11"/></svg></div>
+                  <div class="str-text"><strong>Enrolled Nurse</strong><span>(EN)</span></div>
+                </div>
+              </td>
+              <td><div class="sc-cell"><div class="sc-ico ltd"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"><line x1="2" y1="6" x2="10" y2="6"/></svg></div><div class="sc-text"><strong>Limited</strong><p>May inject in specific circumstances under RN/NP/medical supervision and delegation.</p></div></div></td>
+              <td><div class="sc-cell"><div class="sc-ico no"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round"><line x1="3" y1="3" x2="9" y2="9"/><line x1="9" y1="3" x2="3" y2="9"/></svg></div><div class="sc-text"><strong>No</strong><p>ENs cannot prescribe under any circumstances.</p></div></div></td>
+              <td><div class="sc-cell"><div class="sc-ico ltd"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"><line x1="2" y1="6" x2="10" y2="6"/></svg></div><div class="sc-text"><strong>Limited</strong><p>May operate under direction of an RN, NP or doctor. Cannot be the sole operator.</p></div></div></td>
+            </tr>
+
+            <tr>
+              <td class="st-role">
+                <div class="str-inner">
+                  <div class="str-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+                  <div class="str-text"><strong>Medical Practitioner</strong><span>(Doctor)</span></div>
+                </div>
+              </td>
+              <td><div class="sc-cell"><div class="sc-ico yes"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></div><div class="sc-text"><strong>Yes</strong><p>Can inject independently and act as prescriber for other practitioners.</p></div></div></td>
+              <td><div class="sc-cell"><div class="sc-ico yes"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></div><div class="sc-text"><strong>Yes</strong><p>Full prescribing authority for all Schedule 4 medications within scope.</p></div></div></td>
+              <td><div class="sc-cell"><div class="sc-ico yes"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></div><div class="sc-text"><strong>Yes</strong><p>Can own and operate a clinic with full prescribing and clinical authority.</p></div></div></td>
+            </tr>
+
+            <tr>
+              <td class="st-role">
+                <div class="str-inner">
+                  <div class="str-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2a4 4 0 0 1 4 4c0 1.5-.5 2.8-1.4 3.8L12 22l-2.6-12.2A5 5 0 0 1 8 6a4 4 0 0 1 4-4z"/><circle cx="12" cy="6" r="1.5" fill="currentColor"/></svg></div>
+                  <div class="str-text"><strong>Dentist</strong><span>Dental Practitioner</span></div>
+                </div>
+              </td>
+              <td><div class="sc-cell"><div class="sc-ico yes"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></div><div class="sc-text"><strong>Yes</strong><p>Can inject within scope of dental practice including facial aesthetics.</p></div></div></td>
+              <td><div class="sc-cell"><div class="sc-ico ltd"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"><line x1="2" y1="6" x2="10" y2="6"/></svg></div><div class="sc-text"><strong>Limited</strong><p>Can prescribe within dental scope. Some Schedule 4 medications may require additional approvals.</p></div></div></td>
+              <td><div class="sc-cell"><div class="sc-ico yes"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></div><div class="sc-text"><strong>Yes</strong><p>Can own and operate a cosmetic clinic alongside or separately from dental practice.</p></div></div></td>
+            </tr>
+
+          </tbody>
+        </table>
       </div>
     </div>
+
+    <!-- State & Territory considerations -->
+    <div class="states-section reveal">
+      <div class="states-head">
+        <div class="states-map-ico">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+        </div>
+        <div class="states-head-text">
+          <span class="states-eyebrow">State &amp; Territory Considerations</span>
+          <p>While core national regulations apply, each state and territory has its own health laws, facility requirements, and notification processes. Always verify current requirements with the relevant authority.</p>
+        </div>
+      </div>
+      <div class="states-grid">
+        <div class="state-col">
+          <h6 class="state-name">Queensland</h6>
+          <ul class="state-list">
+            <li>Health Facilities Act 1999 applies</li>
+            <li>AHPRA registration &amp; Board endorsements required</li>
+            <li>Prescriber arrangements must be in place</li>
+            <li>Notify your local Public Health Unit</li>
+          </ul>
+        </div>
+        <div class="state-col">
+          <h6 class="state-name">New South Wales</h6>
+          <ul class="state-list">
+            <li>Health Services Act 1997 applies</li>
+            <li>Comply with NSW Health facility standards</li>
+            <li>Council approval &amp; DA may be required</li>
+            <li>Notify at least 30 days before opening</li>
+          </ul>
+        </div>
+        <div class="state-col">
+          <h6 class="state-name">Victoria</h6>
+          <ul class="state-list">
+            <li>Health Services Act 1988 applies</li>
+            <li>Comply with AS/NZS 4815 &amp; infection control standards</li>
+            <li>Council planning permit likely required</li>
+            <li>Notify Department of Health before operating</li>
+          </ul>
+        </div>
+        <div class="state-col">
+          <h6 class="state-name">Western Australia</h6>
+          <ul class="state-list">
+            <li>Health Services Act 2016 applies</li>
+            <li>Comply with WA Health facility guidelines</li>
+            <li>Local government approval required</li>
+            <li>Notify Department of Health</li>
+          </ul>
+        </div>
+        <div class="state-col state-col-last">
+          <h6 class="state-name">Other Territories</h6>
+          <p class="state-note">NT, ACT and Tasmania have their own health legislation and facility requirements.</p>
+          <a href="https://www.health.gov.au" target="_blank" rel="noopener" class="state-link">Check with the relevant health department →</a>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 
-<!-- ▸ PHOTO BREAK 2 — split image + quote -->
-<div class="photo-split">
-  <div class="ps-img img-slot" id="ps-img" onclick="triggerUpload('ps-file')" tabindex="0" role="button" onkeydown="if(event.key==='Enter'||event.key===' ')triggerUpload('ps-file')">
-    <input type="file" id="ps-file" accept="image/*" style="display:none" onchange="previewImg(this,'ps-img')"/>
-    <div class="slot-ph">
-      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.45)" stroke-width="1.3"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-      <p>Upload photo</p>
-    </div>
-  </div>
-  <div class="ps-content">
-    <div class="ps-mark">"</div>
-    <p class="ps-quote">The cosmetic injectables industry is one of the few healthcare fields where your clinical skills, business ambition, and lifestyle goals can all align simultaneously.</p>
-    <div class="ps-attr">Industry professional perspective — Australia</div>
-    <a href="#contact" class="btn-primary" style="margin-top:28px;display:inline-flex">Start Your Journey →</a>
-  </div>
-</div>
-
-<!-- ▸ TRAINING -->
-<section class="section section-soft" id="training">
+<!-- ▸ QUEENSLAND COMPARISON -->
+<section class="section section-qld" id="queensland">
   <div class="container">
-    <div class="sec-head center reveal">
-      <p class="eyebrow">Training Considerations</p>
-      <h2>What to look for in a training provider</h2>
-      <p class="sub-t center-sub">Not all training is equal. These seven factors genuinely determine your readiness for practice — and your long-term success.</p>
-    </div>
-    <div class="tcard-grid">
-      <div class="tcard reveal">
-        <div class="tc-ico">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+
+    <!-- Hero -->
+    <div class="qld-hero reveal">
+      <div class="qld-hero-left">
+        <p class="eyebrow">Queensland vs Australia</p>
+        <h2>How Queensland Compares to the Rest of Australia</h2>
+        <p class="qld-desc">Queensland is Australia's strictest state for cosmetic injectables. Botox and fillers are Schedule 4 (S4) medicines with tight controls around prescribing, custody and dispensing — particularly affecting how RN-led clinics operate compared to other states.</p>
+        <div class="qld-s4-note">
+          <div class="qld-s4-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+          <p>Cosmetic injectables (Botox, Fillers etc.) are Schedule 4 (S4) medicines and must follow strict legal controls.</p>
         </div>
-        <h4>Live Model Training</h4>
-        <p>Hands-on practice with real patients is the only way to build genuine clinical skill. Mannequin-only training does not translate to patient care.</p>
       </div>
-      <div class="tcard reveal">
-        <div class="tc-ico">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" y1="8" x2="19" y2="14"/><line x1="22" y1="11" x2="16" y2="11"/></svg>
-        </div>
-        <h4>Small Group Sizes</h4>
-        <p>More trainees per trainer means less individual attention. Look for strict limits — 4–5 trainees per trainer is optimal for genuine skill development.</p>
-      </div>
-      <div class="tcard reveal">
-        <div class="tc-ico">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
-        </div>
-        <h4>Actively Practising Trainers</h4>
-        <p>Trainers should currently be working in the field. Real-world case experience is irreplaceable and cannot be replicated from textbooks alone.</p>
-      </div>
-      <div class="tcard reveal">
-        <div class="tc-ico">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
-        </div>
-        <h4>AHPRA/TGA Compliance Taught</h4>
-        <p>Training must cover the regulatory framework — prescriber requirements, advertising rules, and consent obligations are not optional knowledge.</p>
-      </div>
-      <div class="tcard reveal">
-        <div class="tc-ico">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
-        </div>
-        <h4>Business and Career Guidance</h4>
-        <p>Practical support on prescriber arrangements, job market navigation, and business setup moves you from training to practice significantly faster.</p>
-      </div>
-      <div class="tcard reveal">
-        <div class="tc-ico">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-        </div>
-        <h4>Honest Post-Training Expectations</h4>
-        <p>Reputable providers are transparent that foundational training is a beginning. Be cautious of any provider who claims otherwise.</p>
-      </div>
-      <div class="tcard tcard-full reveal">
-        <div class="tc-ico">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-        </div>
-        <div class="tc-full-text">
-          <h4>Affordable and Accessible</h4>
-          <p>Quality training should not require significant debt. Compare value — class sizes, live models, post-training support — not just the price tag. Genuine access to quality education should be a right, not a premium.</p>
+      <div class="qld-hero-right">
+        <div class="qld-map-wrap">
+          <img src="images/map.png" alt="Map of Australia with Queensland highlighted" class="qld-map-img">
         </div>
       </div>
     </div>
+
+    <!-- Key facts strip -->
+    <div class="qld-facts reveal">
+      <div class="qld-fact">
+        <div class="qf-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <p>Only Doctors &amp; Nurse Practitioners can prescribe in QLD</p>
+      </div>
+      <div class="qld-fact">
+        <div class="qf-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="2"/><line x1="12" y1="11" x2="12" y2="17"/><line x1="9" y1="14" x2="15" y2="14"/></svg></div>
+        <p>Strict custody &amp; control rules for S4 medicines</p>
+      </div>
+      <div class="qld-fact">
+        <div class="qf-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+        <p>Only Doctors &amp; Pharmacists can dispense S4 medicines</p>
+      </div>
+      <div class="qld-fact">
+        <div class="qf-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><line x1="12" y1="9" x2="12" y2="13"/><circle cx="12" cy="17" r=".5" fill="currentColor"/></svg></div>
+        <p>RNs cannot buy, order or store S4 medicines as clinic stock</p>
+      </div>
+    </div>
+
+    <!-- Role comparison -->
+    <div class="qld-comp-section">
+      <div class="qld-sec-title reveal">
+        <div class="qst-line"></div>
+        <span>Role-by-Role Comparison: Queensland vs Other States</span>
+        <div class="qst-line"></div>
+      </div>
+
+      <div class="qld-comp-grid">
+
+        <!-- 1. Prescribe -->
+        <div class="qld-comp-block reveal">
+          <div class="qcb-head">
+            <div class="qcb-ico" style="background:rgba(15,118,110,.12);color:var(--teal)"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2V9M9 21H5a2 2 0 0 1-2-2V9m0 0h18"/></svg></div>
+            <div><h4>Who Can Prescribe?</h4><span>S4 Cosmetic injectables</span></div>
+          </div>
+          <table class="qld-tbl">
+            <thead><tr><th>Profession</th><th class="q-th-qld">QLD</th><th>Other States</th></tr></thead>
+            <tbody>
+              <tr><td>Doctor</td><td class="q-col-qld"><div class="qi-cell"><span class="qi qi-yes"><svg width="9" height="9" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></span></div></td><td><div class="qi-cell"><span class="qi qi-yes"><svg width="9" height="9" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></span></div></td></tr>
+              <tr><td>Nurse Practitioner</td><td class="q-col-qld"><div class="qi-cell"><span class="qi qi-yes"><svg width="9" height="9" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></span></div></td><td><div class="qi-cell"><span class="qi qi-yes"><svg width="9" height="9" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></span></div></td></tr>
+              <tr><td>Registered Nurse (RN)</td><td class="q-col-qld"><div class="qi-cell"><span class="qi qi-no"><svg width="9" height="9" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"><line x1="3" y1="3" x2="9" y2="9"/><line x1="9" y1="3" x2="3" y2="9"/></svg></span></div></td><td><div class="qi-cell"><span class="qi qi-no"><svg width="9" height="9" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"><line x1="3" y1="3" x2="9" y2="9"/><line x1="9" y1="3" x2="3" y2="9"/></svg></span></div></td></tr>
+              <tr><td>Enrolled Nurse (EN)</td><td class="q-col-qld"><div class="qi-cell"><span class="qi qi-no"><svg width="9" height="9" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"><line x1="3" y1="3" x2="9" y2="9"/><line x1="9" y1="3" x2="3" y2="9"/></svg></span></div></td><td><div class="qi-cell"><span class="qi qi-no"><svg width="9" height="9" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"><line x1="3" y1="3" x2="9" y2="9"/><line x1="9" y1="3" x2="3" y2="9"/></svg></span></div></td></tr>
+              <tr><td>Dentist</td><td class="q-col-qld"><div class="qi-cell"><span class="qi qi-ltd"><svg width="9" height="9" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"><line x1="2" y1="6" x2="10" y2="6"/></svg></span><small>Within scope</small></div></td><td><div class="qi-cell"><span class="qi qi-ltd"><svg width="9" height="9" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"><line x1="2" y1="6" x2="10" y2="6"/></svg></span><small>Within scope</small></div></td></tr>
+            </tbody>
+          </table>
+          <p class="qcb-note">Only Doctors and Nurse Practitioners are authorised prescribers in Australia.</p>
+        </div>
+
+        <!-- 2. Inject -->
+        <div class="qld-comp-block reveal">
+          <div class="qcb-head">
+            <div class="qcb-ico" style="background:rgba(59,130,246,.12);color:#3B82F6"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="m18 2 4 4-14 14H4v-4z"/><path d="m14.5 5.5 4 4"/></svg></div>
+            <div><h4>Who Can Inject?</h4><span>After appropriate prescription</span></div>
+          </div>
+          <table class="qld-tbl">
+            <thead><tr><th>Profession</th><th class="q-th-qld">QLD</th><th>Other States</th></tr></thead>
+            <tbody>
+              <tr><td>Doctor</td><td class="q-col-qld"><div class="qi-cell"><span class="qi qi-yes"><svg width="9" height="9" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></span></div></td><td><div class="qi-cell"><span class="qi qi-yes"><svg width="9" height="9" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></span></div></td></tr>
+              <tr><td>Nurse Practitioner</td><td class="q-col-qld"><div class="qi-cell"><span class="qi qi-yes"><svg width="9" height="9" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></span></div></td><td><div class="qi-cell"><span class="qi qi-yes"><svg width="9" height="9" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></span></div></td></tr>
+              <tr><td>Registered Nurse (RN)</td><td class="q-col-qld"><div class="qi-cell"><span class="qi qi-ltd"><svg width="9" height="9" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"><line x1="2" y1="6" x2="10" y2="6"/></svg></span><small>Prescription Required</small></div></td><td><div class="qi-cell"><span class="qi qi-ltd"><svg width="9" height="9" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"><line x1="2" y1="6" x2="10" y2="6"/></svg></span><small>Prescription Required</small></div></td></tr>
+              <tr><td>Enrolled Nurse (EN)</td><td class="q-col-qld"><div class="qi-cell"><span class="qi qi-ltd"><svg width="9" height="9" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"><line x1="2" y1="6" x2="10" y2="6"/></svg></span><small>Supervision Required</small></div></td><td><div class="qi-cell"><span class="qi qi-ltd"><svg width="9" height="9" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"><line x1="2" y1="6" x2="10" y2="6"/></svg></span><small>Varies by State</small></div></td></tr>
+              <tr><td>Dentist</td><td class="q-col-qld"><div class="qi-cell"><span class="qi qi-yes"><svg width="9" height="9" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></span></div></td><td><div class="qi-cell"><span class="qi qi-yes"><svg width="9" height="9" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></span></div></td></tr>
+            </tbody>
+          </table>
+          <p class="qcb-note">ENs can inject only under direct supervision of an RN or doctor, and only when a valid prescription exists.</p>
+        </div>
+
+        <!-- 3. Open Clinic -->
+        <div class="qld-comp-block reveal">
+          <div class="qcb-head">
+            <div class="qcb-ico" style="background:rgba(139,92,246,.12);color:#8B5CF6"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+            <div><h4>Who Can Open a Clinic?</h4><span>Cosmetic Injectable Business</span></div>
+          </div>
+          <table class="qld-tbl">
+            <thead><tr><th>Profession</th><th class="q-th-qld">QLD</th><th>Other States</th></tr></thead>
+            <tbody>
+              <tr><td>Doctor</td><td class="q-col-qld"><div class="qi-cell"><span class="qi qi-yes"><svg width="9" height="9" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></span></div></td><td><div class="qi-cell"><span class="qi qi-yes"><svg width="9" height="9" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></span></div></td></tr>
+              <tr><td>Nurse Practitioner</td><td class="q-col-qld"><div class="qi-cell"><span class="qi qi-yes"><svg width="9" height="9" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></span></div></td><td><div class="qi-cell"><span class="qi qi-yes"><svg width="9" height="9" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></span></div></td></tr>
+              <tr><td>Registered Nurse (RN)</td><td class="q-col-qld"><div class="qi-cell"><span class="qi qi-ltd"><svg width="9" height="9" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"><line x1="2" y1="6" x2="10" y2="6"/></svg></span><small>Strict model rules</small></div></td><td><div class="qi-cell"><span class="qi qi-yes"><svg width="9" height="9" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></span><small>More Flexible</small></div></td></tr>
+              <tr><td>Enrolled Nurse (EN)</td><td class="q-col-qld"><div class="qi-cell"><span class="qi qi-no"><svg width="9" height="9" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"><line x1="3" y1="3" x2="9" y2="9"/><line x1="9" y1="3" x2="3" y2="9"/></svg></span><small>Not practical</small></div></td><td><div class="qi-cell"><span class="qi qi-no"><svg width="9" height="9" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"><line x1="3" y1="3" x2="9" y2="9"/><line x1="9" y1="3" x2="3" y2="9"/></svg></span><small>Not allowed</small></div></td></tr>
+              <tr><td>Dentist</td><td class="q-col-qld"><div class="qi-cell"><span class="qi qi-yes"><svg width="9" height="9" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></span><small>Simple</small></div></td><td><div class="qi-cell"><span class="qi qi-yes"><svg width="9" height="9" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></span><small>Simple</small></div></td></tr>
+            </tbody>
+          </table>
+          <p class="qcb-note">RNs can open clinics in QLD but must follow strict business model and medicine rules.</p>
+        </div>
+
+        <!-- 4. Buy & Store -->
+        <div class="qld-comp-block reveal">
+          <div class="qcb-head">
+            <div class="qcb-ico" style="background:rgba(245,158,11,.12);color:#D97706"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></div>
+            <div><h4>Who Can Buy &amp; Store S4 Medicines?</h4><span>Botox, Fillers &amp; Other S4</span></div>
+          </div>
+          <table class="qld-tbl">
+            <thead><tr><th>Profession</th><th class="q-th-qld">QLD</th><th>Other States</th></tr></thead>
+            <tbody>
+              <tr><td>Doctor</td><td class="q-col-qld"><div class="qi-cell"><span class="qi qi-yes"><svg width="9" height="9" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></span><small>Exclusive custody req.</small></div></td><td><div class="qi-cell"><span class="qi qi-yes"><svg width="9" height="9" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></span></div></td></tr>
+              <tr><td>Nurse Practitioner</td><td class="q-col-qld"><div class="qi-cell"><span class="qi qi-yes"><svg width="9" height="9" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></span><small>Exclusive custody req.</small></div></td><td><div class="qi-cell"><span class="qi qi-yes"><svg width="9" height="9" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></span></div></td></tr>
+              <tr><td>Registered Nurse (RN)</td><td class="q-col-qld"><div class="qi-cell"><span class="qi qi-no"><svg width="9" height="9" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"><line x1="3" y1="3" x2="9" y2="9"/><line x1="9" y1="3" x2="3" y2="9"/></svg></span><small>Completely prohibited</small></div></td><td><div class="qi-cell"><span class="qi qi-ltd"><svg width="9" height="9" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"><line x1="2" y1="6" x2="10" y2="6"/></svg></span><small>Patient-specific storage only</small></div></td></tr>
+              <tr><td>Enrolled Nurse (EN)</td><td class="q-col-qld"><div class="qi-cell"><span class="qi qi-no"><svg width="9" height="9" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"><line x1="3" y1="3" x2="9" y2="9"/><line x1="9" y1="3" x2="3" y2="9"/></svg></span></div></td><td><div class="qi-cell"><span class="qi qi-no"><svg width="9" height="9" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"><line x1="3" y1="3" x2="9" y2="9"/><line x1="9" y1="3" x2="3" y2="9"/></svg></span></div></td></tr>
+              <tr><td>Dentist</td><td class="q-col-qld"><div class="qi-cell"><span class="qi qi-yes"><svg width="9" height="9" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></span></div></td><td><div class="qi-cell"><span class="qi qi-yes"><svg width="9" height="9" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></span></div></td></tr>
+            </tbody>
+          </table>
+          <p class="qcb-note">RNs in QLD are completely prohibited from buying or storing S4 medicines. Only doctors &amp; pharmacists can dispense — not RNs or NPs.</p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Why QLD Different -->
+    <div class="qld-why reveal">
+      <div class="qld-sec-title">
+        <div class="qst-line"></div>
+        <span>Why is Queensland Different?</span>
+        <div class="qst-line"></div>
+      </div>
+      <div class="qld-why-grid">
+        <div class="qld-why-item">
+          <div class="qwi-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M4 9h16M9 4v5m6-5v5m-6 5h6"/></svg></div>
+          <div><h5>S4 Medicine Controls</h5><p>Cosmetic injectables are Schedule 4 medicines and must follow strict purchasing, storage and custody requirements.</p></div>
+        </div>
+        <div class="qld-why-item">
+          <div class="qwi-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="23" y1="11" x2="17" y2="11"/></svg></div>
+          <div><h5>RN-Led Clinic Restrictions</h5><p>RNs cannot buy, order or store S4 medicines in QLD — even paying personally constitutes buying and is illegal. Clinics must operate under a doctor or NP custody model.</p></div>
+        </div>
+        <div class="qld-why-item">
+          <div class="qwi-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/><path d="M12 14v2"/><circle cx="12" cy="18" r=".5" fill="currentColor"/></svg></div>
+          <div><h5>Patient-Specific Dispensing</h5><p>Only doctors and pharmacists can dispense S4 medicines — NPs cannot dispense. Remote prescriber models require individually labelled vials per patient; no bulk stock allowed.</p></div>
+        </div>
+        <div class="qld-why-item">
+          <div class="qwi-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+          <div><h5>EN Supervision Requirements</h5><p>Enrolled Nurses may inject only under direct supervision of an RN or doctor, and only when a valid prescription already exists. They cannot manage medicines independently.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Two Clinic Models -->
+    <div class="qld-models reveal">
+      <div class="qld-sec-title">
+        <div class="qst-line"></div>
+        <span>Two Legal Clinic Models in Queensland</span>
+        <div class="qst-line"></div>
+      </div>
+      <div class="qld-models-grid">
+
+        <div class="qld-model qld-model-1">
+          <div class="qm-label">Model 1</div>
+          <h4>Doctor / NP Custody Model <em>(Onsite)</em></h4>
+          <p class="qm-sub">The simplest and most common model. Doctor/NP holds exclusive custody &amp; control of all S4 medicines at the clinic.</p>
+          <div class="qm-flow">
+            <div class="qm-step">
+              <div class="qm-step-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div>
+              <span>Doctor / NP buys stock</span>
+            </div>
+            <div class="qm-arr"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
+            <div class="qm-step">
+              <div class="qm-step-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 8h14M5 8a2 2 0 1 0 0-4h14a2 2 0 1 0 0 4M5 8l1 9a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2l1-9"/></svg></div>
+              <span>Doctor / NP stores stock</span>
+            </div>
+            <div class="qm-arr"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
+            <div class="qm-step">
+              <div class="qm-step-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+              <span>Doctor / NP prescribes</span>
+            </div>
+            <div class="qm-arr"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
+            <div class="qm-step qm-step-final">
+              <div class="qm-step-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m18 2 4 4-14 14H4v-4z"/><path d="m14.5 5.5 4 4"/></svg></div>
+              <span>RN injects</span>
+            </div>
+          </div>
+          <div class="qm-rec qm-rec-green">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            <p><strong>Recommended for:</strong> Doctors, NPs and multi-disciplinary clinics.</p>
+          </div>
+        </div>
+
+        <div class="qld-model qld-model-2">
+          <div class="qm-label">Model 2</div>
+          <h4>Nurse-Led Clinic Model <em>(Remote Prescriber)</em></h4>
+          <p class="qm-sub">More restrictive model required for nurse-led clinics. RNs cannot store stock or hold multi-use vials under this model.</p>
+          <div class="qm-flow">
+            <div class="qm-step">
+              <div class="qm-step-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+              <span>Doctor / NP consults remotely</span>
+            </div>
+            <div class="qm-arr"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
+            <div class="qm-step">
+              <div class="qm-step-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+              <span>Pharmacist / Doctor dispenses medicine</span>
+            </div>
+            <div class="qm-arr"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
+            <div class="qm-step">
+              <div class="qm-step-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+              <span>Patient-specific medicine (labelled for one patient)</span>
+            </div>
+            <div class="qm-arr"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
+            <div class="qm-step qm-step-final">
+              <div class="qm-step-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m18 2 4 4-14 14H4v-4z"/><path d="m14.5 5.5 4 4"/></svg></div>
+              <span>RN injects</span>
+            </div>
+          </div>
+          <div class="qm-rec qm-rec-teal">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            <p><strong>Required for RN-led clinics in QLD.</strong> This is the only legally compliant model available where an RN operates the clinic. RNs cannot store stock or hold multi-use vials under any circumstances.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Disclaimer -->
+    <div class="qld-disclaimer reveal">
+      <div class="qld-disc-left">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#D97706" stroke-width="2" stroke-linecap="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><circle cx="12" cy="17" r=".5" fill="#D97706"/></svg>
+        <p>This information is general in nature. Always comply with the Medicines and Poisons Act 2019 (QLD), AHPRA guidelines and your professional obligations.</p>
+      </div>
+      <a href="#contact" class="qld-disc-btn">
+        <div><strong>Need Guidance?</strong><span>Get expert advice for your situation</span></div>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+
   </div>
 </section>
 
-<!-- ▸ COMPARE -->
-<section class="section section-navy" id="compare">
-  <div class="container">
-    <div class="sec-head light reveal">
-      <p class="eyebrow lt">Training Comparison</p>
-      <h2 class="wh">What sets quality training apart?</h2>
-      <p class="sub-t lt">An objective look at what separates a strong program from the rest — without naming names.</p>
-    </div>
-    <div class="cmp-grid">
-      <div class="cmp-col typ reveal">
-        <div class="cmp-head"><span class="cmp-badge typ">Typical Programs</span><p>What many trainees encounter</p></div>
-        <div class="cmp-row bad"><span class="cmp-x">✗</span><div><strong>Large group sessions</strong><p>10–15+ trainees, minimal individual attention</p></div></div>
-        <div class="cmp-row bad"><span class="cmp-x">✗</span><div><strong>Limited live model access</strong><p>Few models, rushed hands-on time per trainee</p></div></div>
-        <div class="cmp-row bad"><span class="cmp-x">✗</span><div><strong>No post-training support</strong><p>Certificate and goodbye — no mentoring or follow-up</p></div></div>
-        <div class="cmp-row bad"><span class="cmp-x">✗</span><div><strong>No business guidance</strong><p>Left to navigate prescriber arrangements and compliance alone</p></div></div>
-        <div class="cmp-row bad"><span class="cmp-x">✗</span><div><strong>Premium price, less value</strong><p>Higher cost without proportional support or inclusions</p></div></div>
-        <div class="cmp-row bad"><span class="cmp-x">✗</span><div><strong>Overstated readiness claims</strong><p>"Independent in 2 days" — a regulatory and safety red flag</p></div></div>
-      </div>
-      <div class="cmp-vs"><div class="vs-pill">VS</div></div>
-      <div class="cmp-col qual reveal">
-        <div class="cmp-head"><span class="cmp-badge qual">Quality Programs</span><p>What to seek out and expect</p></div>
-        <div class="cmp-row good"><span class="cmp-chk">✓</span><div><strong>Small groups — max 4–5 per trainer</strong><p>Individual attention, direct feedback, real confidence built</p></div></div>
-        <div class="cmp-row good"><span class="cmp-chk">✓</span><div><strong>~10 live models per session</strong><p>Real patients, real techniques — genuine real-world preparation</p></div></div>
-        <div class="cmp-row good"><span class="cmp-chk">✓</span><div><strong>Ongoing mentoring and CPD support</strong><p>Continued access to trainers and resources after training ends</p></div></div>
-        <div class="cmp-row good"><span class="cmp-chk">✓</span><div><strong>Business and job market guidance</strong><p>Prescriber setup, resume support, aesthetic business guide included</p></div></div>
-        <div class="cmp-row good hl"><span class="cmp-chk">✓</span><div><strong>Australia's most affordable quality training</strong><p>Genuine access without the premium markup — real value at every step</p></div></div>
-        <div class="cmp-row good"><span class="cmp-chk">✓</span><div><strong>Transparent about what training delivers</strong><p>Honest about scope, limitations, and the supervised experience needed after</p></div></div>
-      </div>
-    </div>
-    <div class="cmp-cta reveal"><p>Want to know if the training we recommend meets these standards?</p><a href="#contact" class="btn-primary">Ask Us Directly →</a></div>
-  </div>
-</section>
-
-<!-- ▸ LEADERS / TESTIMONIALS -->
-<section class="section" id="leaders">
-  <div class="container">
-    <div class="sec-head center reveal">
-      <p class="eyebrow">Perspectives</p>
-      <h2>Advice from the field</h2>
-      <p class="sub-t center-sub">Insights from experienced practitioners and employers across the cosmetic injectables industry.</p>
-    </div>
-    <div class="leaders-grid">
-      <div class="lcard reveal">
-        <div class="lq-mark">"</div>
-        <p class="lquote">The most important thing a new injector can do is spend time observing before touching a needle. There is no shortcut for supervised experience in a real clinical setting.</p>
-        <div class="lperson"><div class="lav" style="background:#e6f4f4;color:#1e6866">DR</div><div><strong>Dr. [Name Placeholder]</strong><span>Medical Director — Melbourne</span></div></div>
-      </div>
-      <div class="lcard reveal">
-        <div class="lq-mark">"</div>
-        <p class="lquote">When I'm hiring, I look for a nurse who understands the regulatory framework — not just someone with a certificate. Knowing your scope of practice is non-negotiable.</p>
-        <div class="lperson"><div class="lav" style="background:#e8f4fd;color:#185fa5">RN</div><div><strong>Registered Nurse [Placeholder]</strong><span>Clinic Owner — Sydney</span></div></div>
-      </div>
-      <div class="lcard reveal">
-        <div class="lq-mark">"</div>
-        <p class="lquote">Transitioning into injectables was the most natural step I made. My anatomy background gave me a foundation that takes most nurses years to build.</p>
-        <div class="lperson"><div class="lav" style="background:#faeeda;color:#854f0b">DT</div><div><strong>Dr. [Name Placeholder]</strong><span>Dental Practitioner — Brisbane</span></div></div>
-      </div>
-      <div class="lcard reveal">
-        <div class="lq-mark">"</div>
-        <p class="lquote">The candidates who succeed long-term ask "what more can I learn?" — not "when can I go solo?" Attitude matters as much as skill in the early stage.</p>
-        <div class="lperson"><div class="lav" style="background:#fbeaf0;color:#993556">EM</div><div><strong>[Name Placeholder]</strong><span>Employer, Multi-Location Group — Australia</span></div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ▸ REGULATORY -->
-<section class="section section-soft" id="regulatory">
-  <div class="container">
-    <div class="sec-head reveal">
-      <p class="eyebrow">Regulatory Framework</p>
-      <h2>Understanding the landscape</h2>
-      <p class="sub-t">The four key regulatory bodies and obligations every practitioner must know.</p>
-    </div>
-    <div class="reg-grid">
-      <div class="reg-card reveal">
-        <div class="reg-badge">AHPRA</div>
-        <h4>Australian Health Practitioner Regulation Agency</h4>
-        <p>Regulates all registered practitioners. Compliance with your National Board's code of conduct and advertising guidelines is mandatory. Non-compliance can affect your registration.</p>
-      </div>
-      <div class="reg-card reveal">
-        <div class="reg-badge">NMBA</div>
-        <h4>Nursing &amp; Midwifery Board of Australia</h4>
-        <p>Updated guidelines effective 2 September 2025 outline specific requirements for NPs, RNs, and ENs. All nurses must refer to Appendix A for profession-specific requirements.</p>
-      </div>
-      <div class="reg-card reveal">
-        <div class="reg-badge">TGA</div>
-        <h4>Therapeutic Goods Administration</h4>
-        <p>Regulates Botulinum toxin and dermal fillers as therapeutic goods. Administering or advertising unapproved products is unlawful. All advertising must comply with the TGA Advertising Code.</p>
-      </div>
-      <div class="reg-card reveal">
-        <div class="reg-badge">CPD</div>
-        <h4>Continuing Professional Development</h4>
-        <p>All registered practitioners must undertake CPD relevant to their scope. If your scope includes cosmetic procedures, CPD must include cosmetic-specific activities. Keep full records.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ▸ FAQ -->
-<section class="section" id="faq">
-  <div class="container faq-wrap">
-    <div class="faq-left">
-      <p class="eyebrow">Questions</p>
-      <h2>Frequently asked questions</h2>
-      <p class="sub-t sm">Honest answers for healthcare professionals exploring this field.</p>
-      <a href="#contact" class="btn-primary" style="margin-top:24px;display:inline-flex">Ask Your Question →</a>
-    </div>
-    <div class="faq-right">
-      <div class="fqi"><button class="fqb" onclick="toggleFAQ(this)"><span>Can an Enrolled Nurse perform cosmetic injections?</span><span class="fq-ico">+</span></button><div class="fqa"><p>Yes, with significant conditions. ENs must work under direct or indirect RN supervision at all times, require 1-year post-registration EN experience, 1-year in a related clinical area, and relevant cosmetic training. ENs cannot administer dermal fillers to very high-risk areas. GP supervision does not satisfy the NMBA requirement — it must be an RN.</p></div></div>
-      <div class="fqi"><button class="fqb" onclick="toggleFAQ(this)"><span>Do I need a prescriber to open my own clinic as an RN?</span><span class="fq-ico">+</span></button><div class="fqa"><p>Yes. RNs cannot prescribe Schedule 4 medicines. A compliant clinic requires a formal prescriber arrangement — a doctor or NP who consults with each patient before treatment. This must be in-person or via video. Phone or email prescribing is not acceptable practice under AHPRA guidelines.</p></div></div>
-      <div class="fqi"><button class="fqb" onclick="toggleFAQ(this)"><span>Will I be ready to inject independently after training?</span><span class="fq-ico">+</span></button><div class="fqa"><p>Foundational training provides the essential starting point — theory, anatomy, and supervised hands-on practice. Independent competence is built through ongoing supervised practice over time. 6–12 months of supervised experience is widely recommended. Be cautious of any provider who claims otherwise.</p></div></div>
-      <div class="fqi"><button class="fqb" onclick="toggleFAQ(this)"><span>Can dentists perform Botox and dermal fillers?</span><span class="fq-ico">+</span></button><div class="fqa"><p>Yes — dentists are eligible, subject to scope of practice and AHPRA registration requirements. Dentists have particular expertise in lower-face anatomy. Masseter/TMJ treatments are specifically within dental scope. Must comply with state/territory drugs and poisons legislation and TGA requirements.</p></div></div>
-      <div class="fqi"><button class="fqb" onclick="toggleFAQ(this)"><span>Is cosmetic injectables practice covered by Medicare?</span><span class="fq-ico">+</span></button><div class="fqa"><p>No. Cosmetic injectables are private-pay treatments. Patients pay out of pocket and must be clearly informed that Medicare does not cover these treatments. This means income is not capped by rebate schedules, but requires effective private practice management.</p></div></div>
-      <div class="fqi"><button class="fqb" onclick="toggleFAQ(this)"><span>Does training count toward my CPD requirements?</span><span class="fq-ico">+</span></button><div class="fqa"><p>It may — discretionary for professional bodies. Quality providers supply CPD documentation including certificate of attainment, activity description, and hours. Whether it counts and for how many hours is determined by your specific board. Always keep full records — date, hours, description, reflection, and evidence.</p></div></div>
-    </div>
-  </div>
-</section>
-
-<!-- ▸ CONTACT -->
-<section class="section section-contact" id="contact">
-  <div class="contact-art" aria-hidden="true"><div class="ca ca1"></div><div class="ca ca2"></div></div>
-  <div class="container contact-wrap">
-    <div class="contact-left reveal">
-      <p class="eyebrow" style="color:var(--teal-accent)">Get in Touch</p>
-      <h2 style="color:#fff">Ready to take the next step?</h2>
-      <p style="color:rgba(255,255,255,.62);font-size:.94rem;line-height:1.8;margin-bottom:28px">Whether you're just exploring or ready to start — we'll help you understand your pathway, answer your questions, and point you in the right direction.</p>
-      <div class="contact-pts">
-        <div class="cp"><div class="cp-ico">✓</div><span>No obligation — just clear guidance</span></div>
-        <div class="cp"><div class="cp-ico">✓</div><span>Specific to your profession and registration type</span></div>
-        <div class="cp"><div class="cp-ico">✓</div><span>Honest answers about eligibility and pathways</span></div>
-        <div class="cp"><div class="cp-ico">✓</div><span>Response within 1 business day</span></div>
-      </div>
-      <div class="contact-img img-slot" id="contact-img" onclick="triggerUpload('contact-file')" tabindex="0" role="button" onkeydown="if(event.key==='Enter'||event.key===' ')triggerUpload('contact-file')" style="margin-top:28px">
-        <input type="file" id="contact-file" accept="image/*" style="display:none" onchange="previewImg(this,'contact-img')"/>
-        <div class="slot-ph"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.35)" stroke-width="1.3"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg><p>Upload team or clinic photo</p></div>
-      </div>
-    </div>
-    <div class="contact-form-card reveal">
-      <form id="contact-form" onsubmit="handleForm(event)">
-        <h3>Send an Enquiry</h3>
-        <div class="form-row">
-          <div class="fg"><label>First Name</label><input type="text" placeholder="Jane" required/></div>
-          <div class="fg"><label>Last Name</label><input type="text" placeholder="Smith" required/></div>
-        </div>
-        <div class="fg"><label>Email Address</label><input type="email" placeholder="jane@example.com.au" required/></div>
-        <div class="fg"><label>Phone</label><input type="tel" placeholder="04XX XXX XXX"/></div>
-        <div class="fg"><label>Your Profession</label><select required><option value="">Select your profession...</option><option>Registered Nurse (RN)</option><option>Enrolled Nurse (EN)</option><option>Nurse Practitioner (NP)</option><option>Doctor</option><option>Dentist</option></select></div>
-        <div class="fg"><label>Your Question or Goal</label><textarea rows="4" placeholder="Tell us where you are in your journey and what guidance you're looking for..."></textarea></div>
-        <button type="submit" class="btn-submit">Send My Enquiry →</button>
-        <p class="fnote">Independent educational guide. Not affiliated with any training company.</p>
-      </form>
-      <div class="form-ok" id="form-ok">
-        <div class="fok-ico">✓</div>
-        <h4>Enquiry Received</h4>
-        <p>We'll be in touch within 1 business day.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ▸ FOOTER -->
 <footer class="site-footer">
   <div class="container ft-grid">
     <div class="ft-brand">
@@ -658,7 +1068,7 @@
       </div>
       <p>An independent educational resource for AHPRA registered healthcare professionals exploring cosmetic injectables in Australia. Not affiliated with any training provider or regulatory body.</p>
     </div>
-    <div class="ft-nav"><h5>Navigate</h5><a href="#professional">Pathways</a><a href="#why">Industry</a><a href="#careers-section">Careers</a><a href="#training">Training</a><a href="#compare">Compare</a><a href="#faq">FAQ</a><a href="#contact">Get Guidance</a></div>
+    <div class="ft-nav"><h5>Navigate</h5><a href="#professional">Pathways</a><a href="#why">Industry</a><a href="#careers-section">Careers</a><a href="#jobs">RN Jobs</a><a href="#business">Business</a><a href="#scope">Scope</a></div>
     <div class="ft-nav"><h5>Regulatory Bodies</h5><a href="https://www.ahpra.gov.au" target="_blank" rel="noopener">AHPRA</a><a href="https://www.nursingmidwiferyboard.gov.au" target="_blank" rel="noopener">NMBA</a><a href="https://www.tga.gov.au" target="_blank" rel="noopener">TGA</a><a href="https://www.dentalboard.gov.au" target="_blank" rel="noopener">Dental Board</a><a href="https://www.medicalboard.gov.au" target="_blank" rel="noopener">Medical Board</a></div>
   </div>
   <div class="ft-bottom"><div class="container"><p>This website is an independent educational resource and is not affiliated with any training provider, regulatory body, or industry organisation. Not legal or regulatory advice.</p><p class="ft-copy">© 2025 Cosmetic Injectables Career Guide. Educational purposes only.</p></div></div>
