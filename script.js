@@ -289,3 +289,90 @@ if (window.innerWidth > 1024) {
     });
   });
 }
+
+/* ── Journey pathway — static connector line drawn through the circles ── */
+(function initJourney() {
+  const wrap = document.getElementById('jny-wrap');
+  if (!wrap) return;
+  const svg  = document.getElementById('jny-wave-svg');
+  const path = document.getElementById('jny-wave-path');
+  const startDot = document.getElementById('jny-wave-start-dot');
+  const steps = Array.from(wrap.querySelectorAll('.jny-step'));
+  if (!svg || !path || !steps.length) return;
+
+  function smoothPath(pts) {
+    if (pts.length < 2) return '';
+    let d = `M${pts[0].x},${pts[0].y}`;
+    for (let i = 0; i < pts.length - 1; i++) {
+      const p0 = pts[i === 0 ? 0 : i - 1];
+      const p1 = pts[i];
+      const p2 = pts[i + 1];
+      const p3 = pts[i + 2 < pts.length ? i + 2 : i + 1];
+      const c1x = p1.x + (p2.x - p0.x) / 6;
+      const c1y = p1.y + (p2.y - p0.y) / 6;
+      const c2x = p2.x - (p3.x - p1.x) / 6;
+      const c2y = p2.y - (p3.y - p1.y) / 6;
+      d += ` C${c1x},${c1y} ${c2x},${c2y} ${p2.x},${p2.y}`;
+    }
+    return d;
+  }
+
+  function draw() {
+    if (window.innerWidth <= 1100 || wrap.offsetHeight === 0) {
+      path.removeAttribute('d');
+      if (startDot) startDot.setAttribute('r', '0');
+      return;
+    }
+    const wrapRect = wrap.getBoundingClientRect();
+    svg.setAttribute('viewBox', `0 0 ${wrapRect.width} ${wrapRect.height}`);
+    const pts = steps.map(s => {
+      const circle = s.querySelector('.jny-num-wrap');
+      const r = circle.getBoundingClientRect();
+      return {
+        x: r.left + r.width / 2 - wrapRect.left,
+        y: r.top + r.height / 2 - wrapRect.top
+      };
+    });
+    /* Lead-in: the CTA is the journey's starting point. Route the line up
+       from the button, hug the wrap's left edge clear of every card, then
+       hook right into step 1 — the first node the journey flows into.
+       Drawn as its own subpath (not chained into the steps' Catmull-Rom
+       array) so step 2's position can't pull the curve's tangent at
+       step 1 downward into step 1's own paragraph text. */
+    const cta = document.getElementById('jny-cta');
+    let ctaPt = null;
+    let leadD = '';
+    if (cta) {
+      const firstPt = pts[0];
+      const r = cta.getBoundingClientRect();
+      const ctaX = r.left + r.width / 2 - wrapRect.left;
+      const ctaTopY = r.top - wrapRect.top - 16;
+      const edgeX = -28;
+      ctaPt = { x: ctaX, y: ctaTopY };
+      leadD = smoothPath([
+        ctaPt,
+        { x: edgeX, y: ctaTopY },
+        { x: edgeX, y: firstPt.y + 40 },
+        firstPt
+      ]) + ' ';
+    }
+    path.setAttribute('d', leadD + smoothPath(pts));
+    if (startDot) {
+      if (ctaPt) {
+        startDot.setAttribute('cx', ctaPt.x);
+        startDot.setAttribute('cy', ctaPt.y);
+        startDot.setAttribute('r', '5');
+      } else {
+        startDot.setAttribute('r', '0');
+      }
+    }
+  }
+
+  draw();
+  window.addEventListener('load', draw);
+  let resizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(draw, 150);
+  });
+})();
