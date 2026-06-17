@@ -832,6 +832,41 @@
           <svg class="st-map-svg" id="st-map-svg" viewBox="-0.4 -0.4 290 262" aria-label="Map of Australia — select a state to view its requirements">
             <!-- Base map data: Australia_map,_States.svg by Lokal_Profil (based on work by Papayoung),
                  Wikimedia Commons, CC BY-SA 2.5/3.0 / GFDL. Colours, interactivity and labels added. -->
+            <defs>
+              <!-- Solid-wall filters: feFlood paints wall colour, feComposite masks to state shape alpha,
+                   stacked feOffsets fill 1-10 SVG units below with no gap.
+                   filterUnits="userSpaceOnUse" so dy="10" always means 10 SVG units, even for tiny ACT. -->
+              <filter id="st-wf-gray" filterUnits="userSpaceOnUse" x="-5" y="-5" width="300" height="290" color-interpolation-filters="sRGB">
+                <feFlood flood-color="#B8BEC8" result="c"/>
+                <feComposite in="c" in2="SourceGraphic" operator="in" result="m"/>
+                <feOffset in="m" dy="1" result="o1"/><feOffset in="m" dy="2" result="o2"/>
+                <feOffset in="m" dy="3" result="o3"/><feOffset in="m" dy="4" result="o4"/>
+                <feOffset in="m" dy="5" result="o5"/><feOffset in="m" dy="6" result="o6"/>
+                <feOffset in="m" dy="7" result="o7"/><feOffset in="m" dy="8" result="o8"/>
+                <feOffset in="m" dy="9" result="o9"/><feOffset in="m" dy="10" result="o10"/>
+                <feMerge>
+                  <feMergeNode in="o1"/><feMergeNode in="o2"/><feMergeNode in="o3"/>
+                  <feMergeNode in="o4"/><feMergeNode in="o5"/><feMergeNode in="o6"/>
+                  <feMergeNode in="o7"/><feMergeNode in="o8"/><feMergeNode in="o9"/>
+                  <feMergeNode in="o10"/>
+                </feMerge>
+              </filter>
+              <filter id="st-wf-teal" filterUnits="userSpaceOnUse" x="-5" y="-5" width="300" height="290" color-interpolation-filters="sRGB">
+                <feFlood flood-color="#0A5C52" result="c"/>
+                <feComposite in="c" in2="SourceGraphic" operator="in" result="m"/>
+                <feOffset in="m" dy="1" result="o1"/><feOffset in="m" dy="2" result="o2"/>
+                <feOffset in="m" dy="3" result="o3"/><feOffset in="m" dy="4" result="o4"/>
+                <feOffset in="m" dy="5" result="o5"/><feOffset in="m" dy="6" result="o6"/>
+                <feOffset in="m" dy="7" result="o7"/><feOffset in="m" dy="8" result="o8"/>
+                <feOffset in="m" dy="9" result="o9"/><feOffset in="m" dy="10" result="o10"/>
+                <feMerge>
+                  <feMergeNode in="o1"/><feMergeNode in="o2"/><feMergeNode in="o3"/>
+                  <feMergeNode in="o4"/><feMergeNode in="o5"/><feMergeNode in="o6"/>
+                  <feMergeNode in="o7"/><feMergeNode in="o8"/><feMergeNode in="o9"/>
+                  <feMergeNode in="o10"/>
+                </feMerge>
+              </filter>
+            </defs>
             <g class="st-shape" data-state="NSW">
               <path id="NSW" d="M 271.2875,129.6 L 270.4125,130.225 L 269.75625,130.85 L 268.6625,130.94375 L 267.75625,131.0375 L 267.6625,131.7875 L 267.94375,132.85 L 268.6625,132.7875 L 268.00625,133.56875 L 267.88125,134.13125 L 266.85,134.6 L 266.06875,134.31875 L 265.6625,133.63125 L 265.00625,134.4125 L 264.35,135.225 L 264.0375,135.7875 L 263.35,136.225 L 262.88125,135.1625 L 262.81875,134.44375 L 262.38125,133.75625 L 261.975,133.25625 L 261.31875,132.4125 L 260.19375,132.1625 L 258.56875,132.13125 L 257.975,131.81875 L 257.225,131.5375 L 256.50625,131.6 L 256.2875,131.06875 L 255.38125,131.1625 L 253.94375,131.6625 L 252.6625,131.44375 L 251.35,131.0375 L 250.7875,131.06875 L 250.00625,132.25625 L 248.9125,132.1625 L 248.81875,133.2875 L 248.1,133.35 L 248.1625,133.88125 L 247.2875,134.35 L 194.1625,134.2875 L 194.1625,179.35 L 194.1625,179.38125 L 194.225,179.6 L 195.35,179.4125 L 197.19375,180.2875 L 198.225,179.56875 L 199.975,179.85 L 202.1,180.1 L 203.81875,181.5375 L 204.31875,183.56875 L 205.4125,184.5375 L 205.44375,183.56875 L 206.50625,183.0375 L 207.475,183.25625 L 209.19375,183.38125 L 210.19375,183.7875 L 210.81875,186.5375 L 212.25625,188.6 L 213.38125,188.63125 L 215.00625,189.31875 L 216.975,191.1 L 217.35,192.38125 L 218.63125,193.31875 L 220.25625,194.00625 L 221.56875,193.81875 L 221.31875,192.35 L 221.81875,191.69375 L 222.5375,191.6 L 223.38125,192.0375 L 225.225,191.75625 L 226.6625,192.475 L 227.56875,192.35 L 228.7875,192.9125 L 229.975,193.13125 L 230.63125,192.44375 L 231.50625,192.13125 L 232.56875,192.725 L 234.50625,193.19375 L 235.975,192.7875 L 237.0375,192.44375 L 237.7875,192.31875 L 238.50625,192.0375 L 239.4125,191.69375 L 240.81875,192.44375 L 240.63125,193.6 L 241.19375,194.81875 L 241.9125,195.85 L 242.25625,196.94375 L 242.1,198.2875 L 250.2875,202.35 L 252.00625,202.475 L 252.725,203.13125 L 253.38125,203.13125 L 253.225,203.56875 L 253.35,203.6625 L 254.44375,203.13125 L 254.225,201.4125 L 254.6625,201.19375 L 255.1,201.19375 L 254.6625,200.13125 L 253.81875,199.9125 L 254.225,199.06875 L 253.81875,198.00625 L 254.225,198.225 L 254.6625,196.725 L 255.50625,193.31875 L 255.2875,191.19375 L 255.725,189.9125 L 255.2875,189.9125 L 256.35,189.06875 L 255.725,188.225 L 256.56875,188.4125 L 258.2875,184.38125 L 259.75625,183.94375 L 259.13125,182.6625 L 259.75625,182.475 L 259.75625,183.31875 L 260.19375,183.1 L 259.75625,181.81875 L 259.35,182.0375 L 259.56875,181.6 L 258.69375,181.4125 L 260.19375,180.75625 L 260.63125,179.25625 L 260.19375,178.63125 L 260.85,178.4125 L 260.85,176.9125 L 262.5375,175.225 L 261.9125,175.00625 L 262.975,174.7875 L 261.69375,174.38125 L 263.1625,174.1625 L 263.38125,173.1 L 262.75625,173.50625 L 262.31875,173.1 L 262.975,173.31875 L 262.75625,172.6625 L 263.38125,173.1 L 263.6,171.38125 L 263.6,171.1625 L 263.1625,171.6 L 263.1625,170.975 L 262.975,171.1625 L 262.75625,170.5375 L 263.38125,170.975 L 263.6,169.9125 L 263.6,170.75625 L 264.44375,170.31875 L 264.6625,169.25625 L 264.25625,168.85 L 265.1,168.85 L 265.725,167.13125 L 265.1,167.975 L 264.88125,167.13125 L 265.50625,167.13125 L 265.50625,166.2875 L 265.725,167.13125 L 266.6,165.63125 L 266.38125,165.225 L 266.7875,165.225 L 266.7875,165.85 L 269.35,164.35 L 268.50625,164.1625 L 267.6625,164.7875 L 267.44375,164.56875 L 267.85,164.1625 L 267.6625,163.725 L 268.50625,164.1625 L 269.13125,163.725 L 269.35,164.1625 L 270.19375,162.88125 L 271.69375,162.00625 L 271.9125,160.31875 L 271.25625,160.1 L 271.25625,160.5375 L 270.4125,160.1 L 271.25625,160.1 L 271.475,160.1 L 271.69375,158.6 L 273.19375,157.35 L 275.1,151.1625 L 274.88125,146.9125 L 276.38125,143.06875 L 276.6,142.4125 L 277.225,138.81875 L 276.6,138.38125 L 277.225,138.6 L 277.0375,137.75625 L 278.725,134.5375 L 278.2875,134.5375 L 278.725,134.35 L 278.94375,132.63125 L 278.2875,131.7875 L 278.475,129.88125 L 277.50625,129.9125 L 276.6,129.81875 L 276.06875,130.225 L 275.56875,130.44375 L 275.00625,130.50625 L 274.06875,130.225 L 273.0375,130.69375 L 272.225,129.88125 L 271.2875,129.6 z M 245.94375,185.85 C 246.4011,185.83171 246.88755,185.9021 247.31875,186.1 C 247.68859,186.26974 247.81087,186.51964 247.7875,186.7875 C 247.76413,187.05536 247.56333,187.33774 247.35,187.6625 C 246.92333,188.312 246.34845,189.03293 246.38125,189.6625 C 246.30457,190.00785 245.94393,190.75511 245.44375,190.85 C 245.19366,190.89744 244.89487,190.78185 244.6,190.38125 C 244.30512,189.98065 243.99269,189.29934 243.69375,188.19375 C 243.51125,187.5188 243.72572,186.9458 244.1625,186.5375 C 244.59927,186.1292 245.25772,185.87745 245.94375,185.85 z "></path>
             </g>
@@ -877,25 +912,34 @@
               <text class="st-label st-label-act" data-state="ACT" x="250" y="187">ACT</text>
             </g>
           </svg>
+          <!-- Floating badge — shows active state name + difficulty -->
+          <div class="st-map-badge" id="st-map-badge">
+            <div class="st-badge-ico">🏆</div>
+            <div class="st-badge-body">
+              <div class="st-badge-title" id="st-badge-title">Queensland</div>
+              <div class="st-badge-sub" id="st-badge-sub">Difficulty · 9/10</div>
+            </div>
+            <div class="st-badge-dots" id="st-badge-dots"></div>
+          </div>
           <div class="st-map-tip" id="st-map-tip" aria-hidden="true"></div>
         </div>
       </div>
     </div>
 
-    <!-- Step 1: state picker -->
-    <div class="st-picker reveal">
-      <div class="st-picker-label"><span class="st-step-num">1</span>Select a State or Territory</div>
-      <div class="st-state-grid" id="st-state-grid"></div>
+    <!-- State selector tabs -->
+    <div class="st-selector reveal">
+      <div class="st-row-lbl"><span class="st-step-num">1</span>Select a State or Territory</div>
+      <div class="st-tabs" id="st-state-grid"></div>
     </div>
 
-    <!-- Step 2: profession picker -->
-    <div class="st-picker reveal">
-      <div class="st-picker-label"><span class="st-step-num">2</span>Select Your Profession</div>
-      <div class="st-prof-grid" id="st-prof-grid"></div>
+    <!-- Workspace: profession picker + detail panels side-by-side -->
+    <div class="st-workspace reveal">
+      <div class="st-ws-left">
+        <div class="st-row-lbl"><span class="st-step-num">2</span>Your Profession</div>
+        <div id="st-prof-grid"></div>
+      </div>
+      <div class="st-ws-right" id="st-detail"></div>
     </div>
-
-    <!-- Detail panel — rendered by JS -->
-    <div class="st-detail reveal" id="st-detail"></div>
 
   </div>
 </section>
