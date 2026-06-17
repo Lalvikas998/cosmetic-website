@@ -659,17 +659,13 @@ if (window.innerWidth > 1024) {
             <div class="st-ov-mlbl">Regulation</div>
             <div class="st-ov-mval" style="color:${m.color};font-size:.78rem">${state.tag}</div>
           </div>
-          <div class="st-ov-metric" style="grid-column:1/-1">
+          <div class="st-ov-metric" style="grid-column:1/-1;padding-bottom:0">
             <div class="st-ov-mlbl">Profession</div>
-            <div class="st-ov-mval" style="color:rgba(255,255,255,.75)">${prof.label}</div>
+            <div class="st-ov-mval">${prof.label}</div>
           </div>
         </div>
         <div class="st-ov-hl-title">Key Highlights</div>
         ${hlHTML}
-        <a href="#" class="st-ov-link" onclick="return false">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-          Download ${state.code} Guidelines
-        </a>
       </div>
       <div class="st-panel">
         <div class="st-panel-hdr">
@@ -749,18 +745,19 @@ if (window.innerWidth > 1024) {
     renderMap();
   }
 
-  window.selectState = function (code) {
+  window.selectState = function (code, scroll) {
     activeState = code;
     renderAll();
+    if (scroll) setTimeout(() => document.getElementById('st-workspace')?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 80);
   };
   window.selectProfession = function (code) {
     activeProf = code;
     renderAll();
   };
 
-  /* Map shapes are clickable — click syncs the tab selector */
+  /* Map shapes: click syncs state + scrolls to workspace */
   document.querySelectorAll('.st-shape').forEach(el => {
-    el.addEventListener('click', () => window.selectState(el.dataset.state));
+    el.addEventListener('click', () => window.selectState(el.dataset.state, true));
   });
 
   initWallLayer();
