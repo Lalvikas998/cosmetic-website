@@ -376,3 +376,347 @@ if (window.innerWidth > 1024) {
     resizeTimer = setTimeout(draw, 150);
   });
 })();
+
+/* ── State requirements explorer ─────────────────────────────────────
+   Data-driven: one state list + a profession-rule table generate the
+   map, the two pickers and the entire detail panel (cards + accordion).
+   ────────────────────────────────────────────────────────────────── */
+(function initStates() {
+  const root = document.getElementById('states');
+  if (!root) return;
+
+  const PROFESSIONS = [
+    { code: 'rn',      label: 'Registered Nurse',     short: 'RN'  },
+    { code: 'en',      label: 'Enrolled Nurse',       short: 'EN'  },
+    { code: 'np',      label: 'Nurse Practitioner',   short: 'NP'  },
+    { code: 'doctor',  label: 'Doctor',                short: 'Dr'  },
+    { code: 'dentist', label: 'Dentist',                short: 'Dt'  },
+  ];
+
+  /* Australia-wide scope-of-practice baseline — these four facts are
+     determined by national AHPRA scope, not state law, so they don't
+     vary by state. Score delta nudges the Business Difficulty Index
+     up/down per profession relative to a state's RN baseline score. */
+  const PROF_BASE = {
+    rn:      { prescribe: 'no',      inject: 'yes',     prescriberReq: 'yes', dispense: 'no',      own: 'state',  storeBuy: 'no',  scoreDelta: 0  },
+    en:      { prescribe: 'no',      inject: 'limited',  prescriberReq: 'yes', dispense: 'no',      own: 'no',     storeBuy: 'no',  scoreDelta: 1  },
+    np:      { prescribe: 'yes',     inject: 'yes',      prescriberReq: 'no',  dispense: 'no',      own: 'yes',    storeBuy: 'yes', scoreDelta: -3 },
+    doctor:  { prescribe: 'yes',     inject: 'yes',      prescriberReq: 'no',  dispense: 'yes',     own: 'yes',    storeBuy: 'yes', scoreDelta: -4 },
+    dentist: { prescribe: 'limited', inject: 'limited',  prescriberReq: 'no',  dispense: 'limited', own: 'yes',    storeBuy: 'yes', scoreDelta: -3 },
+  };
+
+  const STATES = [
+    {
+      code: 'QLD', name: 'Queensland', tag: 'Most Regulated', act: 'Medicines and Poisons Act 2019 (QLD)', score: 9,
+      ownNote: 'Allowed only under a strict doctor/NP custody model — no independent stock holding for RNs.',
+      accordion: [
+        ['Prescribing Rules', 'Only doctors and nurse practitioners may prescribe S4 cosmetic injectables. RNs must work from a valid, patient-specific prescription before every treatment — standing orders are not accepted.'],
+        ['Medicine Custody Requirements', 'S4 stock must remain under the exclusive custody of the prescribing doctor or NP at all times. RNs cannot buy, store or hold multi-use vials under any circumstances.'],
+        ['Clinic Ownership Models', 'RN-led clinics are legal only under a remote prescriber model — a doctor/NP consults and dispenses patient-specific medicine, the RN injects. No stock is held onsite by the RN.'],
+        ['Advertising & Marketing Requirements', "All advertising must comply with AHPRA's National Law restrictions on therapeutic claims, before/after imagery and testimonials — enforcement in QLD has increased markedly since 2023."],
+        ['Business Considerations', 'Budget for a formal prescriber arrangement, professional indemnity insurance covering cosmetic procedures, and compliant record-keeping for every S4 dispensing event.'],
+        ['Common Mistakes', "The most common compliance breach is an RN personally purchasing or pre-ordering stock 'on behalf of' the clinic — this is treated as unlawful possession, even if a doctor reimburses the cost."],
+      ],
+    },
+    {
+      code: 'NSW', name: 'New South Wales', tag: 'Moderate Regulation', act: 'Poisons and Therapeutic Goods Act 1966 (NSW)', score: 6,
+      ownNote: 'Allowed under a doctor/NP-led model; clinic structuring is more flexible than QLD but custody rules still apply.',
+      accordion: [
+        ['Prescribing Rules', 'Prescriptions must be issued by an AHPRA-registered doctor or NP following an appropriate consultation; telehealth consultations are accepted where clinically appropriate.'],
+        ['Medicine Custody Requirements', "S4 medicines must be stored under the prescriber's authority. NSW Health permits slightly more flexible record-keeping for multi-clinic prescriber arrangements than QLD."],
+        ['Clinic Ownership Models', 'RNs can co-own or manage a clinic alongside a prescribing doctor/NP, provided the prescriber retains clinical and medicine-custody responsibility.'],
+        ['Advertising & Marketing Requirements', "Subject to the same AHPRA National Law restrictions as all states — no therapeutic claims, misleading before/afters, or unapproved testimonials."],
+        ['Business Considerations', 'Factor in NSW Health facility registration if treatments are performed in a registered medical practice setting.'],
+        ['Common Mistakes', "Assuming a remote/telehealth prescriber arrangement removes the need for a documented clinical governance framework — it doesn't."],
+      ],
+    },
+    {
+      code: 'VIC', name: 'Victoria', tag: 'Moderate Regulation', act: 'Drugs, Poisons and Controlled Substances Act 1981 (VIC)', score: 6,
+      ownNote: "Allowed under prescriber-led models; Victoria publishes specific guidance for nurse-administered cosmetic injectables.",
+      accordion: [
+        ['Prescribing Rules', 'A valid prescription from a doctor or NP is required before each treatment episode; Victoria publishes specific guidance for nurses administering Schedule 4 cosmetic injectables.'],
+        ['Medicine Custody Requirements', 'Possession and supply of S4 medicines is restricted to authorised prescribers — consistent with the national Poisons Standard.'],
+        ['Clinic Ownership Models', 'Multi-disciplinary clinic structures are common and well-supported by existing Victorian guidance for cosmetic practice.'],
+        ['Advertising & Marketing Requirements', "Cosmetic procedure advertising is monitored under both AHPRA's National Law and Victorian consumer protection law."],
+        ['Business Considerations', "Victoria's Health Complaints Commissioner has specific oversight of cosmetic procedures — factor this into your complaints-handling policy."],
+        ['Common Mistakes', 'Underestimating the documentation expected for informed consent specific to cosmetic (non-therapeutic) procedures.'],
+      ],
+    },
+    {
+      code: 'WA', name: 'Western Australia', tag: 'Balanced Approach', act: 'Medicines and Poisons Act 2014 (WA)', score: 5,
+      ownNote: "Allowed with a prescriber arrangement; WA's geographic spread means remote/telehealth prescriber models are common.",
+      accordion: [
+        ['Prescribing Rules', "Standard AHPRA prescribing rules apply; WA's large regional footprint means telehealth prescriber consultations are widely accepted."],
+        ['Medicine Custody Requirements', 'S4 custody sits with the prescriber. WA Health guidance accommodates remote prescriber models for regional and outer-metro clinics.'],
+        ['Clinic Ownership Models', 'RN-led clinics operating under a remote or visiting prescriber model are common, particularly outside Perth.'],
+        ['Advertising & Marketing Requirements', 'Same national AHPRA restrictions apply; WA Health also monitors cosmetic procedure advertising directly.'],
+        ['Business Considerations', 'Travel and locum costs for visiting prescribers should be budgeted for regional clinics.'],
+        ['Common Mistakes', 'Relying on a verbal or informal prescriber arrangement instead of a documented agreement — WA Health expects this in writing.'],
+      ],
+    },
+    {
+      code: 'SA', name: 'South Australia', tag: 'Balanced Approach', act: 'Controlled Substances Act 1984 (SA)', score: 5,
+      ownNote: 'Allowed under prescriber oversight; SA Health applies the standard national framework without extra state-specific restrictions.',
+      accordion: [
+        ['Prescribing Rules', 'Prescriptions must come from an authorised doctor or NP; no additional state-specific prescribing restrictions beyond the national framework.'],
+        ['Medicine Custody Requirements', 'Custody and supply of S4 medicines follows the Controlled Substances Act 1984 — consistent with national Poisons Standard scheduling.'],
+        ['Clinic Ownership Models', 'Standard prescriber-led ownership models apply with no unusual state-specific restrictions.'],
+        ['Advertising & Marketing Requirements', "AHPRA's National Law restrictions apply; SA Health does not impose additional advertising rules beyond this."],
+        ['Business Considerations', "SA's smaller market means networking with local prescribers early is particularly valuable."],
+        ['Common Mistakes', "Assuming SA's lighter-touch regulation means clinical governance documentation isn't required — it still is."],
+      ],
+    },
+    {
+      code: 'TAS', name: 'Tasmania', tag: 'More Flexible', act: 'Poisons Act 1971 (TAS)', score: 4,
+      ownNote: "Allowed under prescriber oversight; Tasmania's small market means most clinics work with a handful of established prescribers.",
+      accordion: [
+        ['Prescribing Rules', 'Standard national prescribing rules apply, administered under the Poisons Act 1971 (TAS).'],
+        ['Medicine Custody Requirements', 'Custody sits with the prescriber, consistent with the national Poisons Standard scheduling for S4 medicines.'],
+        ['Clinic Ownership Models', "Tasmania's small, close-knit market means most RN-led clinics work with a small number of established local prescribers."],
+        ['Advertising & Marketing Requirements', "AHPRA's National Law restrictions apply uniformly across all of Tasmania's health districts."],
+        ['Business Considerations', 'Limited local training-provider presence means budgeting for interstate travel to attend practical training.'],
+        ['Common Mistakes', 'Underestimating how few local prescribers are available — securing a prescriber arrangement early is essential.'],
+      ],
+    },
+    {
+      code: 'ACT', name: 'Australian Capital Territory', tag: 'More Flexible', act: 'Medicines, Poisons and Therapeutic Goods Act 2008 (ACT)', score: 4,
+      ownNote: "Allowed under prescriber oversight; the ACT's compact geography makes co-located prescriber arrangements straightforward.",
+      accordion: [
+        ['Prescribing Rules', "Standard AHPRA prescribing rules apply, administered under the ACT's Medicines, Poisons and Therapeutic Goods Act 2008."],
+        ['Medicine Custody Requirements', 'Custody and supply of S4 medicines follows the national Poisons Standard, with no additional ACT-specific restrictions.'],
+        ['Clinic Ownership Models', "The ACT's compact geography makes co-located, in-person prescriber arrangements straightforward to establish."],
+        ['Advertising & Marketing Requirements', "AHPRA's National Law restrictions apply; the ACT does not impose additional advertising-specific rules."],
+        ['Business Considerations', "Canberra's market is small but stable — building a local referral network is valuable for steady patient flow."],
+        ['Common Mistakes', 'Overlooking Commonwealth workplace policies on cosmetic procedure advertising aimed at government staff.'],
+      ],
+    },
+    {
+      code: 'NT', name: 'Northern Territory', tag: 'Most Flexible', act: 'Medicines, Poisons and Therapeutic Goods Act 2012 (NT)', score: 3,
+      ownNote: "Allowed under prescriber oversight; remote prescriber and telehealth models are well-established given the NT's vast distances.",
+      accordion: [
+        ['Prescribing Rules', "Standard national prescribing rules apply; telehealth prescriber consultations are widely used given the NT's remote geography."],
+        ['Medicine Custody Requirements', 'Custody sits with the prescriber under the national Poisons Standard; remote dispensing arrangements are well-established in the NT.'],
+        ['Clinic Ownership Models', "Remote/telehealth prescriber-led models are common and well-supported, reflecting the NT's geographic spread."],
+        ['Advertising & Marketing Requirements', "AHPRA's National Law restrictions apply uniformly across the Territory."],
+        ['Business Considerations', 'Factor in higher freight and logistics costs for medicine supply chains given the NT\'s remoteness.'],
+        ['Common Mistakes', 'Underestimating delivery and supply-chain lead times when relying on a remote prescriber model.'],
+      ],
+    },
+  ];
+
+  const CARD_DEFS = [
+    { key: 'prescribe',     label: 'Can Prescribe?',              sub: 'S4 cosmetic injectables' },
+    { key: 'inject',        label: 'Can Inject?',                 sub: 'After appropriate prescription' },
+    { key: 'own',           label: 'Can Own / Open a Clinic?',    sub: 'Cosmetic injectable business' },
+    { key: 'storeS4',       label: 'Can Store S4 Medicines?',     sub: 'Botox, fillers & other S4' },
+    { key: 'buyS4',         label: 'Can Buy S4 Medicines?',       sub: 'Purchasing as clinic stock' },
+    { key: 'prescriberReq', label: 'Prescriber Required?',        sub: 'Before every treatment' },
+    { key: 'dispense',      label: 'Can Dispense to Patients?',   sub: 'Supplying labelled medicine' },
+  ];
+
+  const VAL_LABEL = { yes: 'Yes', no: 'No', limited: 'Limited' };
+
+  let activeState = STATES[0].code;
+  let activeProf  = PROFESSIONS[0].code;
+  let wallGroup   = null;
+
+  function getState(code) { return STATES.find(s => s.code === code); }
+
+  function effectiveScore(state, profCode) {
+    const delta = PROF_BASE[profCode].scoreDelta;
+    return Math.max(1, Math.min(10, state.score + delta));
+  }
+
+  function scoreColor(score) {
+    if (score >= 8) return '#DC2626';
+    if (score >= 6) return '#D97706';
+    if (score >= 4) return '#0F766E';
+    return '#0EA371';
+  }
+
+  function dotsHTML(score, color) {
+    let d = '';
+    for (let i = 1; i <= 10; i++) {
+      d += `<span class="st-dot" style="background:${i <= score ? color : 'rgba(0,0,0,.1)'}"></span>`;
+    }
+    return d;
+  }
+
+  /* ── Render: state grid (step 1) ───────────────────────────── */
+  function renderStateGrid() {
+    const grid = document.getElementById('st-state-grid');
+    if (!grid) return;
+    grid.innerHTML = STATES.map(s => {
+      const score = effectiveScore(s, activeProf);
+      const color = scoreColor(score);
+      const active = s.code === activeState;
+      return `
+        <button class="st-state-card ${active ? 'active' : ''}" data-state="${s.code}" onclick="selectState('${s.code}')">
+          <div class="st-state-top">
+            <span class="st-state-abbr">${s.code}</span>
+          </div>
+          <strong class="st-state-name">${s.name}</strong>
+          <div class="st-state-rating">
+            <div class="st-dots">${dotsHTML(score, color)}</div>
+            <span class="st-score" style="color:${color}">${score}/10</span>
+          </div>
+        </button>`;
+    }).join('');
+  }
+
+  /* ── Render: profession grid (step 2) ──────────────────────── */
+  function renderProfGrid() {
+    const grid = document.getElementById('st-prof-grid');
+    if (!grid) return;
+    grid.innerHTML = PROFESSIONS.map(p => {
+      const active = p.code === activeProf;
+      return `
+        <button class="st-prof-card ${active ? 'active' : ''}" data-prof="${p.code}" onclick="selectProfession('${p.code}')">
+          <span class="st-prof-short">${p.short}</span>
+          <span class="st-prof-label">${p.label}</span>
+        </button>`;
+    }).join('');
+  }
+
+  /* ── Render: detail panel (cards + accordion) ──────────────── */
+  function renderDetail() {
+    const wrap = document.getElementById('st-detail');
+    if (!wrap) return;
+    const state = getState(activeState);
+    const prof  = PROFESSIONS.find(p => p.code === activeProf);
+    const base  = PROF_BASE[activeProf];
+    const score = effectiveScore(state, activeProf);
+    const color = scoreColor(score);
+
+    const values = {
+      prescribe: base.prescribe,
+      inject: base.inject,
+      own: base.own === 'state' ? 'limited' : base.own,
+      storeS4: base.storeBuy,
+      buyS4: base.storeBuy,
+      prescriberReq: base.prescriberReq,
+      dispense: base.dispense,
+    };
+    const ownNote = base.own === 'state' ? state.ownNote : (base.own === 'yes' ? 'Standard business ownership rules apply — no profession-specific restrictions.' : 'Not a recognised independent practice model for this profession.');
+    const notes = {
+      prescribe: prof.code === 'rn' || prof.code === 'en' ? 'Only doctors and nurse practitioners are authorised prescribers in Australia.' : '',
+      inject: prof.code === 'en' ? 'ENs may inject only under direct supervision of an RN or doctor, with a valid prescription already in place.' : '',
+      own: ownNote,
+      storeS4: values.storeS4 === 'no' ? 'Custody of S4 stock must sit with the prescribing doctor or NP at all times.' : 'Exclusive custody and control obligations apply.',
+      buyS4: values.buyS4 === 'no' ? 'Purchasing, ordering or pre-paying for stock "on behalf of" a clinic is treated as unlawful possession.' : '',
+      prescriberReq: values.prescriberReq === 'yes' ? 'A valid, patient-specific prescription is required before every treatment.' : 'This profession holds prescribing rights directly.',
+      dispense: '',
+    };
+
+    const cardsHTML = CARD_DEFS.map(def => {
+      const val = values[def.key];
+      return `
+        <div class="st-card">
+          <div class="st-card-head"><span class="st-card-label">${def.label}</span></div>
+          <div class="st-card-val st-val-${val}">
+            <span class="st-val-ico"></span>${VAL_LABEL[val]}
+          </div>
+          <p class="st-card-note">${notes[def.key] || def.sub}</p>
+        </div>`;
+    }).join('');
+
+    const diffCardHTML = `
+      <div class="st-card st-card-diff">
+        <div class="st-card-head"><span class="st-card-label">Business Difficulty Index</span></div>
+        <div class="st-diff-score" style="color:${color}">${score}<span>/10</span></div>
+        <div class="st-dots st-dots-lg">${dotsHTML(score, color)}</div>
+        <p class="st-card-note">${state.name} is rated "${state.tag.toLowerCase()}" for ${prof.label.toLowerCase()}-led cosmetic practice.</p>
+      </div>`;
+
+    const accordionHTML = state.accordion.map((item, i) => `
+      <div class="fqi">
+        <button class="fqb ${i === 0 ? 'open' : ''}" onclick="toggleFAQ(this)">
+          ${item[0]}
+          <span class="fq-ico ${i === 0 ? 'open' : ''}">+</span>
+        </button>
+        <div class="fqa ${i === 0 ? 'open' : ''}"><p>${item[1]}</p></div>
+      </div>`).join('');
+
+    wrap.innerHTML = `
+      <div class="st-detail-head">
+        <div>
+          <h3>${state.name} <span class="st-detail-sub">— Requirements for ${prof.label}s</span></h3>
+          <span class="st-act-ref">${state.act}</span>
+        </div>
+        <a href="#" class="st-dl-btn" onclick="return false">Download ${state.code} Guidelines <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></a>
+      </div>
+      <div class="st-cards-grid">${cardsHTML}${diffCardHTML}</div>
+      <div class="st-accordion">${accordionHTML}</div>`;
+  }
+
+  /* ── Build wall layer ─────────────────────────────────────── */
+  function initWallLayer() {
+    const svg = document.getElementById('st-map-svg');
+    if (!svg) return;
+    const shapes = [...svg.querySelectorAll('.st-shape')];
+    if (!shapes.length) return;
+    wallGroup = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+    wallGroup.id = 'st-wall-group';
+    /* 12 SVG-unit downward offset — in rotateX perspective this becomes
+       the visible south-face wall of the extrusion. */
+    wallGroup.setAttribute('transform', 'translate(0,12)');
+    shapes.forEach(shape => {
+      const wall = shape.cloneNode(true);
+      wall.className.baseVal = 'st-wall';
+      wall.dataset.state = shape.dataset.state;
+      wallGroup.appendChild(wall);
+    });
+    /* Insert wall group before the first shape so all top-faces render above */
+    svg.insertBefore(wallGroup, shapes[0]);
+  }
+
+  /* ── Render: map highlight + tooltip ───────────────────────── */
+  function renderMap() {
+    document.querySelectorAll('.st-shape, .st-label').forEach(el => {
+      el.classList.toggle('active', el.dataset.state === activeState);
+    });
+    if (wallGroup) {
+      wallGroup.querySelectorAll('.st-wall').forEach(el => {
+        el.classList.toggle('active', el.dataset.state === activeState);
+      });
+      /* Move the active wall to the end of the wall group so it renders
+         on top of adjacent walls at the QLD/SA type border junctions. */
+      const activeWall = wallGroup.querySelector(`.st-wall[data-state="${activeState}"]`);
+      if (activeWall) wallGroup.appendChild(activeWall);
+    }
+  }
+
+  function renderAll() {
+    renderStateGrid();
+    renderProfGrid();
+    renderDetail();
+    renderMap();
+  }
+
+  window.selectState = function (code) {
+    activeState = code;
+    renderAll();
+  };
+  window.selectProfession = function (code) {
+    activeProf = code;
+    renderAll();
+  };
+
+  /* Map shapes are clickable too — keep them in sync with the picker */
+  document.querySelectorAll('.st-shape').forEach(el => {
+    el.addEventListener('click', () => window.selectState(el.dataset.state));
+    el.addEventListener('mouseenter', () => {
+      const s = getState(el.dataset.state);
+      const tip = document.getElementById('st-map-tip');
+      if (!tip || !s) return;
+      tip.textContent = s.name;
+      tip.classList.add('show');
+    });
+    el.addEventListener('mouseleave', () => {
+      document.getElementById('st-map-tip')?.classList.remove('show');
+    });
+  });
+
+  initWallLayer();
+  renderAll();
+})();

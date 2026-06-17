@@ -1494,12 +1494,14 @@ p{line-height:1.75}
   .cg-card{padding:20px 20px 18px}
 }
 
-/* ── QUEENSLAND SECTION ─────────────────────────────────── */
-.section-qld{background:#fff}
+/* ── STATE REQUIREMENTS ──────────────────────────────────── */
+.section-states{background:#fff}
 
-/* Hero */
-.qld-hero{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:center;margin-bottom:36px}
-.qld-hero-left h2{margin-bottom:14px}
+/* Hero — heading left (unchanged position), map right (kept old position) */
+.st-hero{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:center;margin-bottom:44px}
+.st-hero-left h2{margin-bottom:14px}
+
+/* Reused from the previous design — info note + disclaimer strip */
 .qld-desc{font-size:.88rem;color:var(--muted);line-height:1.82;margin-bottom:22px;max-width:480px}
 .qld-s4-note{
   display:flex;align-items:flex-start;gap:13px;
@@ -1512,155 +1514,198 @@ p{line-height:1.75}
 }
 .qld-s4-note p{font-size:.82rem;color:var(--muted);line-height:1.6;margin:0;padding-top:2px}
 
-/* Map */
-.qld-map-wrap{position:relative}
-.qld-map-img{width:100%;height:auto;display:block;border-radius:var(--r-xl)}
-.qld-map-badge{
-  position:absolute;right:-10px;top:22%;
-  background:#fff;border:1px solid var(--border);border-radius:var(--r-lg);
-  padding:12px 14px;width:154px;box-shadow:0 4px 16px rgba(0,0,0,.1);
+/* ── 3D extruded Australia map ────────────────────────────────────────
+   Real geographic SVG paths (Wikimedia Commons CC BY-SA).
+   Wall effect uses a shared SVG offset group (not per-state drop-shadows)
+   so adjacent top-faces cover each other's walls — the extrusion is
+   only visible at coastlines, never bleeds through internal borders. */
+.st-map-wrap{
+  position:relative;
+  background:#FFFFFF;
+  border-radius:var(--r-2xl);
+  padding:28px 20px 58px;
+  perspective:1000px;
+  perspective-origin:50% 15%;
 }
-.qld-map-badge svg{color:var(--teal);display:block;margin-bottom:5px}
-.qld-map-badge strong{display:block;font-size:.6rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);margin-bottom:5px}
-.qld-map-badge p{font-size:.72rem;color:var(--muted);line-height:1.5;margin:0}
+.st-map-svg{
+  width:100%;height:auto;display:block;overflow:visible;
+  transform:rotateX(28deg) rotateZ(-0.5deg);
+  transform-origin:50% 50%;
+}
+/* Top face — light gray, white seams, no drop-shadow (wall layer handles depth) */
+.st-shape{
+  fill:#EAEDF3;
+  stroke:#FFFFFF;
+  stroke-width:0.85;
+  stroke-linejoin:round;
+  cursor:pointer;
+  transition:fill .25s ease;
+}
+.st-shape:hover{fill:#DCE0EA}
+.st-shape.active{
+  fill:#17A89C;
+  stroke:rgba(255,255,255,.9);
+  stroke-width:0.85;
+}
+/* Wall copies — the shared offset group in JS puts these 12 SVG units
+   below the top faces; adjacent states' top faces cover internal walls
+   naturally, leaving walls visible only at the outer coastline. */
+.st-wall{
+  fill:#BDC3D0;
+  stroke:none;
+  pointer-events:none;
+}
+.st-wall.active{fill:#0B6259}
+.st-label{
+  font-family:var(--sans);font-size:6.5px;font-weight:700;letter-spacing:.06em;
+  fill:#253040;text-anchor:middle;pointer-events:none;
+  transition:fill .25s ease;
+}
+.st-label-act{font-size:4px;letter-spacing:.04em;text-anchor:start}
+.st-label.active{fill:#FFFFFF}
+.st-map-tip{
+  position:absolute;top:14px;left:50%;transform:translateX(-50%);
+  background:var(--ink);color:#fff;font-size:.72rem;font-weight:600;
+  padding:6px 14px;border-radius:50px;pointer-events:none;
+  opacity:0;transition:opacity .2s;white-space:nowrap;z-index:2;
+}
+.st-map-tip.show{opacity:1}
 
-/* Key facts strip */
-.qld-facts{
-  display:grid;grid-template-columns:repeat(4,1fr);
-  background:#fff;border:1px solid var(--border);border-radius:var(--r-xl);
-  overflow:hidden;margin-bottom:52px;
+/* ── Step pickers ────────────────────────────────────────── */
+.st-picker{margin-bottom:28px}
+.st-picker-label{
+  display:flex;align-items:center;gap:10px;
+  font-family:var(--sans);font-size:.95rem;font-weight:700;color:var(--ink);
+  margin-bottom:16px;
 }
-.qld-fact{
+.st-step-num{
+  width:24px;height:24px;border-radius:50%;flex-shrink:0;
+  background:var(--teal);color:#fff;font-size:.74rem;font-weight:800;
+  display:flex;align-items:center;justify-content:center;
+}
+
+/* State cards */
+.st-state-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.st-state-card{
+  text-align:left;background:#fff;border:1.5px solid var(--border);border-radius:var(--r-lg);
+  padding:16px 16px 14px;cursor:pointer;font-family:var(--sans);
   display:flex;flex-direction:column;gap:10px;
-  padding:20px 20px;border-right:1px solid var(--border);
+  transition:border-color .2s,box-shadow .2s,transform .2s,background .2s;
 }
-.qld-fact:last-child{border-right:none}
-.qf-ico{
-  width:36px;height:36px;border-radius:10px;flex-shrink:0;
-  background:rgba(15,118,110,.09);display:flex;align-items:center;justify-content:center;color:var(--teal);
+.st-state-card:hover{border-color:rgba(15,118,110,.35);transform:translateY(-2px);box-shadow:0 10px 24px rgba(15,23,42,.08)}
+.st-state-card.active{
+  border-color:var(--teal);background:rgba(15,118,110,.05);
+  box-shadow:0 12px 28px rgba(15,118,110,.14);
 }
-.qld-fact p{font-size:.79rem;font-weight:600;color:var(--dark);line-height:1.45;margin:0}
+.st-state-top{display:flex;align-items:center;justify-content:space-between}
+.st-state-abbr{font-size:.68rem;font-weight:800;letter-spacing:.06em;color:var(--teal)}
+.st-here{
+  font-size:.58rem;font-weight:800;letter-spacing:.05em;text-transform:uppercase;
+  background:var(--ink);color:#fff;padding:3px 8px;border-radius:50px;
+}
+.st-state-name{font-size:.86rem;font-weight:700;color:var(--ink);line-height:1.3}
+.st-state-rating{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.st-dots{display:flex;gap:2px;flex:1}
+.st-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0;transition:background .3s}
+.st-dots-lg .st-dot{width:9px;height:9px}
+.st-score{font-size:.72rem;font-weight:800;flex-shrink:0}
 
-/* Section divider title */
-.qld-sec-title{display:flex;align-items:center;gap:18px;margin-bottom:24px}
-.qst-line{flex:1;height:1px;background:var(--border)}
-.qld-sec-title span{
-  font-family:var(--sans);font-size:.72rem;font-weight:700;letter-spacing:.07em;
-  text-transform:uppercase;color:var(--muted);white-space:nowrap;
+/* Profession pills */
+.st-prof-grid{display:flex;flex-wrap:wrap;gap:10px}
+.st-prof-card{
+  display:flex;align-items:center;gap:10px;
+  background:#fff;border:1.5px solid var(--border);border-radius:50px;
+  padding:10px 18px 10px 10px;cursor:pointer;font-family:var(--sans);
+  transition:border-color .2s,box-shadow .2s,background .2s,color .2s;
 }
-
-/* Comparison grid */
-.qld-comp-section{margin-bottom:52px}
-.qld-comp-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-
-.qld-comp-block{
-  background:#fff;border:1px solid var(--border);border-radius:var(--r-xl);
-  overflow:hidden;display:flex;flex-direction:column;
-}
-.qcb-head{
-  display:flex;align-items:flex-start;gap:11px;padding:14px 14px 12px;
-  border-bottom:1px solid var(--border);
-}
-.qcb-ico{
-  width:34px;height:34px;flex-shrink:0;border-radius:9px;
+.st-prof-short{
+  width:30px;height:30px;border-radius:50%;flex-shrink:0;
+  background:rgba(15,118,110,.1);color:var(--teal);
   display:flex;align-items:center;justify-content:center;
+  font-size:.68rem;font-weight:800;transition:background .2s,color .2s;
 }
-.qcb-head h4{font-size:.78rem;font-weight:700;color:var(--dark);margin-bottom:2px;line-height:1.3}
-.qcb-head span{font-size:.67rem;color:var(--muted)}
-.qcb-note{
-  font-size:.68rem;color:var(--muted);line-height:1.55;
-  padding:10px 14px 12px;border-top:1px solid var(--border);margin:0;
-  margin-top:auto;background:rgba(0,0,0,.015);
+.st-prof-label{font-size:.84rem;font-weight:600;color:var(--ink)}
+.st-prof-card:hover{border-color:rgba(15,118,110,.35)}
+.st-prof-card.active{background:var(--teal);border-color:var(--teal);box-shadow:var(--sh-teal)}
+.st-prof-card.active .st-prof-short{background:rgba(255,255,255,.22);color:#fff}
+.st-prof-card.active .st-prof-label{color:#fff}
+
+/* ── Detail panel ────────────────────────────────────────── */
+.st-detail{
+  background:#F8FAFC;border:1px solid var(--border);border-radius:var(--r-2xl);
+  padding:32px 32px 8px;margin-bottom:24px;
+}
+.st-detail-head{display:flex;align-items:flex-start;justify-content:space-between;gap:20px;margin-bottom:24px;flex-wrap:wrap}
+.st-detail-head h3{font-family:var(--serif);font-size:1.3rem;color:var(--ink);line-height:1.4}
+.st-detail-sub{font-family:var(--sans);font-size:.86rem;font-weight:500;color:var(--muted)}
+.st-act-ref{display:block;font-size:.72rem;color:var(--muted);margin-top:4px;font-style:italic}
+.st-dl-btn{
+  display:flex;align-items:center;gap:8px;flex-shrink:0;
+  background:#fff;border:1.5px solid var(--border);border-radius:50px;
+  padding:9px 18px;font-size:.78rem;font-weight:600;color:var(--ink);text-decoration:none;
+  transition:border-color .2s,color .2s;
+}
+.st-dl-btn:hover{border-color:var(--teal);color:var(--teal)}
+
+.st-cards-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:28px}
+.st-card{
+  background:#fff;border:1px solid var(--border);border-radius:var(--r-lg);
+  padding:18px 18px 16px;display:flex;flex-direction:column;gap:10px;
+  transition:box-shadow .25s,transform .25s;
+}
+.st-card:hover{transform:translateY(-3px);box-shadow:0 12px 26px rgba(15,23,42,.08)}
+.st-card-label{font-size:.74rem;font-weight:700;color:var(--ink);line-height:1.35}
+.st-card-val{display:flex;align-items:center;font-size:.92rem;font-weight:800}
+.st-val-ico{
+  width:19px;height:19px;border-radius:50%;flex-shrink:0;
+  display:inline-flex;align-items:center;justify-content:center;
+  color:#fff;font-size:.62rem;font-weight:800;margin-right:8px;
+}
+.st-val-yes{color:#0F766E}
+.st-val-yes .st-val-ico{background:#0F766E}
+.st-val-yes .st-val-ico::before{content:'✓'}
+.st-val-no{color:#DC2626}
+.st-val-no .st-val-ico{background:#DC2626}
+.st-val-no .st-val-ico::before{content:'✕'}
+.st-val-limited{color:#D97706}
+.st-val-limited .st-val-ico{background:#D97706}
+.st-val-limited .st-val-ico::before{content:'–'}
+.st-card-note{font-size:.72rem;color:var(--muted);line-height:1.55;margin:0}
+
+.st-card-diff{background:rgba(15,118,110,.04);border-color:rgba(15,118,110,.18)}
+.st-diff-score{font-family:var(--serif);font-size:1.7rem;font-weight:700;line-height:1}
+.st-diff-score span{font-size:.95rem;font-weight:500;color:var(--muted)}
+
+/* Accordion reuses .fqi/.fqb/.fqa from the FAQ component */
+.st-accordion{border-top:1px solid var(--border)}
+
+/* ── Mobile / responsive ─────────────────────────────────── */
+@media(max-width:1100px){
+  .st-state-grid{grid-template-columns:repeat(2,1fr)}
+  .st-cards-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:768px){
+  .st-hero{grid-template-columns:1fr;gap:28px}
+  .st-hero-right{order:-1}
+  .st-state-grid{grid-template-columns:1fr 1fr}
+  .st-cards-grid{grid-template-columns:1fr 1fr}
+  .st-detail{padding:24px 18px 8px}
+  .st-detail-head h3{font-size:1.12rem}
+  .qld-disclaimer{flex-direction:column;align-items:flex-start}
+  .qld-disc-btn{width:100%;justify-content:space-between}
+}
+@media(max-width:480px){
+  .st-state-grid{grid-template-columns:1fr}
+  .st-cards-grid{grid-template-columns:1fr}
+  .st-prof-grid{gap:8px}
+  .st-prof-card{padding:8px 14px 8px 8px}
 }
 
-/* Table inside comparison block */
-.qld-tbl{width:100%;border-collapse:collapse;font-family:var(--sans);flex:1}
-.qld-tbl thead th{
-  font-size:.61rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;
-  padding:7px 8px;color:var(--muted);border-bottom:1px solid var(--border);text-align:center;
-}
-.qld-tbl thead th:first-child{text-align:left;padding-left:14px}
-.q-th-qld{color:var(--teal) !important;background:rgba(15,118,110,.05)}
-.qld-tbl tbody td{
-  padding:6px 8px;font-size:.72rem;color:var(--muted);
-  border-bottom:1px solid rgba(0,0,0,.04);text-align:center;vertical-align:middle;
-}
-.qld-tbl tbody td:first-child{text-align:left;padding-left:14px;font-size:.71rem;color:var(--dark)}
-.qld-tbl tbody tr:last-child td{border-bottom:none}
-.q-col-qld{background:rgba(15,118,110,.04)}
-
-/* Status icons */
-.qi-cell{display:inline-flex;flex-direction:column;align-items:center;gap:3px}
-.qi-cell small{font-size:.59rem;color:var(--muted);text-align:center;line-height:1.25;max-width:72px}
-.qi{
-  width:20px;height:20px;border-radius:50%;
-  display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;
-}
-.qi-yes{background:#0F766E}
-.qi-no{background:#DC2626}
-.qi-ltd{background:#D97706}
-
-/* Why QLD different */
-.qld-why{margin-bottom:52px}
-.qld-why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;background:#fff;border:1px solid var(--border);border-radius:var(--r-xl);overflow:hidden}
-.qld-why-item{display:flex;flex-direction:column;gap:12px;padding:26px 22px;border-right:1px solid var(--border)}
-.qld-why-item:last-child{border-right:none}
-.qwi-ico{
-  width:40px;height:40px;border-radius:11px;flex-shrink:0;
-  background:rgba(15,118,110,.09);display:flex;align-items:center;justify-content:center;color:var(--teal);
-}
-.qld-why-item h5{font-size:.84rem;font-weight:700;color:var(--dark);margin-bottom:6px}
-.qld-why-item p{font-size:.79rem;color:var(--muted);line-height:1.72;margin:0}
-
-/* Two clinic models */
-.qld-models{margin-bottom:0}
-.qld-models-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-
-.qld-model{border-radius:var(--r-xl);padding:28px 28px 24px;position:relative;overflow:hidden}
-.qld-model-1{background:#fff;border:1px solid var(--border)}
-.qld-model-2{background:rgba(15,118,110,.04);border:1.5px solid rgba(15,118,110,.15)}
-
-.qm-label{
-  display:inline-block;font-size:.6rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;
-  padding:3px 10px;border-radius:50px;margin-bottom:10px;
-}
-.qld-model-1 .qm-label{background:var(--dark);color:#fff}
-.qld-model-2 .qm-label{background:var(--teal);color:#fff}
-
-.qld-model h4{font-size:.95rem;font-weight:700;color:var(--dark);margin-bottom:4px;line-height:1.3}
-.qld-model h4 em{font-style:normal;color:var(--muted);font-weight:400}
-.qm-sub{font-size:.78rem;color:var(--muted);margin-bottom:22px}
-
-/* Flow */
-.qm-flow{display:flex;align-items:flex-start;gap:6px;margin-bottom:20px;flex-wrap:wrap}
-.qm-step{
-  display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center;
-  flex:1;min-width:80px;
-}
-.qm-step-ico{
-  width:44px;height:44px;border-radius:12px;
-  background:#fff;border:1.5px solid var(--border);
-  display:flex;align-items:center;justify-content:center;
-  color:var(--dark);flex-shrink:0;
-}
-.qld-model-2 .qm-step-ico{background:rgba(255,255,255,.7);border-color:rgba(15,118,110,.2)}
-.qm-step-final .qm-step-ico{background:var(--teal);border-color:var(--teal);color:#fff}
-.qm-step span{font-size:.69rem;color:var(--muted);line-height:1.4;font-weight:500}
-.qm-arr{color:var(--border);flex-shrink:0;padding-top:14px;display:flex;align-items:flex-start}
-
-/* Recommendation badge */
-.qm-rec{display:flex;align-items:flex-start;gap:10px;border-radius:var(--r-md);padding:11px 14px;margin-top:4px}
-.qm-rec-green{background:rgba(15,118,110,.07);border:1px solid rgba(15,118,110,.14)}
-.qm-rec-teal{background:rgba(15,118,110,.1);border:1px solid rgba(15,118,110,.2)}
-.qm-rec svg{flex-shrink:0;color:var(--teal);margin-top:2px}
-.qm-rec p{font-size:.76rem;color:var(--dark);line-height:1.5;margin:0}
-.qm-rec strong{color:var(--teal)}
-
-/* Disclaimer strip */
+/* Disclaimer strip (reused) */
 .qld-disclaimer{
   display:flex;align-items:center;justify-content:space-between;gap:24px;
   background:#fff;border:1px solid var(--border);border-radius:var(--r-xl);
-  padding:18px 22px;margin-top:32px;
+  padding:18px 22px;margin-top:8px;
 }
 .qld-disc-left{display:flex;align-items:flex-start;gap:12px;flex:1}
 .qld-disc-left svg{flex-shrink:0;margin-top:2px}
@@ -1677,36 +1722,6 @@ p{line-height:1.75}
 .qld-disc-btn span{font-size:.7rem;color:rgba(255,255,255,.55);display:block}
 .qld-disc-btn svg{color:rgba(255,255,255,.7);flex-shrink:0}
 
-/* ── QLD Mobile ─────────────────────────────────────────── */
-@media(max-width:1100px){
-  .qld-comp-grid{grid-template-columns:repeat(2,1fr)}
-  .qld-why-grid{grid-template-columns:repeat(2,1fr)}
-  .qld-why-item:nth-child(2){border-right:none}
-  .qld-why-item:nth-child(n+3){border-top:1px solid var(--border)}
-  .qld-why-item:nth-child(4){border-right:none}
-}
-@media(max-width:768px){
-  .qld-hero{grid-template-columns:1fr;gap:28px}
-  .qld-map-badge{right:8px;top:16%;width:130px}
-  .qld-facts{grid-template-columns:1fr 1fr}
-  .qld-fact:nth-child(2){border-right:none}
-  .qld-fact:nth-child(n+3){border-top:1px solid var(--border)}
-  .qld-comp-grid{grid-template-columns:1fr}
-  .qld-models-grid{grid-template-columns:1fr}
-  .qld-disclaimer{flex-direction:column;align-items:flex-start}
-  .qld-disc-btn{width:100%;justify-content:space-between}
-}
-@media(max-width:480px){
-  .qld-facts{grid-template-columns:1fr}
-  .qld-fact{border-right:none;border-bottom:1px solid var(--border)}
-  .qld-fact:last-child{border-bottom:none}
-  .qld-why-grid{grid-template-columns:1fr}
-  .qld-why-item{border-right:none;border-bottom:1px solid var(--border)}
-  .qld-why-item:last-child{border-bottom:none}
-  .qm-flow{gap:4px}
-  .qm-step{min-width:60px}
-  .qm-step-ico{width:36px;height:36px;border-radius:10px}
-}
 
 /* ── JOURNEY PATHWAY ─────────────────────────────────────── */
 .section-journey{
