@@ -516,9 +516,10 @@ if (window.innerWidth > 1024) {
 
   const VAL_LABEL = { yes: 'Yes', no: 'No', limited: 'Limited' };
 
-  let activeState = STATES[0].code;
-  let activeProf  = PROFESSIONS[0].code;
-  let wallGroup   = null;
+  let activeState  = STATES[0].code;
+  let activeProf   = PROFESSIONS[0].code;
+  let wallGroup    = null;
+  let capCardData  = [];
 
   function getState(code) { return STATES.find(s => s.code === code); }
 
@@ -595,7 +596,7 @@ if (window.innerWidth > 1024) {
     }).join('');
   }
 
-  /* ── Render: 2-panel detail (overview + requirements) ──────── */
+  /* ── Render: capability card grid ──────────────────────── */
   function renderDetail() {
     const wrap = document.getElementById('st-detail');
     if (!wrap) return;
@@ -604,82 +605,125 @@ if (window.innerWidth > 1024) {
     const base  = PROF_BASE[activeProf];
     const score = effectiveScore(state, activeProf);
     const color = scoreColor(score);
-    const m     = ST_META[activeState] || { color: '#17A89C', bg: 'rgba(23,168,156,.18)' };
 
-    const values = {
-      prescribe:    base.prescribe,
-      inject:       base.inject,
-      own:          base.own === 'state' ? 'limited' : base.own,
-      prescriberReq: base.prescriberReq,
+    const ownVal  = base.own === 'state' ? 'limited' : base.own;
+    const ownNote = base.own === 'state' ? state.ownNote
+      : base.own === 'yes' ? 'Standard business ownership rules apply — no profession-specific restrictions.'
+      : 'Independent practice ownership is not a recognised model for this profession.';
+
+    const accMap = {};
+    state.accordion.forEach(([t, b]) => { accMap[t] = b; });
+
+    const arrowSVG = `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>`;
+
+    const ICONS = {
+      prescribe:  `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="2"/><path d="m9 12 2 2 4-4"/></svg>`,
+      inject:     `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m18 2 4 4-14 14H4v-4L18 2Z"/><path d="m8 8 4 4"/><path d="m14 2 4 4"/></svg>`,
+      clinic:     `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="9" width="18" height="13" rx="2"/><path d="M3 9V7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v2"/><path d="M9 22v-6h6v6"/></svg>`,
+      store:      `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>`,
+      buy:        `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>`,
+      prescriber: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><polyline points="16 11 18 13 22 9"/></svg>`,
+      dispense:   `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m10.5 20.5 10-10a4.95 4.95 0 1 0-7-7l-10 10a4.95 4.95 0 1 0 7 7Z"/><path d="m8.5 8.5 7 7"/></svg>`,
+      difficulty: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/><circle cx="12" cy="12" r="4"/></svg>`,
     };
 
-    /* Can-perform strip */
-    const CAN_DEFS = [
-      { key: 'prescribe',     lbl: 'Can Prescribe?' },
-      { key: 'inject',        lbl: 'Can Inject?' },
-      { key: 'own',           lbl: 'Can Own a Clinic?' },
-      { key: 'prescriberReq', lbl: 'Prescriber Required?' },
+    capCardData = [
+      { title:'Can Prescribe?',           iconKey:'prescribe',  iconColor:'#7C3AED', iconBg:'rgba(124,58,237,.12)', val:base.prescribe,       detailKey:'Prescribing Rules',            note: base.prescribe==='no'?'Only doctors and nurse practitioners are authorised prescribers in Australia.':base.prescribe==='yes'?'This profession holds prescribing authority and can issue patient-specific prescriptions.':'Limited prescribing rights apply — consult state health department guidance.',      profNote: base.prescribe==='no'?`As a ${prof.label}, you cannot prescribe. A valid prescription from an authorised doctor or NP is required before you may administer any treatment.`:base.prescribe==='yes'?`As a ${prof.label}, you hold prescribing authority under AHPRA and may prescribe S4 cosmetic injectables directly.`:'' },
+      { title:'Can Inject?',              iconKey:'inject',     iconColor:'#059669', iconBg:'rgba(5,150,105,.12)',  val:base.inject,           detailKey:'Prescribing Rules',            note: base.inject==='yes'?'You may administer S4 cosmetic injectables once a valid prescription has been issued.':base.inject==='no'?'Injecting S4 cosmetic medicines is not within scope for this profession.':'Enrolled Nurses may inject only under direct in-person supervision of an RN or doctor.',          profNote: base.inject==='limited'?'ENs must be directly supervised by a registered nurse or medical officer for every injection — independent injection is not permitted.':base.inject==='yes'?'A valid patient-specific prescription must be in place before any injectable is administered. Verbal or standing orders are not accepted.':'' },
+      { title:'Can Own a Clinic?',        iconKey:'clinic',     iconColor:'#F59E0B', iconBg:'rgba(245,158,11,.12)', val:ownVal,                detailKey:'Clinic Ownership Models',      note: ownNote,                                                                                                                                                                                                                            profNote: base.own==='state'?`In ${state.name}: ${state.ownNote}`:''},
+      { title:'Can Store S4 Medicines?',  iconKey:'store',      iconColor:'#DC2626', iconBg:'rgba(220,38,38,.12)',  val:base.storeBuy,         detailKey:'Medicine Custody Requirements', note: base.storeBuy==='no'?'S4 medicine custody must remain exclusively with the prescribing doctor or NP at all times.':'Strict custody and control obligations apply under the national Poisons Standard.',         profNote: base.storeBuy==='no'?'Purchasing, storing or holding S4 stock — even temporarily — constitutes unlawful possession if you are not an authorised person under the relevant Poisons Act.':'' },
+      { title:'Can Buy S4 Medicines?',    iconKey:'buy',        iconColor:'#4F46E5', iconBg:'rgba(79,70,229,.12)',  val:base.storeBuy,         detailKey:'Medicine Custody Requirements', note: base.storeBuy==='no'?'Purchasing or pre-ordering S4 stock on behalf of a clinic constitutes unlawful possession.':'You may purchase S4 medicines subject to applicable regulatory controls.',               profNote: base.storeBuy==='no'?'Even reimbursing a prescriber for medicines already purchased does not transfer lawful ownership. The authorised prescriber must remain the buyer at all times.':'' },
+      { title:'Prescriber Required?',     iconKey:'prescriber', iconColor:'#2563EB', iconBg:'rgba(37,99,235,.12)',  val:base.prescriberReq,   detailKey:'Prescribing Rules',            note: base.prescriberReq==='yes'?'A valid patient-specific prescription is required before every treatment.':'This profession holds prescribing rights — no external prescriber is needed.',                          profNote: base.prescriberReq==='yes'?'Prescriptions must be patient-specific. Blanket or standing orders are not accepted — the prescriber must consult the patient and document clinical appropriateness before issuing each prescription.':'' },
+      { title:'Can Dispense to Patients?',iconKey:'dispense',   iconColor:'#D97706', iconBg:'rgba(217,119,6,.12)',  val:base.dispense,         detailKey:'Medicine Custody Requirements', note: base.dispense==='no'?'Supplying labelled medicine directly to patients is not authorised for this profession.':base.dispense==='yes'?'You may dispense medicines subject to applicable licensing requirements.':'Limited dispensing may apply — verify with your state health department.',         profNote:'Dispensing (supply of labelled medicine to a patient) is distinct from administering an injection. Most states restrict dispensing authority to doctors and pharmacists.' },
+      { title:'Business Difficulty',      iconKey:'difficulty', iconColor:color,     iconBg:'rgba(15,118,110,.1)',  val:null, score, color,    detailKey:'Business Considerations',      note:`${state.name} is rated "${state.tag}" for ${prof.label.toLowerCase()}-led cosmetic practice.`,                                                                                                            profNote:`Score: ${score}/10 — This reflects the combined regulatory burden for ${prof.label.toLowerCase()}s in ${state.name}, including prescriber requirements, medicine custody obligations, and clinic setup complexity.`, act: state.act },
     ];
-    const canHTML = CAN_DEFS.map(d => {
-      const val = values[d.key];
-      const cls = val === 'yes' ? 'st-can-y' : val === 'no' ? 'st-can-n' : 'st-can-l';
-      const lbl = val === 'yes' ? 'Yes' : val === 'no' ? 'No' : 'Limited';
-      return `<div class="st-can-row ${cls}">
-        <span class="st-can-lbl">${d.lbl}</span>
-        <span class="st-can-val"><span class="st-can-ico"></span>${lbl}</span>
+
+    const VAL_LBL = { yes:'Yes', no:'No', limited:'Limited', null:null };
+    const VAL_CLS = { yes:'st-cap-y', no:'st-cap-n', limited:'st-cap-l' };
+
+    const cardsHTML = capCardData.map((c, i) => {
+      const icon = `<div class="st-cap-icon-wrap" style="background:${c.iconBg};color:${c.iconColor}">${ICONS[c.iconKey]}</div>`;
+      if (c.val === null) { /* difficulty card */
+        return `<div class="st-cap-card st-cap-diff" onclick="openCapModal(${i})">
+          <div class="st-cap-card-top">${icon}</div>
+          <div class="st-cap-title">${c.title}</div>
+          <div class="st-cap-score" style="color:${c.color}">${c.score}<span>/10</span></div>
+          <div class="st-cap-dots">${dotRowHTML('st-cap-dot', c.score, c.color)}</div>
+          <p class="st-cap-desc">${c.note}</p>
+          <div class="st-cap-more">View details ${arrowSVG}</div>
+        </div>`;
+      }
+      const cls = VAL_CLS[c.val] || 'st-cap-l';
+      const lbl = VAL_LBL[c.val] || 'Limited';
+      const ico = c.val==='yes'?'✓':c.val==='no'?'✕':'–';
+      return `<div class="st-cap-card ${cls}" onclick="openCapModal(${i})">
+        <div class="st-cap-card-top">
+          ${icon}
+          <span class="st-cap-pill"><span class="st-cap-pill-ico">${ico}</span>${lbl}</span>
+        </div>
+        <div class="st-cap-title">${c.title}</div>
+        <p class="st-cap-desc">${c.note}</p>
+        <div class="st-cap-more">View details ${arrowSVG}</div>
       </div>`;
     }).join('');
 
-    /* Highlights from first 3 accordion items */
-    const hlHTML = state.accordion.slice(0, 3).map(item => `
-      <div class="st-ov-hl">
-        <span class="st-ov-hl-dot" style="background:${m.color}"></span>
-        <span class="st-ov-hl-txt"><strong>${item[0]}:</strong> ${item[1].substring(0, 90)}…</span>
-      </div>`).join('');
-
-    /* Requirements accordion */
-    const raccHTML = state.accordion.map((item, i) => `
-      <div class="st-racc-item">
-        <button class="st-racc-btn${i === 0 ? ' open' : ''}" onclick="toggleRacc(this)">
-          ${item[0]}
-          <span class="st-racc-ico">+</span>
-        </button>
-        <div class="st-racc-body${i === 0 ? ' open' : ''}"><p>${item[1]}</p></div>
-      </div>`).join('');
-
-    wrap.innerHTML = `
-      <div class="st-panel">
-        <div class="st-panel-hdr">
-          <span class="st-panel-num" style="background:${m.bg};border-color:${m.color};color:${m.color}">3</span>
-          <span class="st-panel-title">Overview — ${state.name}</span>
-        </div>
-        <div class="st-ov-metrics">
-          <div class="st-ov-metric">
-            <div class="st-ov-mlbl">Difficulty</div>
-            <div class="st-ov-mscore" style="color:${color}">${score}<span>/10</span></div>
-            <div class="st-ov-dots">${dotRowHTML('st-ov-dot', score, color)}</div>
-          </div>
-          <div class="st-ov-metric">
-            <div class="st-ov-mlbl">Regulation</div>
-            <div class="st-ov-mval" style="color:${m.color};font-size:.78rem">${state.tag}</div>
-            <div class="st-ov-mlbl" style="margin-top:8px">Legislation</div>
-            <div class="st-ov-mval" style="font-size:.64rem;font-weight:600;line-height:1.4;color:var(--muted)">${state.act.replace(/\s*\([A-Z]+\)\s*$/, '')}</div>
-          </div>
-        </div>
-        <div class="st-ov-hl-title">Key Highlights</div>
-        ${hlHTML}
-      </div>
-      <div class="st-panel">
-        <div class="st-panel-hdr">
-          <span class="st-panel-num" style="background:${m.bg};border-color:${m.color};color:${m.color}">4</span>
-          <span class="st-panel-title">Requirements</span>
-        </div>
-        <div class="st-can-hdr">What you can do</div>
-        ${canHTML}
-        <div class="st-can-hdr" style="margin-top:14px">Detailed breakdown</div>
-        <div class="st-req-acc">${raccHTML}</div>
-      </div>`;
+    wrap.innerHTML = `<div class="st-cap-grid">${cardsHTML}</div>`;
   }
+
+  window.openCapModal = function(idx) {
+    const c = capCardData[idx];
+    if (!c) return;
+    const state = getState(activeState);
+    const prof  = PROFESSIONS.find(p => p.code === activeProf);
+    const accMap = {};
+    state.accordion.forEach(([t, b]) => { accMap[t] = b; });
+    const detail = accMap[c.detailKey] || c.note;
+
+    const VAL_LBL    = { yes:'Yes', no:'No', limited:'Limited' };
+    const pillColors = { yes:'rgba(15,118,110,.12)', no:'rgba(220,38,38,.12)', limited:'rgba(217,119,6,.12)' };
+    const txtColors  = { yes:'#0F766E', no:'#DC2626', limited:'#D97706' };
+    const icos       = { yes:'✓', no:'✕', limited:'–' };
+
+    let pillHTML;
+    if (c.val === null) {
+      pillHTML = `<div class="st-modal-pill" style="background:rgba(15,118,110,.1);color:${c.color}">
+        <span style="font-family:var(--serif);font-size:1.1rem;font-weight:700">${c.score}</span>
+        <span style="opacity:.55">/10 Difficulty</span></div>`;
+    } else {
+      pillHTML = `<div class="st-modal-pill" style="background:${pillColors[c.val]||pillColors.limited};color:${txtColors[c.val]||txtColors.limited}">
+        ${icos[c.val]||'–'} ${VAL_LBL[c.val]||'Limited'}</div>`;
+    }
+
+    const detailHTML = detail.split('\n\n').filter(Boolean).map(p => `<p>${p}</p>`).join('');
+    const noteHTML = c.profNote ? `<div class="st-modal-note"><strong>For ${prof.label}s in ${state.name}:</strong>${c.profNote}</div>` : '';
+    const actHTML  = c.act ? `<div class="st-modal-note" style="margin-top:10px"><strong>Applicable legislation:</strong> ${c.act}</div>` : '';
+
+    const ICONS_LARGE = {
+      prescribe:  `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="2"/><path d="m9 12 2 2 4-4"/></svg>`,
+      inject:     `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m18 2 4 4-14 14H4v-4L18 2Z"/><path d="m8 8 4 4"/><path d="m14 2 4 4"/></svg>`,
+      clinic:     `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="9" width="18" height="13" rx="2"/><path d="M3 9V7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v2"/><path d="M9 22v-6h6v6"/></svg>`,
+      store:      `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>`,
+      buy:        `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>`,
+      prescriber: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><polyline points="16 11 18 13 22 9"/></svg>`,
+      dispense:   `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m10.5 20.5 10-10a4.95 4.95 0 1 0-7-7l-10 10a4.95 4.95 0 1 0 7 7Z"/><path d="m8.5 8.5 7 7"/></svg>`,
+      difficulty: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/><circle cx="12" cy="12" r="4"/></svg>`,
+    };
+
+    document.getElementById('st-modal-content').innerHTML = `
+      <div class="st-modal-icon-wrap" style="background:${c.iconBg};color:${c.iconColor}">${ICONS_LARGE[c.iconKey]}</div>
+      <div class="st-modal-title">${c.title}</div>
+      ${pillHTML}
+      <div class="st-modal-lbl">${c.detailKey}</div>
+      <div class="st-modal-body">${detailHTML}</div>
+      ${noteHTML}${actHTML}`;
+    document.getElementById('st-modal-overlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  };
+
+  window.closeCapModal = function() {
+    document.getElementById('st-modal-overlay')?.classList.remove('open');
+    document.body.style.overflow = '';
+  };
 
   /* ── Build wall layer ─────────────────────────────────────── */
   function initWallLayer() {
@@ -761,6 +805,23 @@ if (window.innerWidth > 1024) {
   document.querySelectorAll('.st-shape').forEach(el => {
     el.addEventListener('click', () => window.selectState(el.dataset.state, true));
   });
+
+  /* Inject modal overlay once */
+  if (!document.getElementById('st-modal-overlay')) {
+    const mo = document.createElement('div');
+    mo.id = 'st-modal-overlay';
+    mo.className = 'st-modal-overlay';
+    mo.innerHTML = `
+      <div class="st-modal" id="st-modal">
+        <button class="st-modal-close" onclick="closeCapModal()" aria-label="Close">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+        </button>
+        <div id="st-modal-content"></div>
+      </div>`;
+    mo.addEventListener('click', e => { if (e.target === mo) window.closeCapModal(); });
+    document.body.appendChild(mo);
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') window.closeCapModal(); });
+  }
 
   initWallLayer();
   renderAll();
