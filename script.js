@@ -562,10 +562,14 @@ if (window.innerWidth > 1024) {
       const color = scoreColor(score);
       const m = ST_META[s.code] || { color: '#17A89C', bg: 'rgba(23,168,156,.18)', icon: '' };
       const active = s.code === activeState;
+      const bgLight = m.bg.replace(',.18)', ',.05)');
+      const activeSt = active
+        ? `border-color:${m.color};background:linear-gradient(150deg,${m.bg} 0%,${bgLight} 100%);box-shadow:0 4px 16px ${m.bg},inset 0 1px 0 rgba(255,255,255,.7);`
+        : '';
       return `
         <button class="st-tab${active ? ' active' : ''}" data-state="${s.code}"
           onclick="selectState('${s.code}')"
-          style="${active ? `border-color:${m.color};box-shadow:0 0 20px ${m.bg}` : ''}">
+          style="${activeSt}">
           <div class="st-tab-icon" style="background:${m.bg};color:${m.color}">${m.icon}</div>
           <span class="st-tab-abbr">${s.code}</span>
           <span class="st-tab-name">${s.name}</span>
@@ -658,10 +662,8 @@ if (window.innerWidth > 1024) {
           <div class="st-ov-metric">
             <div class="st-ov-mlbl">Regulation</div>
             <div class="st-ov-mval" style="color:${m.color};font-size:.78rem">${state.tag}</div>
-          </div>
-          <div class="st-ov-metric" style="grid-column:1/-1;padding-bottom:0">
-            <div class="st-ov-mlbl">Profession</div>
-            <div class="st-ov-mval">${prof.label}</div>
+            <div class="st-ov-mlbl" style="margin-top:8px">Legislation</div>
+            <div class="st-ov-mval" style="font-size:.64rem;font-weight:600;line-height:1.4;color:var(--muted)">${state.act.replace(/\s*\([A-Z]+\)\s*$/, '')}</div>
           </div>
         </div>
         <div class="st-ov-hl-title">Key Highlights</div>

@@ -1499,7 +1499,7 @@ p{line-height:1.75}
 .section-states .container{position:relative;z-index:1}
 
 /* Hero */
-.st-hero{display:grid;grid-template-columns:1fr 1.25fr;gap:52px;align-items:center;margin-bottom:32px}
+.st-hero{display:grid;grid-template-columns:1fr 0.9fr;gap:40px;align-items:center;margin-bottom:32px}
 .st-hero-left h2{color:var(--ink);margin-bottom:14px}
 .st-hero-left h2 em{color:var(--teal);font-style:italic}
 .section-states .eyebrow{color:var(--teal)}
@@ -1591,7 +1591,7 @@ p{line-height:1.75}
   min-width:90px;text-align:center;
 }
 .st-tab:hover{background:#f4f7fb;border-color:rgba(23,168,156,.35);transform:translateY(-2px);box-shadow:0 6px 18px rgba(15,23,42,.08)}
-.st-tab.active{border-color:var(--teal);box-shadow:0 0 0 3px rgba(23,168,156,.12),0 6px 18px rgba(15,23,42,.08)}
+.st-tab.active{border-width:1.5px}
 .st-tab-icon{
   width:34px;height:34px;border-radius:10px;
   display:flex;align-items:center;justify-content:center;
@@ -1604,6 +1604,7 @@ p{line-height:1.75}
 
 /* ── Workspace ───────────────────────────────────────────── */
 .st-workspace{display:grid;grid-template-columns:210px 1fr;gap:16px;align-items:start}
+.st-ws-right{display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:start}
 .st-ws-left{display:flex;flex-direction:column;gap:10px}
 
 /* Profession cards */
@@ -1614,7 +1615,11 @@ p{line-height:1.75}
   transition:all .2s;text-align:left;width:100%;font-family:var(--sans);
 }
 .st-pcard:hover{background:#f4f7fb;border-color:rgba(23,168,156,.35);box-shadow:0 4px 14px rgba(15,23,42,.07)}
-.st-pcard.active{background:rgba(23,168,156,.06);border-color:var(--teal);box-shadow:0 0 0 3px rgba(23,168,156,.1)}
+.st-pcard.active{
+  background:linear-gradient(150deg,rgba(23,168,156,.16) 0%,rgba(200,240,235,.18) 50%,rgba(23,168,156,.08) 100%);
+  border-color:rgba(23,168,156,.6);
+  box-shadow:0 4px 18px rgba(23,168,156,.14),inset 0 1px 0 rgba(255,255,255,.75);
+}
 .st-pcard-icon{
   width:34px;height:34px;border-radius:10px;flex-shrink:0;
   background:rgba(15,23,42,.06);
@@ -1627,7 +1632,6 @@ p{line-height:1.75}
 .st-pcard-sub{font-size:.64rem;color:var(--muted);margin-top:1px}
 
 /* ── Detail panels ───────────────────────────────────────── */
-.st-ws-right{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 .st-panel{
   background:#fff;border:1px solid var(--border);
   border-radius:20px;padding:18px 18px 16px;
