@@ -678,6 +678,267 @@ buildChart();
   initChartObserver();
 }());
 
+/* ═══════════════════════════════════════════════════════
+   CHAT WIDGET
+═══════════════════════════════════════════════════════ */
+(function() {
+  var cwOpen = false;
+  var cwFirstOpen = true;
+  var cwTypingEl = null;
+
+  /* ── Knowledge base ── */
+  var RULES = [
+    { rx:/^(hi|hello|hey|howdy|hiya|good\s+(morning|afternoon|evening))\b/i,
+      r:"Hi there! 👋 I'm IAHPA's virtual assistant. I can help you explore careers in cosmetic injectables, training pathways, clinic setup, and more.\n\nWhat can I help you with today?",
+      chips:['Career pathways','Training & courses','How to get started','Market opportunity'] },
+
+    { rx:/\biahpa\b|who are you|about iahpa|what is this|what do you (do|offer)/i,
+      r:"IAHPA — the **Institute of Aesthetic and Healthcare Professionals Australia** — is a leading education and support hub for healthcare professionals entering the cosmetic injectables industry.\n\nWe provide:\n• Career guidance and training pathways\n• Job placement and mentoring support\n• Clinic launch resources\n• Ongoing CPD and professional development\n\nOur mission: helping qualified healthcare professionals transition into this rapidly growing field safely and confidently.",
+      chips:['Training & courses','Career pathways','Contact IAHPA'] },
+
+    { rx:/\b(career|pathway|profession|which profession|job|role|options|qualify|suited)\b/i,
+      r:"IAHPA supports four professional groups entering cosmetic injectables:\n\n**Registered Nurses (RN)**\nMost common entry. Work under or alongside a prescriber.\n\n**Nurse Practitioners (NP)**\nIndependent prescribing rights — highest nursing autonomy.\n\n**Doctors (GP/Specialist)**\nFull prescribing authority, highest earning potential.\n\n**Dentists**\nNatural fit — existing facial anatomy expertise.\n\nWhich best describes you?",
+      chips:["I'm an RN","I'm a Doctor","I'm an NP","I'm a Dentist"] },
+
+    { rx:/\brn\b|registered nurse/i,
+      r:"As a **Registered Nurse**, you're one of the most common entrants into cosmetic injectables — and for good reason.\n\n✅ Already trained in anatomy, pharmacology, and patient care\n✅ Work as a cosmetic injector under a prescriber arrangement\n✅ **Career path:** Injector → Senior Injector → Contractor → Clinic Owner\n\n**Key requirements:**\n• Current AHPRA registration\n• Cosmetic injectable training (theory + practical)\n• Prescriber arrangement in place\n• Professional indemnity insurance\n\nReady to take the next step?",
+      chips:['Training requirements','Prescriber arrangement','Get Job Guidance','Request a callback'] },
+
+    { rx:/\bdoctor\b|\bgp\b|physician|medical doctor|mbbs|\bmd\b/i,
+      r:"As a **Doctor**, you have the highest level of autonomy in this field.\n\n✅ Full independent prescribing authority\n✅ Can own and operate a clinic completely independently\n✅ Highest income potential in cosmetic injectables\n✅ **Career path:** Doctor Injector → Clinic Director → Educator\n\n**Key requirements:**\n• Current AHPRA registration\n• Cosmetic injectable training\n• Professional indemnity and business insurance\n• TGA-compliant advertising\n\nWant to explore training or clinic setup?",
+      chips:['Training requirements','Clinic setup','Income potential','Request a callback'] },
+
+    { rx:/\bnp\b|nurse practitioner|advanced practice nurse/i,
+      r:"As a **Nurse Practitioner**, you hold the most autonomous nursing-based position in Australia.\n\n✅ Independent prescribing rights — no arrangement needed\n✅ Can own and operate your own clinic\n✅ Full clinical governance over your practice\n✅ **Career path:** Independent Practitioner → Clinic Owner → Industry Leader\n\n**Key requirements:**\n• Current AHPRA registration (NP endorsement)\n• Cosmetic injectable training\n• Premises registration\n• Professional indemnity insurance",
+      chips:['Training requirements','Clinic setup','Get Job Guidance','Request a callback'] },
+
+    { rx:/dentist|dental|oral/i,
+      r:"As a **Dentist**, cosmetic injectables are a natural extension of your facial anatomy expertise.\n\n✅ Deep facial anatomy knowledge already in place\n✅ Integrate cosmetic treatments into your existing practice\n✅ Add a private-pay revenue stream\n✅ **Career path:** Dentist Injector → Advanced Facial Aesthetics → Clinic Owner\n\n**Key requirements:**\n• Current AHPRA registration\n• Cosmetic injectable training\n• Review of premises approval\n• TGA advertising compliance",
+      chips:['Training requirements','Adding to my practice','Clinic setup','Request a callback'] },
+
+    { rx:/train|course|study|learn|certif|qualif|education|module|theory|practical|workshop/i,
+      r:"To practise cosmetic injectables in Australia you'll need specialised training covering:\n\n📚 **Theory**\n• Facial anatomy (in depth)\n• Pharmacology of neurotoxins and dermal fillers\n• Patient assessment and consent\n• Complication recognition and management\n\n💉 **Practical**\n• Supervised injection techniques\n• Botulinum toxin (anti-wrinkle)\n• Dermal filler placement\n• Emergency protocols (hyaluronidase administration)\n\nTraining requirements vary by profession. IAHPA can guide you to the right pathway for your background.",
+      chips:['Request a callback','Career pathways','Prescriber requirements'] },
+
+    { rx:/prescri|schedule 4|\bs4\b|tga|toxin|botox|filler|administer/i,
+      r:"Cosmetic injectables (botulinum toxin, dermal fillers) are **Schedule 4 medicines** in Australia — they require a valid prescription.\n\n**Who can prescribe:**\n• ✅ Doctors — independently\n• ✅ Nurse Practitioners — independently, within scope\n• ✅ Dentists — within facial scope\n• ❌ Registered Nurses — require a prescriber arrangement\n\nFor **RNs**, a prescribing arrangement with an AHPRA-registered medical practitioner must be in place before administering any injectables.",
+      chips:["RN prescriber options","Clinic setup","I'm an NP",'Request a callback'] },
+
+    { rx:/clinic|open a|setup|start a business|own|ownership|launch|premises|facility/i,
+      r:"Launching your own cosmetic clinic involves **6 key steps**:\n\n1️⃣ **Understand your pathway** — Your profession determines your model\n2️⃣ **Establish your prescriber model** — Prescribe independently or via arrangement\n3️⃣ **Facility and compliance** — Premises registration, equipment, sterilisation\n4️⃣ **Insurance and legal** — Professional indemnity + public liability\n5️⃣ **Advertising compliance** — TGA and state regulations\n6️⃣ **Ongoing CPD** — Stay current with industry standards\n\nOur **Clinic Launch Planner** on the website walks through each step in detail.",
+      chips:['Prescriber arrangement','Insurance requirements','TGA advertising','Request a callback'] },
+
+    { rx:/insur|indemnity|liability|cover|policy/i,
+      r:"Insurance is non-negotiable for any cosmetic injectable practitioner:\n\n🛡️ **Professional Indemnity Insurance**\nCovers claims relating to your clinical practice and patient outcomes.\n\n🏢 **Public Liability Insurance**\nCovers third-party injury or property damage at your clinic.\n\nIf operating as a business owner, also consider:\n• Business interruption cover\n• Employer's liability (if employing staff)\n\n⚠️ Always confirm your policy specifically covers Schedule 4 cosmetic procedures — general nursing indemnity may not be sufficient.",
+      chips:['Clinic setup','Legal requirements','Request a callback'] },
+
+    { rx:/advertis|social media|instagram|facebook|promot|before and after|testimonial/i,
+      r:"Advertising cosmetic procedures in Australia is strictly regulated by the **TGA** and state health regulators.\n\n⚠️ **Key rules:**\n• Cannot advertise Schedule 4 medicines (botulinum toxin, fillers) directly to the public\n• Before-and-after photos require careful compliance steps\n• Testimonials promoting S4 medicines are prohibited\n• QLD and NSW have additional state-specific clinic regulations\n\n✅ **What you can do:**\n• Promote your clinic's services (not specific medicines)\n• Share educational content in compliant ways\n• Use TGA-compliant messaging frameworks\n\nThis is Step 5 of our Clinic Launch Planner.",
+      chips:['Clinic setup steps','Request a callback'] },
+
+    { rx:/cpd|continuing|professional development|ongoing|upskill|advanced training/i,
+      r:"**Ongoing CPD** is essential in cosmetic injectables — this is a rapidly evolving field.\n\n**What ongoing CPD covers:**\n• New product and technique training\n• Advanced anatomy workshops\n• Complication management updates\n• Business and regulatory changes\n\nAs an IAHPA member, you'll have access to ongoing education resources, webinars, and industry events to keep your skills current.\n\nStep 6 of our Clinic Launch Planner is dedicated to CPD requirements for your profession.",
+      chips:['Clinic setup steps','Training requirements','Request a callback'] },
+
+    { rx:/income|salary|earn|pay|money|revenue|wage|how much|profit|lucrative/i,
+      r:"Cosmetic injectables is a **private-pay industry** — income is not capped by Medicare rebate schedules.\n\n💰 **Typical AU earning ranges:**\n• Employed RN injector: $80K–$130K+\n• Contractor (RN/NP): $100K–$200K+ (volume-dependent)\n• Doctor injector: $150K–$350K+\n• Clinic owner: Uncapped — scales with volume and reputation\n\nAs you build your client base and reputation, your income grows accordingly. Many clinic owners across Australia generate substantial returns.",
+      chips:['Career pathways','Clinic ownership','Get Job Guidance','Request a callback'] },
+
+    { rx:/market|industry|growth|demand|future|outlook|billion|growing|opportunity|statistic/i,
+      r:"The Australian cosmetic injectables market is one of the fastest-growing healthcare sectors:\n\n📊 **Key figures (2021–2030):**\n• **19.3% CAGR** — Annual growth rate\n• **$9 Billion** — Projected market value by 2030\n• **10,000+** — Emerging career opportunities\n• Market set to **nearly quadruple** from its 2021 baseline\n\n🚀 **Drivers:**\n• Rising social acceptance of cosmetic treatments\n• Ageing population seeking non-surgical options\n• More clinics opening metro and regional areas\n• Expanding range of injectable treatments available",
+      chips:['Career pathways','Income potential','Get started now','Request a callback'] },
+
+    { rx:/\bahpra\b|register|registration|licence|license/i,
+      r:"All practitioners in cosmetic injectables must hold current **AHPRA registration** in their profession:\n\n• **RN / NP** → Nursing and Midwifery Board of Australia (NMBA)\n• **Doctor** → Medical Board of Australia\n• **Dentist** → Dental Board of Australia\n\nYour AHPRA registration must be current and in good standing before commencing any cosmetic injectable practice. Registration type directly affects your prescribing rights and available business models.",
+      chips:['Prescriber requirements','Career pathways','Request a callback'] },
+
+    { rx:/get started|first step|how do i start|begin|where do i start|new to|starting out|entry/i,
+      r:"Here's how most practitioners get started:\n\n**Step 1 — Confirm your pathway**\nYour profession (RN, NP, Doctor, Dentist) determines your options.\n\n**Step 2 — Complete training**\nTheory + practical training specific to cosmetic injectables.\n\n**Step 3 — Secure your prescriber model**\nIndependent (NP/Doctor) or via arrangement (RN).\n\n**Step 4 — Get insured**\nProfessional indemnity + public liability.\n\n**Step 5 — Find a position or launch a clinic**\nEmployed, contractor, or your own practice.\n\nOur **Get Job Guidance** tool gives you a personalised pathway based on your profession, state, and goals.",
+      chips:['Use Get Job Guidance','Training requirements','Career pathways','Request a callback'] },
+
+    { rx:/experience|years|background|need experience|how long|new grad|fresh|entry level/i,
+      r:"Experience requirements depend on your profession:\n\n**RN:** Most providers recommend at least 1–2 years of clinical experience — solid anatomy and cannulation skills are a real advantage.\n\n**Doctor / NP:** Your clinical specialty background is your foundation. Additional cosmetic injectable training builds on this.\n\n**Dentist:** Your existing facial anatomy knowledge is a head start — dedicated training bridges the gap.\n\nYou don't need prior cosmetic medicine experience — that's exactly what IAHPA's training and guidance is designed for.",
+      chips:['Training requirements','Career pathways','Get Job Guidance','Request a callback'] },
+
+    { rx:/flexible|part.?time|casual|work.*life|lifestyle|freedom|schedule|balance/i,
+      r:"One of the most appealing aspects of cosmetic injectables is **flexibility**:\n\n⏰ **Work on your terms:**\n• Part-time or full-time options\n• Contractor across multiple clinics\n• Set your own consultation schedule\n• Scale up or down as your lifestyle demands\n\nMany practitioners supplement their existing healthcare role with cosmetic work before transitioning fully. Others build thriving full-time practices from scratch.",
+      chips:['Career pathways','Income potential','Clinic ownership','Request a callback'] },
+
+    { rx:/location|australia|which state|qld|queensland|nsw|vic|wa|sa|tas|nt|act|sydney|melbourne|brisbane|perth/i,
+      r:"IAHPA supports practitioners across **all Australian states and territories**:\n\n• Queensland (QLD)\n• New South Wales (NSW)\n• Victoria (VIC)\n• Western Australia (WA)\n• South Australia (SA)\n• Tasmania (TAS)\n• ACT and Northern Territory\n\nRegulations can vary by state — for example, QLD and NSW have specific clinic registration requirements. We can guide you on requirements specific to your location.",
+      chips:['Clinic setup','Advertising compliance','Request a callback'] },
+
+    { rx:/cost|fee|price|how much does|afford|invest|expense/i,
+      r:"Entry costs vary by your pathway:\n\n**Training:** Theory + practical workshops — typically a few thousand dollars, varying by provider and depth of training.\n\n**Clinic setup (if opening your own):**\n• Equipment and consumables\n• Premises registration and compliance\n• Insurance premiums\n• Initial stock and marketing\n\nFor specific course fees and investment requirements, our team can provide a tailored breakdown based on your situation.",
+      chips:['Request a callback','Training requirements','Clinic setup'] },
+
+    { rx:/job guid|placement|find a job|find work|employment|hired|position/i,
+      r:"Our **Get Job Guidance** tool is built specifically for healthcare professionals entering cosmetic injectables:\n\n**Step 1 — Career Assessment**\nYour profession, state, experience, and career goal.\n\n**Step 2 — Personalised Results**\nTailored insights, readiness score, and recommended next steps.\n\n**Step 3 — Connections**\nMatch with doctors/clinics, or speak directly with our team.\n\nFind this tool in the **Registered Nurse** section — or click below to open it now.",
+      chips:['Use Get Job Guidance','Request a callback','Career pathways'] },
+
+    { rx:/contact|reach|speak|talk|ring|call|email|phone|enquir|support|team/i,
+      r:"You can reach the IAHPA team through the **Contact section** at the bottom of the page. We're happy to discuss:\n\n• Course options and enrolments\n• Career guidance tailored to your background\n• Clinic launch support\n• Any questions about entering the field\n\nOr request a callback below and we'll reach out at a time that suits you.",
+      chips:['Request a callback','Go to Contact section'] },
+
+    { rx:/thank|thanks|cheers|appreciate|helpful|great|perfect|awesome|amazing/i,
+      r:"You're welcome! 😊 Feel free to ask anything else — career pathways, training, clinic setup, income — I'm here to help. Our team is also available if you'd like to speak to someone directly.",
+      chips:['Ask another question','Request a callback','Contact IAHPA'] }
+  ];
+
+  var FALLBACK_R = "That's a great question — I may not have the full detail on that right now, but our IAHPA team definitely can help. Would you like to request a callback or explore more topics below?";
+  var FALLBACK_CHIPS = ['Career pathways','Training & courses','Clinic setup','Request a callback'];
+
+  /* ── Special chip actions ── */
+  var ACTIONS = {
+    'Request a callback': function() {
+      cwBotReply("To request a callback, head to our **Contact section** below 👇 Fill in your details and our team will reach out within 1 business day.", ['Go to Contact section']);
+    },
+    'Go to Contact section': function() {
+      cwBotReply("Taking you to our contact section now…", []);
+      setTimeout(function() {
+        var el = document.getElementById('contact');
+        if (el) { el.scrollIntoView({behavior:'smooth'}); cwToggle(); }
+        else window.location.href='#contact';
+      }, 700);
+    },
+    'Use Get Job Guidance': function() {
+      cwBotReply("Opening the Get Job Guidance tool for you…", []);
+      setTimeout(function() {
+        if (typeof openGgModal === 'function') openGgModal();
+        cwToggle();
+      }, 700);
+    },
+    'Contact IAHPA': function() {
+      ACTIONS['Go to Contact section']();
+    }
+  };
+
+  /* ── DOM helpers ── */
+  function cwFormat(t) {
+    return t.replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>').replace(/\n/g,'<br>');
+  }
+  function cwMsgs() { return document.getElementById('cw-msgs'); }
+  function cwScrollBottom() {
+    var m=cwMsgs(); if(m) setTimeout(function(){ m.scrollTop=m.scrollHeight; },50);
+  }
+
+  /* ── Add user message ── */
+  function cwAddUser(text) {
+    var m=cwMsgs(); if(!m) return;
+    var g=document.createElement('div'); g.className='cw-grp user';
+    var row=document.createElement('div'); row.className='cw-row';
+    var b=document.createElement('div'); b.className='cw-bbl';
+    b.textContent=text; row.appendChild(b); g.appendChild(row);
+    m.appendChild(g); cwScrollBottom();
+  }
+
+  /* ── Show typing indicator ── */
+  function cwShowTyping() {
+    var m=cwMsgs(); if(!m||cwTypingEl) return;
+    var d=document.createElement('div'); d.className='cw-typing';
+    d.innerHTML='<div class="cw-av">AI</div><div class="cw-dots"><span></span><span></span><span></span></div>';
+    cwTypingEl=d; m.appendChild(d); cwScrollBottom();
+  }
+  function cwHideTyping() {
+    if(cwTypingEl&&cwTypingEl.parentNode) cwTypingEl.parentNode.removeChild(cwTypingEl);
+    cwTypingEl=null;
+  }
+
+  /* ── Add bot message ── */
+  function cwAddBot(text, chips) {
+    var m=cwMsgs(); if(!m) return;
+    var g=document.createElement('div'); g.className='cw-grp bot';
+    var row=document.createElement('div'); row.className='cw-row';
+    var av=document.createElement('div'); av.className='cw-av'; av.textContent='AI';
+    var b=document.createElement('div'); b.className='cw-bbl'; b.innerHTML=cwFormat(text);
+    row.appendChild(av); row.appendChild(b); g.appendChild(row);
+    if(chips&&chips.length) {
+      var wrap=document.createElement('div'); wrap.className='cw-chips';
+      chips.forEach(function(c) {
+        var btn=document.createElement('button'); btn.className='cw-chip';
+        if(ACTIONS[c]) btn.classList.add('cw-action-chip');
+        btn.textContent=c;
+        btn.onclick=function(){ cwChipClick(c, btn.closest('.cw-chips')); };
+        wrap.appendChild(btn);
+      });
+      g.appendChild(wrap);
+    }
+    m.appendChild(g); cwScrollBottom();
+  }
+
+  /* ── Chip click: disable the chip row then process ── */
+  function cwChipClick(label, chipsEl) {
+    if(chipsEl) chipsEl.querySelectorAll('.cw-chip').forEach(function(b){ b.disabled=true; b.style.opacity='.5'; });
+    if(ACTIONS[label]) {
+      ACTIONS[label]();
+    } else {
+      cwAddUser(label);
+      cwProcessQuery(label);
+    }
+  }
+
+  /* ── Bot reply with typing delay ── */
+  function cwBotReply(text, chips) {
+    cwShowTyping();
+    var delay = Math.min(600 + text.length * 2, 1400);
+    setTimeout(function() {
+      cwHideTyping();
+      cwAddBot(text, chips);
+    }, delay);
+  }
+
+  /* ── Match against rules ── */
+  function cwMatch(q) {
+    for(var i=0;i<RULES.length;i++) {
+      if(RULES[i].rx.test(q)) return RULES[i];
+    }
+    return null;
+  }
+
+  /* ── Process query ── */
+  function cwProcessQuery(q) {
+    var rule = cwMatch(q);
+    if(rule) cwBotReply(rule.r, rule.chips);
+    else cwBotReply(FALLBACK_R, FALLBACK_CHIPS);
+  }
+
+  /* ── Send from input ── */
+  window.cwSend = function() {
+    var inp=document.getElementById('cw-input');
+    if(!inp) return;
+    var v=inp.value.trim(); if(!v) return;
+    inp.value='';
+    cwAddUser(v);
+    cwProcessQuery(v);
+  };
+
+  window.cwKey = function(e) {
+    if(e.key==='Enter'||e.keyCode===13) cwSend();
+  };
+
+  /* ── Toggle open/close ── */
+  window.cwToggle = function() {
+    cwOpen=!cwOpen;
+    document.getElementById('cw').classList.toggle('open',cwOpen);
+    document.getElementById('cw-panel').setAttribute('aria-hidden',String(!cwOpen));
+    document.getElementById('cw-badge').classList.add('hidden');
+    if(cwOpen) {
+      if(cwFirstOpen) {
+        cwFirstOpen=false;
+        setTimeout(function(){
+          cwShowTyping();
+          setTimeout(function(){
+            cwHideTyping();
+            cwAddBot("Hi there! 👋 I'm IAHPA's virtual assistant.\n\nI can help you explore careers in cosmetic injectables, training requirements, clinic setup, income potential, and more. What would you like to know?",
+              ['Career pathways','Training & courses','How to get started','Market opportunity']);
+          }, 900);
+        }, 300);
+      }
+      setTimeout(function(){ var i=document.getElementById('cw-input'); if(i) i.focus(); },300);
+    }
+  };
+}());
+
 /* ── Subtle card tilt (desktop) ─────────────────────────── */
 if (window.innerWidth > 1024) {
   document.querySelectorAll('.lcard, .reg-card, .biz-card').forEach(card => {
