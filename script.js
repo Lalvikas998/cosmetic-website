@@ -124,7 +124,7 @@ document.querySelectorAll('.hero-kpis').forEach(el => counterObs.observe(el));
 
 /* ── Market Chart — animated SVG line ───────────────────── */
 function buildChart() {
-  const area = document.getElementById('market-chart');
+  const area = document.getElementById('market-chart') || document.getElementById('opp-chart-area');
   if (!area) return;
 
   const data = [
@@ -272,6 +272,411 @@ function buildChart() {
   }, { threshold: 0.3 }).observe(area);
 }
 buildChart();
+
+/* ═══════════════════════════════════════════════════════
+   OPP SECTION — Dashboard interactions
+═══════════════════════════════════════════════════════ */
+(function() {
+  /* ── Data ── */
+  var CHART = {
+    value: {
+      label:'Market Value', unit:'B', prefix:'$', max:10, line:true,
+      pts:[{y:'2021',v:2.1,p:false},{y:'2022',v:2.9,p:false},{y:'2023',v:3.5,p:false},
+           {y:'2024',v:4.2,p:false},{y:'2026',v:5.9,p:true},{y:'2028',v:7.2,p:true},{y:'2030',v:9.08,p:true}]
+    },
+    growth: {
+      label:'Growth Rate', unit:'%', prefix:'', max:50, line:false,
+      pts:[{y:'2022',v:38,p:false},{y:'2023',v:21,p:false},{y:'2024',v:20,p:false},
+           {y:'2026',v:19,p:true},{y:'2028',v:22,p:true},{y:'2030',v:26,p:true}]
+    },
+    opps: {
+      label:'Opportunities', unit:'K', prefix:'', max:12, line:false,
+      pts:[{y:'2021',v:2,p:false},{y:'2022',v:2.8,p:false},{y:'2023',v:3.5,p:false},
+           {y:'2024',v:4.2,p:false},{y:'2026',v:6,p:true},{y:'2028',v:8,p:true},{y:'2030',v:10,p:true}]
+    }
+  };
+
+  var CARDS = [
+    { key:'growing', title:'Growing Industry',
+      desc:'The cosmetic injectables market is expanding rapidly, creating more clinics, more roles and increasing opportunities for skilled professionals.',
+      why:['More clinics opening across Australia','Increased demand for skilled injectors','More employment and contractor opportunities','Greater business ownership prospects'] },
+    { key:'flexible', title:'Flexible Lifestyle',
+      desc:'This field uniquely supports professionals who want full control over their schedule, income and working environment.',
+      why:['Control your own hours and availability','Work across multiple clinics as a contractor','Part-time or full-time options available','Schedule around life and family commitments'] },
+    { key:'impact', title:'Meaningful Impact',
+      desc:"You'll make a measurable difference in how patients feel about themselves — combining clinical excellence with genuine patient care.",
+      why:['Visible and lasting patient outcomes','Evidence-based clinical practice framework','Builds deep patient trust and loyalty','Rewarding career with real human purpose'] },
+    { key:'diverse', title:'Diverse Opportunities',
+      desc:'From clinical roles to education, mentoring, training, and clinic ownership — the pathways in this industry are remarkably diverse.',
+      why:['Multiple career pathways to choose from','Employed and self-employed model options','Education and leadership opportunities','Metro and regional clinic opportunities'] },
+    { key:'business', title:'Business Potential',
+      desc:'As a private-pay industry, your income is directly linked to your skill, reputation, and volume — not government rebate schedules.',
+      why:['Private pay — not capped by Medicare','Income directly tied to your skill level','Scale with volume and your reputation','Clear pathway to clinic ownership'] },
+    { key:'growth', title:'Continuous Growth',
+      desc:'Your career does not plateau in this field. From injector to clinic director, educator, or medical director — growth is genuinely continuous.',
+      why:['Progress at your own pace and timeline','Advanced training and CPD opportunities','Leadership and mentoring roles available','Industry recognition and influence grows'] }
+  ];
+
+  var PROF_MEANS = {
+    growing:{ rn:['Growing demand for skilled injectors','More contractor opportunities available','Greater clinic ownership pathways open up','Multiple career progression options'],
+               doctor:['Expansion into high-growth private sector','Cosmetic business ownership potential','Educational and leadership pathways','Greater flexibility in practice models'],
+               np:['Growing demand for prescribing practitioners','Autonomous practice opportunities expanding','Clinic ownership with full prescribing rights','Industry recognition of NP scope growing'],
+               dentist:['Facial aesthetics as a natural extension','Growing patient demand in dental practices','Additional revenue stream within practice','Rapidly growing patient acceptance'] },
+    flexible:{ rn:['Part-time and casual clinic work available','Contractor models with multiple clients','Set your own hours and schedule','Scale up or down as lifestyle demands'],
+               doctor:['Private cosmetic work on your own schedule','Supplement existing practice income','Full or part-time cosmetic specialisation','Clinic director and leadership opportunities'],
+               np:['Autonomous practice with full flexibility','Set your own consultation schedule','No dependence on a prescribing arrangement','Multiple clinic or private practice options'],
+               dentist:['Add cosmetic services to existing schedule','Integrate into dental practice gradually','Maintain dental income while diversifying','Flexible cosmetic treatment session scheduling'] },
+    impact:{ rn:['Build loyal long-term patient relationships','Visible patient outcomes and confidence boosts','Evidence-based clinical cosmetic practice','A career with real human meaning and reward'],
+             doctor:['Advanced clinical aesthetics and leadership','Patient wellbeing and confidence outcomes','Educational impact on other practitioners','Leadership in evidence-based cosmetic care'],
+             np:['Full scope autonomous cosmetic practice','Direct patient outcomes without an intermediary','Lead evidence-based aesthetic practice','Mentor and guide other practitioners'],
+             dentist:['Holistic facial aesthetic patient outcomes','Natural extension of existing facial expertise','Enhanced patient experience and satisfaction','Evidence-based facial rejuvenation pathways'] },
+    diverse:{ rn:['Employed, contracting or ownership pathways','Clinical, educational and mentoring roles','Opportunities across metro and regional areas','Industry events and leadership involvement'],
+              doctor:['Own and operate clinics independently','Full prescribing authority gives you an edge','Educator, trainer and mentor pathways','Aesthetic medicine leadership opportunities'],
+              np:['Full independent practice pathways available','Prescribing and ownership rights combined','Education and training leadership roles','Industry advisory and leadership positions'],
+              dentist:['Cosmetic dentistry practice expansion','Standalone cosmetic clinic ownership','Educational pathways in facial aesthetics','Industry mentoring and training roles'] },
+    business:{ rn:['Clinic ownership without self-prescribing','Revenue not tied to Medicare rebate schedules','Build a loyal repeat-client base over time','Scale income with volume and clinical skill'],
+               doctor:['Highest income potential in the entire field','Own and prescribe completely independently','Multiple clinic ownership pathways available','Scale to multiple locations and teams'],
+               np:['Business ownership with self-prescribing rights','Highest autonomy in nursing-based model','Full clinical governance over your own practice','No ongoing prescriber arrangement fees required'],
+               dentist:['Premium service tier within dental practice','Private-pay cosmetic revenue stream','Diversified income beyond dental rebates','Business expansion into the aesthetics sector'] },
+    growth:{ rn:['Progressing from injector to senior injector','Contractor and business ownership options','Mentoring and training roles become available','Advanced training in anatomy and techniques'],
+             doctor:['Doctor Injector to Clinic Director pathway','Educator and trainer opportunities at scale','Medical director roles widely available','Industry leadership and advisory positions'],
+             np:['Independent Practitioner to Clinic Owner','Industry leadership pathways available','Advanced autonomous clinical roles','Educator and mentor opportunities'],
+             dentist:['Advanced facial aesthetic specialisation','Clinic expansion beyond dental scope','Educator in facial anatomy and aesthetics','Clinic Director and Business Owner pathways'] }
+  };
+
+  var CAREERS = {
+    rn:     ['Cosmetic Nurse / Injector','Senior Injector','Contractor','Clinic Owner'],
+    doctor: ['Doctor Injector','Advanced Practitioner','Clinic Director','Educator'],
+    np:     ['Injector','Independent Practitioner','Clinic Owner','Industry Leader'],
+    dentist:['Dentist Injector','Advanced Facial Aesthetics','Business Expansion','Clinic Owner']
+  };
+
+  var ICONS = [
+    '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>',
+    '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>',
+    '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>',
+    '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>',
+    '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/><line x1="2" y1="20" x2="22" y2="20"/></svg>',
+    '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 2L11 13"/><path d="M22 2L15 22 11 13 2 9l20-7z"/></svg>'
+  ];
+  var ICO_CLASSES = ['opp-ico-teal','opp-ico-blue','opp-ico-pink','opp-ico-cyan','opp-ico-amber','opp-ico-indigo'];
+  var PROF_LABELS = { rn:'Registered Nurses', doctor:'Doctors', np:'Nurse Practitioners', dentist:'Dentists' };
+
+  var activeTab = 'value';
+  var activeProf = 'rn';
+  var openCard = -1;
+  var chartAnimated = false;
+
+  /* ── Chart ── */
+  function buildOppChart(tab, animate) {
+    var area = document.getElementById('opp-chart-area');
+    if (!area) return;
+    area.innerHTML = '';
+    var cfg = CHART[tab];
+    if (!cfg) return;
+    if (cfg.line) drawLineChart(area, cfg, animate);
+    else drawBarChart(area, cfg, animate);
+  }
+
+  function svgEl(tag, attrs) {
+    var e = document.createElementNS('http://www.w3.org/2000/svg', tag);
+    Object.keys(attrs).forEach(function(k){ e.setAttribute(k, attrs[k]); });
+    return e;
+  }
+
+  function drawLineChart(area, cfg, animate) {
+    var W=740, H=210, pL=48, pR=80, pT=28, pB=36;
+    var cW=W-pL-pR, cH=H-pT-pB, maxV=cfg.max;
+    var pts = cfg.pts;
+    var xS = function(i){ return pL + (i/(pts.length-1))*cW; };
+    var yS = function(v){ return pT + cH - (v/maxV)*cH; };
+    var svg = svgEl('svg',{viewBox:'0 0 '+W+' '+H});
+    svg.style.cssText='width:100%;height:auto;overflow:visible;display:block';
+
+    var defs = svgEl('defs',{});
+    var grad = svgEl('linearGradient',{id:'oppFill',x1:'0',y1:'0',x2:'0',y2:'1'});
+    [['0%','0.18'],['100%','0.01']].forEach(function(s){
+      var stop=svgEl('stop',{offset:s[0],'stop-color':'#0F766E','stop-opacity':s[1]});
+      grad.appendChild(stop);
+    });
+    defs.appendChild(grad);
+    var clip=svgEl('clipPath',{id:'oppClip'});
+    var clipR=svgEl('rect',{id:'oppClipR',x:pL-4,y:0,width:animate?0:cW+8,height:H});
+    clip.appendChild(clipR); defs.appendChild(clip);
+    svg.appendChild(defs);
+
+    [0,2,4,6,8,10].forEach(function(v){
+      var y=yS(v);
+      svg.appendChild(svgEl('line',{x1:pL,x2:W-pR,y1:y,y2:y,
+        stroke:v===0?'rgba(15,118,110,.22)':'rgba(0,0,0,.06)',
+        'stroke-width':v===0?'1.5':'1','stroke-dasharray':v>0?'4 4':'none'}));
+      var t=svgEl('text',{x:pL-7,y:y+4,'text-anchor':'end','font-size':'10','font-family':'Inter,sans-serif',fill:'#94A3B8'});
+      t.textContent=v===0?'$0':'$'+v+'B'; svg.appendChild(t);
+    });
+
+    var coordPts = pts.map(function(d,i){ return {x:xS(i),y:yS(d.v),d:d}; });
+    var pathD = coordPts.map(function(p,i){ return (i===0?'M':'L')+p.x+','+p.y; }).join(' ');
+    var splitIdx = pts.findIndex ? pts.findIndex(function(p){ return p.p; }) : 4;
+
+    svg.appendChild(svgEl('path',{
+      d:pathD+' L'+coordPts[coordPts.length-1].x+','+yS(0)+' L'+coordPts[0].x+','+yS(0)+' Z',
+      fill:'url(#oppFill)','clip-path':'url(#oppClip)'
+    }));
+    svg.appendChild(svgEl('path',{
+      d:coordPts.slice(0,splitIdx).map(function(p,i){ return (i===0?'M':'L')+p.x+','+p.y; }).join(' '),
+      fill:'none',stroke:'#0F766E','stroke-width':'2.5','stroke-linecap':'round','stroke-linejoin':'round','clip-path':'url(#oppClip)'
+    }));
+    svg.appendChild(svgEl('path',{
+      d:coordPts.slice(splitIdx-1).map(function(p,i){ return (i===0?'M':'L')+p.x+','+p.y; }).join(' '),
+      fill:'none',stroke:'#0F766E','stroke-width':'2.5','stroke-linecap':'round','stroke-linejoin':'round',
+      'stroke-dasharray':'7 5',opacity:'0.6','clip-path':'url(#oppClip)'
+    }));
+
+    coordPts.forEach(function(p){
+      svg.appendChild(svgEl('line',{x1:p.x,x2:p.x,y1:yS(0),y2:yS(0)+4,stroke:'rgba(0,0,0,.1)'}));
+      var lb=svgEl('text',{x:p.x,y:yS(0)+16,'text-anchor':'middle','font-size':'10','font-family':'Inter,sans-serif',
+        fill:p.d.y==='2030'?'#0F766E':'#94A3B8','font-weight':p.d.y==='2030'?'700':'400'});
+      lb.textContent=p.d.y; svg.appendChild(lb);
+    });
+
+    coordPts.slice(0,-1).forEach(function(p){
+      svg.appendChild(svgEl('circle',{cx:p.x,cy:p.y,r:'3.5',fill:'#fff',stroke:'#0F766E','stroke-width':'2','clip-path':'url(#oppClip)'}));
+    });
+
+    var lp=coordPts[coordPts.length-1];
+    var sg=svgEl('g',{'clip-path':'url(#oppClip)'});
+    ['0s','1s'].forEach(function(b){
+      var ring=svgEl('circle',{cx:lp.x,cy:lp.y,r:'7',fill:'none',stroke:'#0F766E','stroke-width':'1.5'});
+      var a1=svgEl('animate',{attributeName:'r',from:'7',to:'24',dur:'2s',begin:b,repeatCount:'indefinite'});
+      var a2=svgEl('animate',{attributeName:'opacity',from:'0.6',to:'0',dur:'2s',begin:b,repeatCount:'indefinite'});
+      ring.appendChild(a1); ring.appendChild(a2); sg.appendChild(ring);
+    });
+    var core=svgEl('circle',{cx:lp.x,cy:lp.y,r:'5',fill:'#0F766E'});
+    sg.appendChild(core); sg.appendChild(svgEl('circle',{cx:lp.x,cy:lp.y,r:'2.5',fill:'#fff'}));
+    var vl=svgEl('text',{x:lp.x-12,y:lp.y-14,'text-anchor':'end','font-size':'11','font-weight':'700',
+      'font-family':'Inter,sans-serif',fill:'#0F766E'});
+    vl.textContent='$9.0B'; svg.appendChild(vl); svg.appendChild(sg);
+    area.appendChild(svg);
+
+    // Tooltip hit areas
+    var tooltip=document.getElementById('opp-tooltip');
+    var chartCard=document.getElementById('opp-chart-card');
+    coordPts.forEach(function(p){
+      var hit=svgEl('circle',{cx:p.x,cy:p.y,r:'14',fill:'transparent','clip-path':'url(#oppClip)',style:'cursor:pointer'});
+      hit.addEventListener('mouseenter',function(){
+        if (!tooltip || !chartCard) return;
+        var svgRect=svg.getBoundingClientRect();
+        var cRect=chartCard.getBoundingClientRect();
+        var scale=svgRect.width/W;
+        var rx=svgRect.left+p.x*scale-cRect.left;
+        var ry=svgRect.top+p.y*scale-cRect.top;
+        tooltip.style.left=(rx>cRect.width/2?(rx-160)+'px':(rx+10)+'px');
+        tooltip.style.top=(ry-80)+'px';
+        tooltip.style.display='block';
+        document.getElementById('opp-tt-year').textContent=p.d.y;
+        document.getElementById('opp-tt-lbl').textContent='Projected Market Value';
+        document.getElementById('opp-tt-val').textContent='$'+p.d.v.toFixed(1)+' Billion';
+      });
+      hit.addEventListener('mouseleave',function(){ tooltip.style.display='none'; });
+      svg.appendChild(hit);
+    });
+
+    if (animate) {
+      var rect=document.getElementById('oppClipR');
+      if (!rect) return;
+      var t0=null, dur=1800;
+      (function step(ts){
+        if (!t0) t0=ts;
+        var raw=Math.min((ts-t0)/dur,1);
+        var ease=raw<0.5?2*raw*raw:1-Math.pow(-2*raw+2,2)/2;
+        rect.setAttribute('width',String(ease*(cW+8)));
+        if (raw<1) requestAnimationFrame(step);
+      })(performance.now());
+    }
+  }
+
+  function drawBarChart(area, cfg, animate) {
+    var W=680, H=210, pL=48, pR=32, pT=22, pB=36;
+    var cW=W-pL-pR, cH=H-pT-pB;
+    var pts=cfg.pts, maxV=cfg.max;
+    var bW=Math.floor(cW/pts.length*0.55);
+    var gap=(cW-bW*pts.length)/(pts.length);
+    var xC=function(i){ return pL+gap/2+i*(bW+gap)+bW/2; };
+    var yS=function(v){ return pT+cH-(v/maxV)*cH; };
+    var svg=svgEl('svg',{viewBox:'0 0 '+W+' '+H});
+    svg.style.cssText='width:100%;height:auto;overflow:visible;display:block';
+
+    var defs=svgEl('defs',{});
+    var grad=svgEl('linearGradient',{id:'oppBarGrad',x1:'0',y1:'0',x2:'0',y2:'1'});
+    var s1=svgEl('stop',{offset:'0%','stop-color':'#14B8A6','stop-opacity':'1'});
+    var s2=svgEl('stop',{offset:'100%','stop-color':'#0F766E','stop-opacity':'1'});
+    grad.appendChild(s1); grad.appendChild(s2); defs.appendChild(grad);
+    svg.appendChild(defs);
+
+    [0,Math.round(maxV*0.25),Math.round(maxV*0.5),Math.round(maxV*0.75),maxV].forEach(function(v){
+      var y=yS(v);
+      svg.appendChild(svgEl('line',{x1:pL,x2:W-pR,y1:y,y2:y,stroke:'rgba(0,0,0,.06)','stroke-width':'1','stroke-dasharray':'4 4'}));
+      var t=svgEl('text',{x:pL-7,y:y+4,'text-anchor':'end','font-size':'10','font-family':'Inter,sans-serif',fill:'#94A3B8'});
+      t.textContent=cfg.prefix+v+cfg.unit; svg.appendChild(t);
+    });
+
+    pts.forEach(function(d,i){
+      var bH=((d.v/maxV)*cH);
+      var x=xC(i)-bW/2;
+      var yr=yS(0);
+      var bar=svgEl('rect',{
+        x:x,y:animate?yr:yr-bH,width:bW,height:animate?0:bH,
+        fill:d.p?'rgba(15,118,110,.25)':'url(#oppBarGrad)',rx:'4',
+        style:'transition:height .5s cubic-bezier(.4,0,.2,1) '+(i*0.06)+'s,y .5s cubic-bezier(.4,0,.2,1) '+(i*0.06)+'s'
+      });
+      if (d.p) bar.setAttribute('stroke','rgba(15,118,110,.4)'), bar.setAttribute('stroke-width','1');
+      svg.appendChild(bar);
+      var vt=svgEl('text',{x:xC(i),y:animate?yr-4:yr-bH-4,'text-anchor':'middle','font-size':'10','font-weight':'700',
+        'font-family':'Inter,sans-serif',fill:d.p?'#94A3B8':'#0F766E',
+        style:'transition:y .5s cubic-bezier(.4,0,.2,1) '+(i*0.06)+'s'});
+      vt.textContent=cfg.prefix+d.v+cfg.unit;
+      svg.appendChild(vt);
+      if (animate) {
+        setTimeout(function(bar,vt,bH,yr){ bar.setAttribute('height',bH); bar.setAttribute('y',yr-bH); vt.setAttribute('y',yr-bH-4); }, 80, bar, vt, bH, yr);
+      }
+      svg.appendChild(svgEl('line',{x1:xC(i),x2:xC(i),y1:yr,y2:yr+4,stroke:'rgba(0,0,0,.1)'}));
+      var lb=svgEl('text',{x:xC(i),y:yr+16,'text-anchor':'middle','font-size':'10','font-family':'Inter,sans-serif',fill:'#94A3B8'});
+      lb.textContent=d.y; svg.appendChild(lb);
+    });
+    area.appendChild(svg);
+  }
+
+  /* ── Tabs ── */
+  function initTabs() {
+    var tabs=document.querySelectorAll('#opp-chart-tabs .opp-tab');
+    tabs.forEach(function(btn){
+      btn.addEventListener('click',function(){
+        tabs.forEach(function(b){ b.classList.remove('active'); });
+        btn.classList.add('active');
+        activeTab=btn.dataset.tab;
+        buildOppChart(activeTab, true);
+      });
+    });
+  }
+
+  /* ── Count-up ── */
+  function initCountUp() {
+    var els=document.querySelectorAll('.opp-m-val[data-target]');
+    if (!els.length) return;
+    var obs=new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if (!entry.isIntersecting) return;
+        var el=entry.target;
+        var target=parseFloat(el.dataset.target);
+        var prefix=el.dataset.prefix||'';
+        var suffix=el.dataset.suffix||'';
+        var isDecimal=target!==Math.floor(target);
+        var duration=1200;
+        var t0=null;
+        (function step(ts){
+          if (!t0) t0=ts;
+          var prog=Math.min((ts-t0)/duration,1);
+          var ease=1-Math.pow(1-prog,3);
+          var val=target*ease;
+          el.textContent=prefix+(isDecimal?val.toFixed(1):Math.round(val))+suffix;
+          if (prog<1) requestAnimationFrame(step);
+        })(performance.now());
+        obs.unobserve(el);
+      });
+    },{threshold:0.5});
+    els.forEach(function(el){ obs.observe(el); });
+  }
+
+  /* ── Chart on scroll ── */
+  function initChartObserver() {
+    var area=document.getElementById('opp-chart-area');
+    if (!area) return;
+    var obs=new IntersectionObserver(function(entries){
+      if (!entries[0].isIntersecting||chartAnimated) return;
+      chartAnimated=true;
+      buildOppChart(activeTab, true);
+    },{threshold:0.3});
+    obs.observe(area);
+  }
+
+  /* ── Profession filter ── */
+  function initChips() {
+    var chips=document.querySelectorAll('#opp-chips .opp-chip');
+    chips.forEach(function(chip){
+      chip.addEventListener('click',function(){
+        chips.forEach(function(c){ c.classList.remove('active'); });
+        chip.classList.add('active');
+        activeProf=chip.dataset.prof;
+        if (openCard>=0) renderPanel(openCard);
+      });
+    });
+  }
+
+  /* ── Cards + Panel ── */
+  window.oppToggleCard = function(idx) {
+    var cards=document.querySelectorAll('.opp-card');
+    var panel=document.getElementById('opp-panel');
+    if (openCard===idx) {
+      oppClosePanel();
+      return;
+    }
+    cards.forEach(function(c){ c.classList.remove('active'); });
+    cards[idx].classList.add('active');
+    openCard=idx;
+    renderPanel(idx);
+    if (panel.style.maxHeight==='0px'||!panel.style.maxHeight) {
+      panel.style.maxHeight=document.getElementById('opp-panel-wrap').scrollHeight+'px';
+    }
+    setTimeout(function(){
+      panel.style.maxHeight=document.getElementById('opp-panel-wrap').scrollHeight+'px';
+      panel.scrollIntoView({behavior:'smooth',block:'nearest'});
+    },50);
+  };
+
+  window.oppClosePanel = function() {
+    var panel=document.getElementById('opp-panel');
+    if (panel) panel.style.maxHeight='0px';
+    document.querySelectorAll('.opp-card').forEach(function(c){ c.classList.remove('active'); });
+    openCard=-1;
+  };
+
+  function renderPanel(idx) {
+    var card=CARDS[idx];
+    var prof=activeProf;
+
+    // Icon
+    var icoEl=document.getElementById('opp-pi-ico');
+    icoEl.className='opp-pi-ico '+ICO_CLASSES[idx];
+    icoEl.innerHTML=ICONS[idx];
+
+    document.getElementById('opp-pi-title').textContent=card.title;
+    document.getElementById('opp-pi-sub').textContent='Impact for '+PROF_LABELS[prof];
+    document.getElementById('opp-pi-desc').textContent=card.desc;
+
+    // Why This Matters (static)
+    var whyEl=document.getElementById('opp-why-list');
+    whyEl.innerHTML=card.why.map(function(t){ return '<li>'+t+'</li>'; }).join('');
+
+    // What This Means For You (dynamic)
+    var youEl=document.getElementById('opp-you-list');
+    var means=PROF_MEANS[card.key][prof];
+    youEl.innerHTML=means.map(function(t){ return '<li>'+t+'</li>'; }).join('');
+
+    // Career path
+    var cpEl=document.getElementById('opp-career-path');
+    var steps=CAREERS[prof];
+    cpEl.innerHTML=steps.map(function(s,i){
+      return '<div class="opp-cp-step"><div class="opp-cp-num">'+(i+1)+'</div><span class="opp-cp-label">'+s+'</span></div>'+(i<steps.length-1?'<div class="opp-cp-arrow">↓</div>':'');
+    }).join('');
+
+  }
+
+  /* ── Init ── */
+  initTabs();
+  initChips();
+  initCountUp();
+  initChartObserver();
+}());
 
 /* ── Subtle card tilt (desktop) ─────────────────────────── */
 if (window.innerWidth > 1024) {
@@ -567,6 +972,7 @@ if (window.innerWidth > 1024) {
       const activeSt = active
         ? `border-color:${m.color};background:linear-gradient(150deg,${m.bg} 0%,${bgLight} 100%);box-shadow:0 4px 16px ${m.bg},inset 0 1px 0 rgba(255,255,255,.7);`
         : '';
+      const riskLbl = score >= 8 ? 'Very High' : score >= 6 ? 'High' : score >= 4 ? 'Moderate' : 'Lower';
       return `
         <button class="st-tab${active ? ' active' : ''}" data-state="${s.code}"
           onclick="selectState('${s.code}')"
@@ -574,7 +980,11 @@ if (window.innerWidth > 1024) {
           <div class="st-tab-icon" style="background:${m.bg};color:${m.color}">${m.icon}</div>
           <span class="st-tab-abbr">${s.code}</span>
           <span class="st-tab-name">${s.name}</span>
-          <span class="st-tab-score" style="color:${color}">${score}/10</span>
+          <span class="st-tab-tag">${s.tag}</span>
+          <div class="st-tab-score-row">
+            <span class="st-tab-risk-lbl">Risk</span>
+            <span class="st-tab-score" style="color:${color}">${score}/10</span>
+          </div>
         </button>`;
     }).join('');
   }
@@ -675,6 +1085,7 @@ if (window.innerWidth > 1024) {
     if (!c) return;
     const state = getState(activeState);
     const prof  = PROFESSIONS.find(p => p.code === activeProf);
+    const base  = PROF_BASE[activeProf];
     const accMap = {};
     state.accordion.forEach(([t, b]) => { accMap[t] = b; });
     const detail = accMap[c.detailKey] || c.note;
@@ -694,10 +1105,6 @@ if (window.innerWidth > 1024) {
         ${icos[c.val]||'–'} ${VAL_LBL[c.val]||'Limited'}</div>`;
     }
 
-    const detailHTML = detail.split('\n\n').filter(Boolean).map(p => `<p>${p}</p>`).join('');
-    const noteHTML = c.profNote ? `<div class="st-modal-note"><strong>For ${prof.label}s in ${state.name}:</strong>${c.profNote}</div>` : '';
-    const actHTML  = c.act ? `<div class="st-modal-note" style="margin-top:10px"><strong>Applicable legislation:</strong> ${c.act}</div>` : '';
-
     const ICONS_LARGE = {
       prescribe:  `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="2"/><path d="m9 12 2 2 4-4"/></svg>`,
       inject:     `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m18 2 4 4-14 14H4v-4L18 2Z"/><path d="m8 8 4 4"/><path d="m14 2 4 4"/></svg>`,
@@ -709,13 +1116,181 @@ if (window.innerWidth > 1024) {
       difficulty: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/><circle cx="12" cy="12" r="4"/></svg>`,
     };
 
+    /* Context banner */
+    const contextHTML = `<div class="st-modal-context"><span>${state.name}</span> · <span>${prof.label}</span></div>`;
+
+    /* Secondary accordion section */
+    const secCfg = {
+      prescribe:  { lbl:`Advertising Rules — ${state.name}`,       key:'Advertising & Marketing Requirements' },
+      inject:     { lbl:`Prescription Requirements — ${state.name}`, key:'Prescribing Rules' },
+      clinic:     { lbl:`Business Setup — ${state.name}`,          key:'Business Considerations' },
+      store:      { lbl:`Common Mistakes — ${state.name}`,         key:'Common Mistakes' },
+      buy:        { lbl:`Common Mistakes — ${state.name}`,         key:'Common Mistakes' },
+      prescriber: { lbl:`Common Mistakes — ${state.name}`,         key:'Common Mistakes' },
+      dispense:   { lbl:`Prescribing Context — ${state.name}`,     key:'Prescribing Rules' },
+    };
+    const sec = secCfg[c.iconKey];
+    const secBody = sec && sec.key !== c.detailKey ? accMap[sec.key] : null;
+    const secondaryHTML = secBody
+      ? `<div class="st-modal-divider"></div><div class="st-modal-lbl">${sec.lbl}</div>
+         <div class="st-modal-body">${secBody.split('\n\n').filter(Boolean).map(p=>`<p>${p}</p>`).join('')}</div>`
+      : '';
+
+    /* Difficulty card: full accordion breakdown */
+    let diffHTML = '';
+    if (c.iconKey === 'difficulty') {
+      const adjNote = c.score >= 8
+        ? `Very high compliance burden for ${prof.label.toLowerCase()}s: prescriber required for every treatment, strict custody rules, and active enforcement.`
+        : c.score >= 6
+        ? `Moderate compliance burden: prescriber arrangement and custody rules apply, but the framework is more accommodating than QLD.`
+        : c.score >= 4
+        ? `Below-average compliance burden: standard national rules apply without extra state-specific restrictions — prescriber arrangement still required.`
+        : `Lower compliance burden: national standard framework only, telehealth prescribers widely accepted, simpler logistics than eastern states.`;
+      diffHTML = `<div class="st-modal-divider"></div>
+        <div class="st-modal-lbl">Score Breakdown — ${prof.label} in ${state.name}</div>
+        <div class="st-modal-body"><p>${adjNote}</p></div>` +
+        state.accordion.map(([t, b]) =>
+          `<div class="st-modal-divider"></div>
+           <div class="st-modal-lbl">${t}</div>
+           <div class="st-modal-body"><p>${b}</p></div>`
+        ).join('');
+    }
+
+    /* Compliance checklist — specific to state + profession */
+    let pts = [];
+    if (c.iconKey === 'prescribe') {
+      if (base.prescribe === 'no') pts = [
+        `As a ${prof.label}, you cannot issue prescriptions — all S4 cosmetic injectable prescriptions must come from a registered doctor or nurse practitioner.`,
+        'You must sight a valid, patient-specific written prescription before commencing any treatment. Verbal authority from a prescriber is not a substitute.',
+        'Prescriptions must specify: patient name, date, product name, concentration, dose, and injection site(s).',
+        `In ${state.name}: ${(accMap['Prescribing Rules']||'').split('.')[0]}.`,
+      ];
+      else if (base.prescribe === 'yes') pts = [
+        `As a ${prof.label}, you hold independent prescribing authority and may prescribe S4 cosmetic injectables — but each prescription requires a documented clinical consultation.`,
+        'Prescriptions must be patient-specific. Bulk scripts, standing orders, and pre-signed prescriptions are never valid.',
+        'Keep records of every prescription: patient name, clinical rationale, product, dose, injection site, and consent documentation.',
+        `Telehealth consultations are ${state.code === 'QLD' ? 'accepted where clinically appropriate' : 'widely accepted'} for prescribing in ${state.name}.`,
+      ];
+      else pts = [
+        `Dentists hold limited prescribing authority — typically restricted to perioral and jaw regions within dental scope.`,
+        'Botulinum toxin for cosmetic areas unrelated to dental conditions (e.g., forehead lines, crow\'s feet) may fall outside dental prescribing scope.',
+        'Consult your professional indemnity insurer and AHPRA before prescribing cosmetic injectables beyond perioral areas.',
+        `In ${state.name}: ${(accMap['Prescribing Rules']||'').split('.')[0]}.`,
+      ];
+    } else if (c.iconKey === 'inject') {
+      if (base.inject === 'limited') pts = [
+        `As an Enrolled Nurse, direct in-person supervision by a Registered Nurse or medical officer is required for every injection — telephone or remote supervision is not acceptable.`,
+        'The supervising clinician must be physically present in the clinical area while you administer the injection.',
+        'A valid patient-specific prescription must be in place before you commence — this is required in addition to supervision, not instead of it.',
+        'Document supervision in every patient record: who supervised, their AHPRA registration number, and the time and date.',
+      ];
+      else if (base.inject === 'yes') pts = [
+        `A valid patient-specific prescription must be in place before you inject — confirm it covers the exact product, concentration, dose, and site(s) you plan to treat.`,
+        `In ${state.name}, the prescriber does not need to be physically present during the injection, provided a valid written prescription was issued after an appropriate consultation.`,
+        'Document every injection episode immediately: product name, batch number, lot number, dose, site, time, and patient response.',
+        'Keep a copy of the prescription in the patient record — state health authority audits may request this at any time.',
+      ];
+      else pts = [
+        `Dental scope covers injections in perioral, jaw, and associated facial areas directly related to dental treatment (e.g., masseter botulinum toxin for bruxism).`,
+        'Cosmetic injections for non-dental indications (forehead lines, crow\'s feet) without a dental clinical justification are likely outside dental scope of practice.',
+        'Document the dental clinical rationale for every cosmetic injectable treatment you administer as a dentist.',
+        `Notify your professional indemnity insurer of all cosmetic injectable services to confirm coverage in ${state.name}.`,
+      ];
+    } else if (c.iconKey === 'clinic') {
+      if (base.own === 'yes') pts = [
+        `As a ${prof.label}, you can hold 100% ownership of a cosmetic injectable clinic — no prescriber co-ownership is legally required.`,
+        'As owner and prescriber, keep your S4 purchase accounts in the practice name and entirely separate from personal finances.',
+        'Implement a formal clinical governance framework: prescribing protocols, emergency procedures, complaints policy, and patient consent forms.',
+        `Confirm your professional indemnity insurance covers both clinical and business-owner roles for cosmetic injectables in ${state.name}.`,
+      ];
+      else if (base.own === 'no') pts = [
+        `Enrolled Nurses cannot independently own a cosmetic injectable clinic — the practice must be structured under a prescribing doctor or NP.`,
+        'Working as an employed injector within a doctor-led or NP-led clinic is the standard compliant model for Enrolled Nurses.',
+        'Any arrangement where you carry the primary financial risk of the business may be scrutinised as de facto ownership — seek legal advice.',
+      ];
+      else pts = [
+        `In ${state.name}: ${state.ownNote}`,
+        'A formal written clinical governance agreement with a prescribing doctor or NP is essential — verbal arrangements are unenforceable and insufficient.',
+        'The prescriber must retain exclusive control of all S4 medicine custody; your business entity cannot be the registered holder of S4 stock.',
+        `Consult a healthcare business lawyer familiar with the ${state.act.split(' (')[0]} before finalising your clinic ownership structure.`,
+      ];
+    } else if (c.iconKey === 'store') {
+      if (base.storeBuy === 'no') pts = [
+        `You may not store S4 medicines under any circumstances — not overnight, not temporarily, not even in a locked clinic fridge without the prescriber's custody.`,
+        'S4 stock must remain under the exclusive custody and control of the authorised prescribing doctor or NP at all times.',
+        'If a patient cancels, the medicine reverts entirely to the prescriber — you cannot retain it for future appointments with other patients.',
+        `Under ${state.act}, unauthorised possession of a Schedule 4 medicine is a criminal offence regardless of intent or whether any harm occurs.`,
+      ];
+      else pts = [
+        `As a ${prof.label}, you may store S4 medicines — but strict custody and record-keeping obligations apply under ${state.act}.`,
+        'Maintain a medicines register recording batch number, quantity received, used, wasted, and remaining for every S4 medicine and every date of activity.',
+        'Storage must meet temperature requirements (typically 2–8°C for botulinum toxin) in a locked facility with access restricted to authorised personnel.',
+        'Perform regular stocktakes, reconcile against your register, and report unexplained discrepancies to the relevant state health authority.',
+      ];
+    } else if (c.iconKey === 'buy') {
+      if (base.storeBuy === 'no') pts = [
+        `You cannot place purchase orders, pay invoices, or sign delivery receipts for S4 medicines — each of these actions constitutes unlawful possession.`,
+        'All purchase orders must be in the prescriber\'s name, billed to the prescriber\'s ABN, and delivered to an address under the prescriber\'s authority.',
+        'Reimbursing a prescriber after they purchase stock on your behalf does not transfer lawful ownership — the prescriber must remain the buyer at all times.',
+        `In ${state.name}: ${(accMap['Common Mistakes']||'').split('.')[0]}.`,
+      ];
+      else pts = [
+        `As a ${prof.label}, you may purchase S4 medicines directly from an authorised wholesaler or compounding pharmacy under your prescriber registration.`,
+        'Your ABN and prescriber registration number must appear on all purchase orders — wholesalers are required to verify your authority before accepting orders.',
+        'Retain all purchase invoices and reconcile them against your medicines register — these records are required for regulatory audits.',
+        `Medicines must be purchased for identified patients with valid prescriptions — bulk pre-purchasing without linked prescriptions is not acceptable under ${state.act}.`,
+      ];
+    } else if (c.iconKey === 'prescriber') {
+      if (base.prescriberReq === 'yes') pts = [
+        'A valid patient-specific prescription must exist before every treatment, including for long-term repeat patients who have been seen before.',
+        'The prescriber must personally consult the patient (face-to-face or via approved telehealth) before issuing each prescription — pre-signing blank scripts is never valid.',
+        `In ${state.name}, telephone prescriptions are not accepted — the prescription must be in writing (paper or approved electronic format).`,
+        `Most common compliance breach: ${(accMap['Common Mistakes']||'').split('.')[0]}.`,
+      ];
+      else pts = [
+        `As a ${prof.label}, you are an independent prescriber — no external prescriber is required, and you can both prescribe and administer within the same appointment.`,
+        'Even as your own prescriber, every treatment episode must be documented with a clinical consultation note, prescription, and patient consent record.',
+        'You may not issue prescriptions for other practitioners to use — each injector must hold their own prescribing authority or have a prescriber arrangement in place.',
+        `Confirm your professional indemnity insurance explicitly covers cosmetic prescribing in ${state.name}.`,
+      ];
+    } else if (c.iconKey === 'dispense') {
+      if (base.dispense === 'no') pts = [
+        `As a ${prof.label}, you may administer (inject) — but you may not dispense (hand a labelled medicine to a patient to take home). These are legally distinct activities.`,
+        'If a patient requests unused portions to take home, that constitutes dispensing — refer them to the prescribing doctor or a pharmacist.',
+        'Emergency antidote kits (e.g., hyaluronidase) that a patient takes home must be arranged through the prescriber or a pharmacist, not supplied by you.',
+        `Under ${state.act}, unlicensed dispensing is a separate offence from unlicensed possession and carries its own penalties.`,
+      ];
+      else if (base.dispense === 'yes') pts = [
+        `As a ${prof.label}, you may dispense medicines to patients — but labelling and record-keeping requirements are strictly regulated.`,
+        'Labels must include: patient name, dispensing date, product name, strength, quantity, directions for use, and prescriber/dispenser details.',
+        'Maintain a dispensing register and reconcile it against your stock register — both must be available for audit.',
+        `Dispensing records must be retained per ${state.act} requirements — typically a minimum of 5 to 7 years.`,
+      ];
+      else pts = [
+        `Dentists have limited dispensing authority — typically restricted to medicines within dental scope of practice.`,
+        'Dispensing cosmetic injectables for patients to take home is generally not within scope for dental practitioners.',
+        `Seek specific guidance from AHPRA and the Australian Dental Association before dispensing any S4 cosmetic medicine in ${state.name}.`,
+      ];
+    }
+
+    const complianceHTML = pts.length
+      ? `<div class="st-modal-divider"></div>
+         <div class="st-modal-lbl">Key Points — ${prof.label} in ${state.name}</div>
+         <ul class="st-modal-checklist">${pts.map(p=>`<li>${p}</li>`).join('')}</ul>`
+      : '';
+
+    const noteHTML = c.profNote ? `<div class="st-modal-note" style="margin-top:20px"><strong>For ${prof.label}s in ${state.name}:</strong> ${c.profNote}</div>` : '';
+    const legHTML  = `<div class="st-modal-note" style="margin-top:10px"><strong>Applicable legislation:</strong> ${state.act}</div>`;
+    const detailHTML = detail.split('\n\n').filter(Boolean).map(p => `<p>${p}</p>`).join('');
+
     document.getElementById('st-modal-content').innerHTML = `
       <div class="st-modal-icon-wrap" style="background:${c.iconBg};color:${c.iconColor}">${ICONS_LARGE[c.iconKey]}</div>
       <div class="st-modal-title">${c.title}</div>
       ${pillHTML}
-      <div class="st-modal-lbl">${c.detailKey}</div>
+      ${contextHTML}
+      <div class="st-modal-lbl">${c.detailKey} — ${state.name}</div>
       <div class="st-modal-body">${detailHTML}</div>
-      ${noteHTML}${actHTML}`;
+      ${secondaryHTML}${diffHTML}${complianceHTML}${noteHTML}${legHTML}`;
     document.getElementById('st-modal-overlay').classList.add('open');
     document.body.style.overflow = 'hidden';
   };
@@ -739,7 +1314,7 @@ if (window.innerWidth > 1024) {
       wall.removeAttribute('id');
       wall.querySelectorAll('[id]').forEach(el => el.removeAttribute('id'));
       wall.setAttribute('filter', 'url(#st-wf-gray)');
-      wall.setAttribute('fill', '#EAEDF3');
+      wall.setAttribute('fill', '#C6D8EA');
       wall.setAttribute('stroke', 'none');
       wall.setAttribute('pointer-events', 'none');
       wall.dataset.state = shape.dataset.state;
@@ -769,6 +1344,8 @@ if (window.innerWidth > 1024) {
     if (titleEl) titleEl.textContent = state.name;
     if (subEl)   subEl.textContent   = `${state.tag} · Difficulty ${score}/10`;
     if (dotsEl)  dotsEl.innerHTML    = dotRowHTML('st-badge-dot', score, color);
+    const badge = document.getElementById('st-map-badge');
+    if (badge) { badge.classList.remove('pop'); requestAnimationFrame(() => badge.classList.add('pop')); }
   }
 
   window.toggleRacc = function(btn) {
@@ -801,9 +1378,9 @@ if (window.innerWidth > 1024) {
     renderAll();
   };
 
-  /* Map shapes: click syncs state + scrolls to workspace */
+  /* Map shapes: click syncs state only (no scroll) */
   document.querySelectorAll('.st-shape').forEach(el => {
-    el.addEventListener('click', () => window.selectState(el.dataset.state, true));
+    el.addEventListener('click', () => window.selectState(el.dataset.state, false));
   });
 
   /* Inject modal overlay once */
@@ -826,3 +1403,276 @@ if (window.innerWidth > 1024) {
   initWallLayer();
   renderAll();
 })();
+
+/* ── Clinic Launch Planner ──────────────────────────────── */
+window.toggleClpCard = function(id) {
+  const num = parseInt(id.replace('clp-', ''));
+  const card = document.getElementById(id);
+  if (!card) return;
+  const isOpen = card.classList.contains('open');
+
+  // Close everything
+  document.querySelectorAll('.clp-card.open').forEach(c => c.classList.remove('open'));
+  document.querySelectorAll('.clp-step-btn.clp-active').forEach(b => b.classList.remove('clp-active'));
+  document.querySelectorAll('.clp-row-panel.open').forEach(p => p.classList.remove('open'));
+  document.querySelectorAll('.clp-panel-pane.active').forEach(s => s.classList.remove('active'));
+
+  if (!isOpen) {
+    card.classList.add('open');
+    const btn = document.querySelector(`.clp-step-btn[data-step="${num}"]`);
+    if (btn) btn.classList.add('clp-active');
+    const panelId = num <= 3 ? 'clp-panel-r1' : 'clp-panel-r2';
+    const panel = document.getElementById(panelId);
+    const pane  = document.getElementById('clp-pane-' + num);
+    if (panel) panel.classList.add('open');
+    if (pane)  pane.classList.add('active');
+  }
+};
+
+window.scrollToClp = function(id) {
+  window.toggleClpCard(id);
+  const num = parseInt(id.replace('clp-', ''));
+  setTimeout(function() {
+    const panelId = num <= 3 ? 'clp-panel-r1' : 'clp-panel-r2';
+    const panel = document.getElementById(panelId);
+    if (panel) panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }, 80);
+};
+
+/* ── Contact form ────────────────────────────────────────── */
+(function() {
+  const form = document.getElementById('contact-form');
+  const wrap = document.getElementById('ct-form-wrap');
+  if (form && wrap) {
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      wrap.classList.add('submitted');
+    });
+  }
+})();
+
+window.toggleScopeRow = function(row) {
+  const rowId = row.dataset.row;
+  const expRow = document.querySelector(`.scope-exp-row[data-for="${rowId}"]`);
+  const isActive = row.classList.contains('active');
+  document.querySelectorAll('.scope-row.active').forEach(r => r.classList.remove('active'));
+  document.querySelectorAll('.scope-exp-row.active').forEach(r => r.classList.remove('active'));
+  if (!isActive) {
+    row.classList.add('active');
+    if (expRow) expRow.classList.add('active');
+  }
+};
+
+/* ═══════════════════════════════════════════════════════
+   GET JOB GUIDANCE MODAL
+═══════════════════════════════════════════════════════ */
+(function() {
+  var ggData = { profession:'', state:'', experience:'', goal:'', goingBack:false };
+
+  var PROF = { rn:'Registered Nurse', en:'Enrolled Nurse', np:'Nurse Practitioner', doctor:'Doctor', dentist:'Dentist', other:'Healthcare Professional' };
+  var STATE = { qld:'Queensland', nsw:'New South Wales', vic:'Victoria', wa:'Western Australia', sa:'South Australia', tas:'Tasmania', act:'ACT', nt:'Northern Territory' };
+  var GOAL = { injector:'Become an Injector', clinic:'Open My Own Clinic', prescribing:'Understand Prescribing', career:'Career Guidance', business:'Business Advice' };
+
+  window.openGgModal = function() {
+    var m = document.getElementById('gg-modal');
+    m.classList.add('open');
+    m.setAttribute('aria-hidden','false');
+    document.body.style.overflow = 'hidden';
+    ggGoStep(1);
+  };
+
+  window.closeGgModal = function() {
+    var m = document.getElementById('gg-modal');
+    m.classList.remove('open');
+    m.setAttribute('aria-hidden','true');
+    document.body.style.overflow = '';
+  };
+
+  window.ggOverlayClick = function(e) {
+    if (e.target === document.getElementById('gg-modal')) closeGgModal();
+  };
+
+  window.ggSelectCard = function(btn) {
+    var group = btn.dataset.group;
+    document.querySelectorAll('.gg-opt-card[data-group="'+group+'"]').forEach(function(c){ c.classList.remove('selected'); });
+    btn.classList.add('selected');
+    ggData[group] = btn.dataset.val;
+  };
+
+  window.ggGoStep = function(step) {
+    var steps = { 1:'gg-step-1', 2:'gg-step-2', '3a':'gg-step-3a', '3b':'gg-step-3b' };
+    var active = document.querySelector('.gg-step.active');
+    if (active) active.classList.remove('active');
+
+    var next = document.getElementById(steps[step]);
+    if (!next) return;
+    if (ggData.goingBack) next.classList.add('going-back');
+    else next.classList.remove('going-back');
+    next.classList.add('active');
+    ggData.goingBack = false;
+
+    document.querySelector('.gg-box').scrollTop = 0;
+    ggUpdateProgress(step);
+  };
+
+  function ggUpdateProgress(step) {
+    var n = (step === '3a' || step === '3b') ? 3 : parseInt(step);
+    [1,2,3].forEach(function(i) {
+      var el = document.getElementById('gg-prog-'+i);
+      el.classList.toggle('active', i === n);
+      el.classList.toggle('done', i < n);
+    });
+    var l1 = document.getElementById('gg-prog-line-1');
+    var l2 = document.getElementById('gg-prog-line-2');
+    if (l1) l1.classList.toggle('done', n > 1);
+    if (l2) l2.classList.toggle('done', n > 2);
+  }
+
+  window.ggStep1Next = function() {
+    ggData.profession = document.getElementById('gg-profession').value;
+    ggData.state = document.getElementById('gg-state').value;
+    var err = document.getElementById('gg-s1-err');
+    if (!ggData.profession || !ggData.state || !ggData.experience || !ggData.goal) {
+      err.style.display = 'block';
+      return;
+    }
+    err.style.display = 'none';
+    ggBuildResults();
+    ggGoStep(2);
+  };
+
+  function ggBuildResults() {
+    var p = ggData.profession, s = ggData.state, e = ggData.experience, g = ggData.goal;
+
+    // Subtitle
+    var sub = document.getElementById('gg-result-sub');
+    if (sub) sub.textContent = 'Based on your profile as a '+PROF[p]+' in '+(STATE[s]||'your state')+' looking to '+(GOAL[g]||'grow your career')+'.';
+
+    // Insights
+    var insights = [];
+    if (p === 'rn') {
+      insights.push({ ok:1, t:'You may own and operate a cosmetic clinic in Australia.' });
+      insights.push({ ok:0, t:'You cannot self-prescribe — a valid prescribing arrangement is required.' });
+      insights.push({ ok:1, t:'You can administer injectables once trained with a qualified prescriber in place.' });
+    } else if (p === 'en') {
+      insights.push({ ok:0, t:'Enrolled Nurses cannot independently administer cosmetic injectables.' });
+      insights.push({ ok:0, t:'Formal delegation from a supervising clinician is required at all times.' });
+      insights.push({ ok:2, t:'Pathways exist with the right governance structure and clinical support.' });
+    } else if (p === 'np') {
+      insights.push({ ok:1, t:'Nurse Practitioners can self-prescribe within their scope of practice.' });
+      insights.push({ ok:1, t:'You can own and operate a cosmetic clinic independently.' });
+      insights.push({ ok:1, t:'Strong direct pathway to independent cosmetic practice.' });
+    } else if (p === 'doctor') {
+      insights.push({ ok:1, t:'You have full prescribing authority for all cosmetic injectables.' });
+      insights.push({ ok:1, t:'You can own and operate a clinic with complete clinical authority.' });
+      insights.push({ ok:1, t:'You can act as a prescribing practitioner for nursing staff.' });
+    } else if (p === 'dentist') {
+      insights.push({ ok:1, t:'Dentists can administer cosmetic injectables within facial scope.' });
+      insights.push({ ok:2, t:'Prescribing scope may vary — verify with your state dental board.' });
+      insights.push({ ok:1, t:'You can own and operate a cosmetic clinic alongside dental practice.' });
+    } else {
+      insights.push({ ok:2, t:'Your pathway depends on your specific registration and scope.' });
+      insights.push({ ok:1, t:'Our team can help identify the right pathway for your situation.' });
+    }
+    if (s === 'qld') {
+      insights.push({ ok:2, t:'Queensland has additional facility registration and notification requirements.' });
+    } else if (s === 'nsw') {
+      insights.push({ ok:2, t:'NSW has specific cosmetic medicine guidelines in effect from 2023.' });
+    } else if (s === 'vic') {
+      insights.push({ ok:2, t:'Victoria requires Health Services Act 1988 compliance for facility setup.' });
+    }
+    if (g === 'clinic' && (p === 'rn' || p === 'en')) {
+      insights.push({ ok:0, t:'A formal prescriber arrangement must be in place before opening.' });
+    }
+
+    var icons = {
+      1:'<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>',
+      0:'<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>',
+      2:'<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>'
+    };
+    var cls = {1:'gg-ok',0:'gg-no',2:'gg-info'};
+
+    var insEl = document.getElementById('gg-insights');
+    insEl.innerHTML = '<h4>What Applies to You</h4>' +
+      insights.slice(0,5).map(function(i){
+        return '<div class="gg-insight-item '+cls[i.ok]+'"><div class="gg-insight-ico">'+icons[i.ok]+'</div><span>'+i.t+'</span></div>';
+      }).join('');
+
+    // Recommended steps
+    var recs = [];
+    if (p === 'rn' || p === 'en') recs.push('Understand prescribing arrangement requirements for '+(STATE[s]||'your state'));
+    if (g === 'clinic') { recs.push('Research facility compliance requirements and registration'); recs.push('Develop your business and clinical governance plan'); }
+    else if (g === 'injector') { recs.push('Complete accredited cosmetic injectables training'); recs.push('Secure your first supervised clinical position'); }
+    else if (g === 'prescribing') { recs.push('Review scope of practice for prescribing in '+(STATE[s]||'your state')); }
+    if (e === 'none' || e === 'lt1') recs.push('Build supervised experience before moving to independent practice');
+    recs.push('Connect with a prescribing practitioner or mentor in your area');
+
+    var recEl = document.getElementById('gg-rec-list');
+    recEl.innerHTML = recs.slice(0,3).map(function(r,i){
+      return '<div class="gg-rec-item"><div class="gg-rec-num">'+(i+1)+'</div><span>'+r+'</span></div>';
+    }).join('');
+
+    // Readiness percentages
+    var expMap = {none:32,lt1:52,'1to3':70,'3plus':87};
+    var careerPct = expMap[e] || 50;
+    var clinicPct = Math.round((g==='clinic' ? 0.9 : 0.75) * careerPct);
+    var prescMap = {doctor:90,np:85,dentist:65,rn:44,en:28,other:40};
+    var prescPct = prescMap[p] || 45;
+
+    setTimeout(function(){
+      animBar('gg-r1-fill','gg-r1-pct', careerPct, '');
+      animBar('gg-r2-fill','gg-r2-pct', clinicPct, 'blue');
+      animBar('gg-r3-fill','gg-r3-pct', prescPct, 'purple');
+    }, 350);
+  }
+
+  function animBar(fillId, pctId, target, color) {
+    var fill = document.getElementById(fillId);
+    var pctEl = document.getElementById(pctId);
+    if (!fill || !pctEl) return;
+    fill.style.width = '0%';
+    pctEl.textContent = '0%';
+    if (color) pctEl.classList.add(color);
+    var cur = 0;
+    var iv = setInterval(function(){
+      cur = Math.min(cur + 2, target);
+      pctEl.textContent = cur + '%';
+      fill.style.width = cur + '%';
+      if (cur >= target) clearInterval(iv);
+    }, 18);
+  }
+
+  window.ggGoStep = window.ggGoStep || function(){};  // already defined above, just guard
+
+  window.ggSelectDoc = function(card) {
+    document.querySelectorAll('.gg-doc-card').forEach(function(c){ c.classList.remove('selected'); });
+    card.classList.add('selected');
+  };
+
+  window.ggBookNow = function() {
+    var selected = document.querySelector('.gg-doc-card.selected');
+    if (!selected) {
+      alert('Please select a doctor before continuing.');
+      return;
+    }
+    // Placeholder — redirect to contact or booking page
+    window.location.href = '#contact';
+    closeGgModal();
+  };
+
+  window.ggSubmit3B = function(e) {
+    e.preventDefault();
+    document.getElementById('gg-3b-form').style.display = 'none';
+    var suc = document.getElementById('gg-3b-success');
+    suc.style.display = 'flex';
+    suc.classList.add('show');
+  };
+
+  // Keyboard ESC to close
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      var m = document.getElementById('gg-modal');
+      if (m && m.classList.contains('open')) closeGgModal();
+    }
+  });
+}());

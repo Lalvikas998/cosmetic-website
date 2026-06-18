@@ -255,71 +255,186 @@
   </div>
 </section>
 
-<!-- ▸ WHY — Market + Benefits -->
-<section class="section section-soft" id="why">
+<!-- ▸ WHY — Market + Benefits (redesigned as premium dashboard) -->
+<section class="section opp-section" id="why">
   <div class="container">
-    <div class="sec-head reveal">
-      <p class="eyebrow">The Opportunity</p>
-      <h2>Why healthcare professionals are entering this field</h2>
-      <p class="sub-t">A rapidly growing industry that rewards clinical expertise with flexibility, income potential, and genuine career diversity.</p>
+
+    <!-- ── TOP DASHBOARD ── -->
+    <div class="opp-top">
+      <!-- Left: headline + metrics -->
+      <div class="opp-left reveal">
+        <p class="eyebrow">The Opportunity</p>
+        <h2 class="opp-h2">Why healthcare professionals are <em class="opp-em">entering this field</em></h2>
+        <p class="opp-intro">A rapidly growing industry that rewards clinical expertise with flexibility, income potential, and genuine career diversity.</p>
+
+        <div class="opp-metrics">
+          <div class="opp-metric opp-m-teal">
+            <div class="opp-m-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div>
+            <div class="opp-m-body">
+              <div class="opp-m-val" data-target="19.3" data-suffix="%">0%</div>
+              <div class="opp-m-name">Annual Growth</div>
+              <div class="opp-m-note">2021–2030 (CAGR)</div>
+            </div>
+          </div>
+          <div class="opp-metric opp-m-purple">
+            <div class="opp-m-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+            <div class="opp-m-body">
+              <div class="opp-m-val" data-target="9.0" data-prefix="$" data-suffix="B">$0B</div>
+              <div class="opp-m-name">Projected Market Value</div>
+              <div class="opp-m-note">By 2030</div>
+            </div>
+          </div>
+          <div class="opp-metric opp-m-amber">
+            <div class="opp-m-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+            <div class="opp-m-body">
+              <div class="opp-m-val" data-target="10" data-suffix="K+">0K+</div>
+              <div class="opp-m-name">Emerging Opportunities</div>
+              <div class="opp-m-note">By 2030</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="opp-callout">
+          <div class="opp-callout-ico"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+          <p><strong>High demand. Strong future.</strong> The Australian cosmetic injectables market is set to nearly quadruple by 2030.</p>
+        </div>
+      </div>
+
+      <!-- Right: interactive chart card -->
+      <div class="opp-right reveal-right">
+        <div class="opp-chart-card" id="opp-chart-card">
+          <div class="opp-chart-hd">
+            <div>
+              <h4 class="opp-chart-title">Australian Cosmetic Injectables Market</h4>
+              <p class="opp-chart-sub">Market Value in USD Billion · 2021–2030</p>
+            </div>
+            <div class="opp-cagr-badge">↗ 19.3% CAGR</div>
+          </div>
+          <div class="opp-chart-tabs" id="opp-chart-tabs">
+            <button class="opp-tab active" data-tab="value">Market Value</button>
+            <button class="opp-tab" data-tab="growth">Growth Rate</button>
+            <button class="opp-tab" data-tab="opps">Opportunities</button>
+          </div>
+          <div class="opp-chart-wrap">
+            <div class="opp-chart-area" id="opp-chart-area"></div>
+            <div class="opp-tooltip" id="opp-tooltip">
+              <div class="opp-tt-year" id="opp-tt-year"></div>
+              <div class="opp-tt-lbl" id="opp-tt-lbl"></div>
+              <div class="opp-tt-val" id="opp-tt-val"></div>
+              <div class="opp-tt-tag">19.3% CAGR</div>
+            </div>
+          </div>
+          <div class="opp-chart-foot">
+            <div class="opp-chart-note-ico"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div>
+            <div><strong>Consistent growth across the decade</strong> — driven by demand, innovation, and expanding treatment acceptance.</div>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <div class="chart-block reveal">
-      <div class="chart-meta">
-        <p class="chart-title">Australian Cosmetic Injectables Market</p>
-        <p class="chart-sub">Market value in USD Billion · 2021–2030</p>
-        <div class="chart-legend">
-          <div class="cl-row"><div class="cl-swatch solid"></div><span>Actual growth</span></div>
-          <div class="cl-row"><div class="cl-swatch proj"></div><span>Projected (19.3% CAGR)</span></div>
+    <!-- ── GROWTH DRIVERS ── -->
+    <div class="opp-drivers">
+      <div class="opp-drivers-hd reveal">
+        <div class="opp-drivers-title-block">
+          <h3 class="opp-drivers-h3">Explore What's Driving This Growth</h3>
+          <p class="opp-drivers-sub">Click on any factor to see how it impacts the industry and your career.</p>
+        </div>
+        <div class="opp-prof-row">
+          <span class="opp-prof-lbl">View insights for:</span>
+          <div class="opp-chips" id="opp-chips">
+            <button class="opp-chip active" data-prof="rn">RN</button>
+            <button class="opp-chip" data-prof="doctor">Doctor</button>
+            <button class="opp-chip" data-prof="np">NP</button>
+            <button class="opp-chip" data-prof="dentist">Dentist</button>
+          </div>
         </div>
       </div>
-      <div class="chart-area" id="market-chart"></div>
+
+      <div class="opp-cards reveal" id="opp-cards">
+        <div class="opp-card" data-card="0" onclick="oppToggleCard(0)">
+          <span class="opp-card-num">01</span>
+          <div class="opp-card-ico opp-ico-teal"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div>
+          <h4>Growing Industry</h4>
+          <p>19.3% annual growth — one of Australia's fastest-growing healthcare segments.</p>
+          <span class="opp-card-link">Explore Insight <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></span>
+        </div>
+        <div class="opp-card" data-card="1" onclick="oppToggleCard(1)">
+          <span class="opp-card-num">02</span>
+          <div class="opp-card-ico opp-ico-blue"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
+          <h4>Flexible Lifestyle</h4>
+          <p>Work full-time, part-time, or contract across multiple clinics on your own schedule.</p>
+          <span class="opp-card-link">Explore Insight <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></span>
+        </div>
+        <div class="opp-card" data-card="2" onclick="oppToggleCard(2)">
+          <span class="opp-card-num">03</span>
+          <div class="opp-card-ico opp-ico-pink"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+          <h4>Meaningful Impact</h4>
+          <p>Make a real difference in how patients feel — boosting confidence through evidence-based care.</p>
+          <span class="opp-card-link">Explore Insight <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></span>
+        </div>
+        <div class="opp-card" data-card="3" onclick="oppToggleCard(3)">
+          <span class="opp-card-num">04</span>
+          <div class="opp-card-ico opp-ico-cyan"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
+          <h4>Diverse Opportunities</h4>
+          <p>Clinical practice, education, training, and clinic ownership — genuinely diverse pathways.</p>
+          <span class="opp-card-link">Explore Insight <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></span>
+        </div>
+        <div class="opp-card" data-card="4" onclick="oppToggleCard(4)">
+          <span class="opp-card-num">05</span>
+          <div class="opp-card-ico opp-ico-amber"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/><line x1="2" y1="20" x2="22" y2="20"/></svg></div>
+          <h4>Business Potential</h4>
+          <p>Private-pay field — income linked to skill and volume, not capped by Medicare rebate schedules.</p>
+          <span class="opp-card-link">Explore Insight <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></span>
+        </div>
+        <div class="opp-card" data-card="5" onclick="oppToggleCard(5)">
+          <span class="opp-card-num">06</span>
+          <div class="opp-card-ico opp-ico-indigo"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 2L11 13"/><path d="M22 2L15 22 11 13 2 9l20-7z"/></svg></div>
+          <h4>Continuous Growth</h4>
+          <p>Progress from injector to clinic director, educator, or medical director as your experience builds.</p>
+          <span class="opp-card-link">Explore Insight <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></span>
+        </div>
+      </div>
+
+      <!-- Expansion panel -->
+      <div class="opp-panel" id="opp-panel">
+        <div class="opp-panel-wrap" id="opp-panel-wrap">
+          <div class="opp-panel-grid">
+            <div class="opp-panel-col opp-pcol-intro">
+              <div class="opp-pi-ico" id="opp-pi-ico"></div>
+              <h4 id="opp-pi-title"></h4>
+              <p class="opp-pi-sub" id="opp-pi-sub"></p>
+              <p class="opp-pi-desc" id="opp-pi-desc"></p>
+            </div>
+            <div class="opp-panel-col">
+              <h5 class="opp-pcol-h">Why This Matters</h5>
+              <ul class="opp-chk-list" id="opp-why-list"></ul>
+            </div>
+            <div class="opp-panel-col">
+              <h5 class="opp-pcol-h">What This Means For You</h5>
+              <ul class="opp-chk-list opp-dynamic" id="opp-you-list"></ul>
+            </div>
+            <div class="opp-panel-col">
+              <h5 class="opp-pcol-h">Typical Career Path</h5>
+              <div class="opp-career-path" id="opp-career-path"></div>
+            </div>
+          </div>
+          <button class="opp-panel-close" onclick="oppClosePanel()"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+        </div>
+      </div>
     </div>
 
-    <div class="benefits-strip">
-      <div class="ben-item reveal" style="--bd:0s">
-        <div class="ben-ico-wrap">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+    <!-- ── CTA ── -->
+    <div class="opp-cta reveal">
+      <div class="opp-cta-left">
+        <div class="opp-cta-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 2L11 13"/><path d="M22 2L15 22 11 13 2 9l20-7z"/></svg></div>
+        <div>
+          <strong>Your expertise. Your future. Limitless possibilities.</strong>
+          <p>Explore career pathways and discover where this field can take you.</p>
         </div>
-        <h4>Growing Industry</h4>
-        <p>19.3% annual growth — one of Australia's fastest-growing healthcare segments with no signs of slowing.</p>
       </div>
-      <div class="ben-item reveal" style="--bd:.06s">
-        <div class="ben-ico-wrap">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>
-        </div>
-        <h4>Flexible Lifestyle</h4>
-        <p>Work full-time, part-time, or casual — or contract across multiple clinics entirely on your schedule.</p>
-      </div>
-      <div class="ben-item reveal" style="--bd:.12s">
-        <div class="ben-ico-wrap">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-        </div>
-        <h4>Meaningful Impact</h4>
-        <p>Make a real difference in how patients feel — boosting confidence through evidence-based cosmetic care.</p>
-      </div>
-      <div class="ben-item reveal" style="--bd:.18s">
-        <div class="ben-ico-wrap">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-        </div>
-        <h4>Diverse Opportunities</h4>
-        <p>Clinical practice, education, training, and clinic ownership — the pathways are genuinely diverse.</p>
-      </div>
-      <div class="ben-item reveal" style="--bd:.24s">
-        <div class="ben-ico-wrap">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
-        </div>
-        <h4>Business Potential</h4>
-        <p>Private-pay field — income linked to skill and volume, not capped by Medicare rebate schedules.</p>
-      </div>
-      <div class="ben-item reveal" style="--bd:.30s">
-        <div class="ben-ico-wrap">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
-        </div>
-        <h4>Continuous Growth</h4>
-        <p>Progress from injector to clinic director, educator, or medical director as your experience builds.</p>
-      </div>
+      <a href="#professional" class="opp-cta-btn">Explore Career Paths <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></a>
     </div>
+
   </div>
 </section>
 
@@ -541,7 +656,7 @@
         <li><span class="dp-chk"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></span>Willingness to work under supervision initially</li>
         <li><span class="dp-chk"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></span>Understanding of AHPRA/NMBA compliance</li>
       </ul>
-      <a href="#contact" class="dp-btn">Get Job Guidance →</a>
+      <button class="dp-btn" onclick="openGgModal()">Get Job Guidance →</button>
       <div class="dp-note">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
         100% Free &bull; No Obligation
@@ -551,7 +666,7 @@
   </div>
 </section>
 
-<!-- ▸ BUSINESS STEPS -->
+<!-- ▸ CLINIC LAUNCH PLANNER -->
 <section class="section section-biz" id="business">
   <div class="container">
 
@@ -571,72 +686,455 @@
       </div>
     </div>
 
-    <!-- 3×2 card grid -->
-    <div class="biz-grid-wrap reveal">
-      <div class="biz-grid">
-
-        <div class="biz-card">
-          <div class="bc-ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/><polyline points="16 11 17.5 13 20 10"/></svg></div>
-          <div class="bc-body">
-            <span class="bc-num">01</span>
-            <h4>Build Clinical Competence</h4>
-            <p>Min. 6–12 months supervised experience recommended before independent practice. Patient safety always comes first.</p>
-          </div>
+    <!-- 6-step roadmap nav -->
+    <div class="clp-roadmap reveal">
+      <div class="clp-roadmap-label">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" color="#0f766e"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>
+        <div class="clp-road-text">
+          <strong>Your 6-Step Roadmap</strong>
+          <p>Click on each step to see what's involved and what to consider.</p>
         </div>
-
-        <div class="biz-card">
-          <div class="bc-ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="2"/><line x1="12" y1="11" x2="12" y2="17"/><line x1="9" y1="14" x2="15" y2="14"/></svg></div>
-          <div class="bc-body">
-            <span class="bc-num">02</span>
-            <h4>Prescriber Requirements</h4>
-            <p>RNs and ENs cannot self-prescribe. A formal prescriber arrangement with a doctor or NP is required by law.</p>
-          </div>
-        </div>
-
-        <div class="biz-card">
-          <div class="bc-ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/><circle cx="18" cy="8" r="3"/><polyline points="16.5 8 18 9.5 20 7"/></svg></div>
-          <div class="bc-body">
-            <span class="bc-num">03</span>
-            <h4>Facility and Compliance</h4>
-            <p>Premises must meet state, territory, and council requirements. Infection control and emergency protocols mandatory.</p>
-          </div>
-        </div>
-
-        <div class="biz-card">
-          <div class="bc-ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><path d="M12 18v-6"/><path d="M9 15l3 3 3-3"/><path d="M9 11h6"/></svg></div>
-          <div class="bc-body">
-            <span class="bc-num">04</span>
-            <h4>Insurance and Legal</h4>
-            <p>Professional indemnity covering cosmetic procedures, ABN, and business registration required before opening.</p>
-          </div>
-        </div>
-
-        <div class="biz-card">
-          <div class="bc-ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
-          <div class="bc-body">
-            <span class="bc-num">05</span>
-            <h4>Advertising Compliance</h4>
-            <p>AHPRA and TGA advertising rules apply. Cannot glamorise procedures or overstate outcomes in marketing.</p>
-          </div>
-        </div>
-
-        <div class="biz-card">
-          <div class="bc-ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div>
-          <div class="bc-body">
-            <span class="bc-num">06</span>
-            <h4>Ongoing CPD</h4>
-            <p>AHPRA requires ongoing CPD including cosmetic-specific activities. The industry evolves rapidly — stay current.</p>
-          </div>
-        </div>
-
+      </div>
+      <div class="clp-step-nav">
+        <div class="clp-step-track"></div>
+        <button class="clp-step-btn clp-found" data-step="1" onclick="scrollToClp('clp-1')"><span class="clp-sbtn-num">1</span><span class="clp-sbtn-lbl">Understand Your Practice Pathway</span></button>
+        <button class="clp-step-btn clp-req" data-step="2" onclick="scrollToClp('clp-2')"><span class="clp-sbtn-num">2</span><span class="clp-sbtn-lbl">Establish Prescriber Model</span></button>
+        <button class="clp-step-btn clp-req" data-step="3" onclick="scrollToClp('clp-3')"><span class="clp-sbtn-num">3</span><span class="clp-sbtn-lbl">Facility & Compliance</span></button>
+        <button class="clp-step-btn clp-req" data-step="4" onclick="scrollToClp('clp-4')"><span class="clp-sbtn-num">4</span><span class="clp-sbtn-lbl">Insurance & Legal</span></button>
+        <button class="clp-step-btn clp-ong" data-step="5" onclick="scrollToClp('clp-5')"><span class="clp-sbtn-num">5</span><span class="clp-sbtn-lbl">Advertising Compliance</span></button>
+        <button class="clp-step-btn clp-learn" data-step="6" onclick="scrollToClp('clp-6')"><span class="clp-sbtn-num">6</span><span class="clp-sbtn-lbl">Ongoing CPD</span></button>
+      </div>
+      <div class="clp-legend">
+        <span class="clp-leg clp-found">Foundation Step</span>
+        <span class="clp-leg clp-req">Required</span>
+        <span class="clp-leg clp-ong">Ongoing Responsibility</span>
+        <span class="clp-leg clp-learn">Continuous Learning</span>
       </div>
     </div>
 
-    <div class="disc-note reveal">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-      Educational only. Requirements vary by state and profession. Always seek qualified professional advice.
-    </div>
+    <!-- Step cards: 3 per row -->
+    <div class="clp-cards reveal">
 
+      <!-- Row 1: Steps 1–3 (collapsed only) -->
+      <div class="clp-card" id="clp-1">
+        <div class="clp-card-body">
+          <div class="clp-card-top">
+            <div class="clp-icon clp-found-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+            <span class="clp-step-tag clp-found-tag">STEP 1</span>
+          </div>
+          <h4 class="clp-card-h">Understand Your Practice Pathway</h4>
+          <span class="clp-cat clp-found">Foundation Step</span>
+          <div class="clp-meta-row">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <span class="clp-meta-label">Pathway Type</span><span class="clp-meta-val">Varies by profession</span>
+          </div>
+          <p class="clp-card-desc">Understand your professional scope, legal responsibilities and the pathway available to you based on your registration type and goals.</p>
+          <div class="clp-difficulty clp-diff-found">
+            <span class="clp-diff-label">Difficulty</span>
+            <div class="clp-diff-dots"><span class="clp-dot on"></span><span class="clp-dot on"></span><span class="clp-dot on"></span><span class="clp-dot"></span><span class="clp-dot"></span></div>
+            <span class="clp-diff-text">Moderate</span>
+          </div>
+        </div>
+        <button class="clp-view-btn" onclick="toggleClpCard('clp-1')">
+          <span>View details</span>
+          <svg class="clp-arr" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+      </div>
+
+      <div class="clp-card" id="clp-2">
+        <div class="clp-card-body">
+          <div class="clp-card-top">
+            <div class="clp-icon clp-req-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="2"/><line x1="12" y1="11" x2="12" y2="17"/><line x1="9" y1="14" x2="15" y2="14"/></svg></div>
+            <span class="clp-step-tag clp-req-tag">STEP 2</span>
+          </div>
+          <h4 class="clp-card-h">Establish Your Prescriber Model</h4>
+          <span class="clp-cat clp-req">Required</span>
+          <div class="clp-meta-row">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <span class="clp-meta-label">Typical Setup Time</span><span class="clp-meta-val">Approximately 2–4 weeks</span>
+          </div>
+          <p class="clp-card-desc">Time varies depending on the availability of a prescriber, governance requirements and state-specific arrangements.</p>
+          <div class="clp-difficulty clp-diff-req">
+            <span class="clp-diff-label">Difficulty</span>
+            <div class="clp-diff-dots"><span class="clp-dot on"></span><span class="clp-dot on"></span><span class="clp-dot on"></span><span class="clp-dot on"></span><span class="clp-dot"></span></div>
+            <span class="clp-diff-text">High</span>
+          </div>
+        </div>
+        <button class="clp-view-btn" onclick="toggleClpCard('clp-2')">
+          <span>View details</span>
+          <svg class="clp-arr" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+      </div>
+
+      <div class="clp-card" id="clp-3">
+        <div class="clp-card-body">
+          <div class="clp-card-top">
+            <div class="clp-icon clp-req-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+            <span class="clp-step-tag clp-req-tag">STEP 3</span>
+          </div>
+          <h4 class="clp-card-h">Facility & Compliance Setup</h4>
+          <span class="clp-cat clp-req">Required</span>
+          <div class="clp-meta-row">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <span class="clp-meta-label">Typical Setup Time</span><span class="clp-meta-val">Approximately 4–12 weeks</span>
+          </div>
+          <p class="clp-card-desc">Includes premises preparation, infection control procedures, emergency protocols and applicable council or state requirements.</p>
+          <div class="clp-difficulty clp-diff-req">
+            <span class="clp-diff-label">Difficulty</span>
+            <div class="clp-diff-dots"><span class="clp-dot on"></span><span class="clp-dot on"></span><span class="clp-dot on"></span><span class="clp-dot on"></span><span class="clp-dot"></span></div>
+            <span class="clp-diff-text">High</span>
+          </div>
+        </div>
+        <button class="clp-view-btn" onclick="toggleClpCard('clp-3')">
+          <span>View details</span>
+          <svg class="clp-arr" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+      </div>
+
+      <!-- Row 1 full-width expansion panel -->
+      <div class="clp-row-panel" id="clp-panel-r1">
+        <div class="clp-panel-pane" id="clp-pane-1">
+          <div class="clp-panel-hd">
+            <div class="clp-panel-hd-info">
+              <span class="clp-step-tag clp-found-tag">STEP 1</span>
+              <h4 class="clp-panel-title">Understand Your Practice Pathway</h4>
+              <span class="clp-cat clp-found">Foundation Step</span>
+            </div>
+            <button class="clp-panel-close" onclick="toggleClpCard('clp-1')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Close</button>
+          </div>
+          <div class="clp-panel-body">
+            <div class="clp-det-section">
+              <h5><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>What This Involves</h5>
+              <ul>
+                <li>Identify your registration type (RN, NP, EN, Doctor, Dentist) and understand the scope implications for injecting, prescribing, and clinic ownership</li>
+                <li>Research minimum experience requirements for cosmetic injectables specific to your profession and state or territory</li>
+                <li>Complete AHPRA-approved cosmetic injectable training — Foundation and Advanced modules from a recognised provider</li>
+                <li>Build supervised clinical experience over 6–12+ months under an experienced cosmetic injector before practising independently</li>
+                <li>Understand your scope of practice limitations and what procedures are legally permissible for your role</li>
+              </ul>
+            </div>
+            <div class="clp-det-section">
+              <h5><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Key Considerations</h5>
+              <ul>
+                <li>Doctors and Nurse Practitioners have the most direct and flexible pathways to independent practice and clinic ownership</li>
+                <li>RNs need a delegating prescriber and substantial supervised experience before practising independently</li>
+                <li>ENs face the most restrictions and typically cannot own or operate independently without significant oversight</li>
+                <li>State and territory requirements may impose additional obligations beyond AHPRA registration standards</li>
+                <li>Training quality varies — always choose providers recognised by ASAM, ACAM, or AIAM</li>
+              </ul>
+            </div>
+          </div>
+          <div class="clp-pathway-note clp-found-note">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            <span><strong>Pathway varies by profession:</strong> Doctors and NPs progress most quickly; RNs typically need 12+ months; ENs require ongoing supervision and generally cannot operate independently.</span>
+          </div>
+        </div>
+        <div class="clp-panel-pane" id="clp-pane-2">
+          <div class="clp-panel-hd">
+            <div class="clp-panel-hd-info">
+              <span class="clp-step-tag clp-req-tag">STEP 2</span>
+              <h4 class="clp-panel-title">Establish Your Prescriber Model</h4>
+              <span class="clp-cat clp-req">Required</span>
+            </div>
+            <button class="clp-panel-close" onclick="toggleClpCard('clp-2')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Close</button>
+          </div>
+          <div class="clp-panel-body">
+            <div class="clp-det-section">
+              <h5><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>What This Involves</h5>
+              <ul>
+                <li>Confirm whether you require a prescribing arrangement — RNs and ENs always do; NPs and Doctors can prescribe within their own scope</li>
+                <li>Find a qualified Medical Practitioner or Nurse Practitioner willing to act as your prescribing practitioner</li>
+                <li>Establish a formal, written prescriber agreement detailing scope, responsibilities, and clinical oversight arrangements</li>
+                <li>Understand medication storage, cold-chain requirements, and documentation procedures for Schedule 4 medicines</li>
+                <li>Ensure the prescriber is accessible for clinical consultation, patient review, and emergency support when required</li>
+              </ul>
+            </div>
+            <div class="clp-det-section">
+              <h5><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Key Considerations</h5>
+              <ul>
+                <li>All prescriber agreements must be legally documented and reviewed regularly — verbal arrangements are non-compliant</li>
+                <li>The prescribing practitioner must be genuinely involved in patient care, not merely a name on paperwork</li>
+                <li>Prescriber fees vary — budget approximately $500 to $2,000+ per month depending on arrangement structure and volume</li>
+                <li>Telehealth prescribing has specific compliance requirements — the prescriber must conduct an appropriate patient assessment</li>
+                <li>Some state health authorities require prescriber arrangements to be formally registered — check your jurisdiction</li>
+              </ul>
+            </div>
+          </div>
+          <div class="clp-pathway-note clp-req-note">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            <span><strong>Mandatory for RNs and ENs.</strong> Without a valid prescriber arrangement, you cannot legally administer prescription cosmetic injectables regardless of training or experience level.</span>
+          </div>
+        </div>
+        <div class="clp-panel-pane" id="clp-pane-3">
+          <div class="clp-panel-hd">
+            <div class="clp-panel-hd-info">
+              <span class="clp-step-tag clp-req-tag">STEP 3</span>
+              <h4 class="clp-panel-title">Facility & Compliance Setup</h4>
+              <span class="clp-cat clp-req">Required</span>
+            </div>
+            <button class="clp-panel-close" onclick="toggleClpCard('clp-3')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Close</button>
+          </div>
+          <div class="clp-panel-body">
+            <div class="clp-det-section">
+              <h5><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>What This Involves</h5>
+              <ul>
+                <li>Source or fit out clinical premises meeting treatment room standards — appropriate size, ventilation, waste disposal, and patient privacy</li>
+                <li>Register your facility with the state health authority if required (QLD, NSW, and VIC have the most detailed requirements)</li>
+                <li>Implement infection control protocols compliant with AS/NZS 4187 and current cosmetic medicine guidelines</li>
+                <li>Source and maintain required clinical equipment: treatment chairs, medication refrigeration, sharps disposal, and resuscitation equipment</li>
+                <li>Obtain council and local government approval for operating a medical or healthcare facility at your chosen premises</li>
+              </ul>
+            </div>
+            <div class="clp-det-section">
+              <h5><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Key Considerations</h5>
+              <ul>
+                <li>Emergency management kit including adrenaline (epinephrine) must be accessible at every treatment session — non-negotiable</li>
+                <li>Some states require facility inspection and ongoing registration renewal — budget time and cost for compliance</li>
+                <li>Co-locating within an existing medical centre can significantly reduce compliance burden and initial capital outlay</li>
+                <li>Home-based clinics are subject to council zoning regulations and may face restrictions — verify before committing</li>
+                <li>Premises insurance is separate from professional indemnity — you need both; your landlord's insurance does not cover clinical activities</li>
+              </ul>
+            </div>
+          </div>
+          <div class="clp-pathway-note clp-req-note">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            <span><strong>State requirements differ significantly.</strong> Queensland and New South Wales have the most prescriptive facility standards. Check your state health department before signing a lease.</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Row 2: Steps 4–6 (collapsed only) -->
+      <div class="clp-card" id="clp-4">
+        <div class="clp-card-body">
+          <div class="clp-card-top">
+            <div class="clp-icon clp-req-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg></div>
+            <span class="clp-step-tag clp-req-tag">STEP 4</span>
+          </div>
+          <h4 class="clp-card-h">Insurance & Legal Structure</h4>
+          <span class="clp-cat clp-req">Required</span>
+          <div class="clp-meta-row">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <span class="clp-meta-label">Typical Setup Time</span><span class="clp-meta-val">Approximately 2–4 weeks</span>
+          </div>
+          <p class="clp-card-desc">Depending on insurance approval, business registration and documentation preparation, timelines can vary.</p>
+          <div class="clp-difficulty clp-diff-req">
+            <span class="clp-diff-label">Difficulty</span>
+            <div class="clp-diff-dots"><span class="clp-dot on"></span><span class="clp-dot on"></span><span class="clp-dot on"></span><span class="clp-dot"></span><span class="clp-dot"></span></div>
+            <span class="clp-diff-text">Moderate</span>
+          </div>
+        </div>
+        <button class="clp-view-btn" onclick="toggleClpCard('clp-4')">
+          <span>View details</span>
+          <svg class="clp-arr" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+      </div>
+
+      <div class="clp-card" id="clp-5">
+        <div class="clp-card-body">
+          <div class="clp-card-top">
+            <div class="clp-icon clp-ong-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+            <span class="clp-step-tag clp-ong-tag">STEP 5</span>
+          </div>
+          <h4 class="clp-card-h">Marketing & Advertising Compliance</h4>
+          <span class="clp-cat clp-ong">Ongoing Responsibility</span>
+          <div class="clp-meta-row">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 4v6h6"/><path d="M3.51 15a9 9 0 1 0 .49-3.1"/></svg>
+            <span class="clp-meta-label">Review Frequency</span><span class="clp-meta-val">Continuous</span>
+          </div>
+          <p class="clp-card-desc">Marketing activities should be reviewed regularly to ensure compliance with AHPRA and TGA requirements.</p>
+          <div class="clp-difficulty clp-diff-ong">
+            <span class="clp-diff-label">Difficulty</span>
+            <div class="clp-diff-dots"><span class="clp-dot on"></span><span class="clp-dot on"></span><span class="clp-dot on"></span><span class="clp-dot"></span><span class="clp-dot"></span></div>
+            <span class="clp-diff-text">Moderate</span>
+          </div>
+        </div>
+        <button class="clp-view-btn" onclick="toggleClpCard('clp-5')">
+          <span>View details</span>
+          <svg class="clp-arr" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+      </div>
+
+      <div class="clp-card" id="clp-6">
+        <div class="clp-card-body">
+          <div class="clp-card-top">
+            <div class="clp-icon clp-learn-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div>
+            <span class="clp-step-tag clp-learn-tag">STEP 6</span>
+          </div>
+          <h4 class="clp-card-h">Ongoing CPD & Continuous Learning</h4>
+          <span class="clp-cat clp-learn">Continuous Learning</span>
+          <div class="clp-meta-row">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+            <span class="clp-meta-label">Commitment</span><span class="clp-meta-val">Career-long professional development</span>
+          </div>
+          <p class="clp-card-desc">Continuing education helps practitioners stay current with evolving techniques, products and professional expectations.</p>
+          <div class="clp-difficulty clp-diff-learn">
+            <span class="clp-diff-label">Difficulty</span>
+            <div class="clp-diff-dots"><span class="clp-dot on"></span><span class="clp-dot on"></span><span class="clp-dot"></span><span class="clp-dot"></span><span class="clp-dot"></span></div>
+            <span class="clp-diff-text">Low</span>
+          </div>
+        </div>
+        <button class="clp-view-btn" onclick="toggleClpCard('clp-6')">
+          <span>View details</span>
+          <svg class="clp-arr" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+      </div>
+
+      <!-- Row 2 full-width expansion panel -->
+      <div class="clp-row-panel" id="clp-panel-r2">
+        <div class="clp-panel-pane" id="clp-pane-4">
+          <div class="clp-panel-hd">
+            <div class="clp-panel-hd-info">
+              <span class="clp-step-tag clp-req-tag">STEP 4</span>
+              <h4 class="clp-panel-title">Insurance & Legal Structure</h4>
+              <span class="clp-cat clp-req">Required</span>
+            </div>
+            <button class="clp-panel-close" onclick="toggleClpCard('clp-4')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Close</button>
+          </div>
+          <div class="clp-panel-body">
+            <div class="clp-det-section">
+              <h5><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>What This Involves</h5>
+              <ul>
+                <li>Obtain professional indemnity insurance that explicitly covers cosmetic injectable procedures — general PI policies often exclude cosmetic work</li>
+                <li>Set up an appropriate business structure: sole trader, company, or trust — each has different tax, liability, and growth implications</li>
+                <li>Register your ABN and business name with ASIC and the Australian Business Register before commencing trade</li>
+                <li>Create legally compliant patient consent forms and comprehensive treatment documentation — these are your primary liability protection</li>
+                <li>Consider employment agreements or contractor arrangements for any staff, using healthcare-specific templates</li>
+              </ul>
+            </div>
+            <div class="clp-det-section">
+              <h5><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Key Considerations</h5>
+              <ul>
+                <li>PI insurance must specifically cover cosmetic injectables — minimum $20M aggregate coverage is standard for cosmetic medicine practitioners</li>
+                <li>Specialist cosmetic medicine insurers (e.g. MDA National, AVANT, Guild) provide more relevant coverage than general business insurers</li>
+                <li>Company structure provides stronger personal asset protection but adds ASIC reporting and company tax obligations</li>
+                <li>Patient consent forms should be drafted or reviewed by a health law solicitor — generic templates may not meet current legal standards</li>
+                <li>Public liability insurance (clinic space) is separate from professional indemnity — you need both types of coverage</li>
+              </ul>
+            </div>
+          </div>
+          <div class="clp-pathway-note clp-req-note">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            <span><strong>Do not skip legal review.</strong> Inadequate consent forms or incorrect business structure are among the most common and costly mistakes for new clinic owners.</span>
+          </div>
+        </div>
+        <div class="clp-panel-pane" id="clp-pane-5">
+          <div class="clp-panel-hd">
+            <div class="clp-panel-hd-info">
+              <span class="clp-step-tag clp-ong-tag">STEP 5</span>
+              <h4 class="clp-panel-title">Marketing & Advertising Compliance</h4>
+              <span class="clp-cat clp-ong">Ongoing Responsibility</span>
+            </div>
+            <button class="clp-panel-close" onclick="toggleClpCard('clp-5')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Close</button>
+          </div>
+          <div class="clp-panel-body">
+            <div class="clp-det-section">
+              <h5><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>What This Involves</h5>
+              <ul>
+                <li>Understand the TGA Therapeutic Goods Advertising Code — applies to any advertising of scheduled medicines or medical devices to consumers</li>
+                <li>Review AHPRA's advertising guidelines for registered health services including social media, websites, and all digital and print content</li>
+                <li>Conduct a full compliance audit of all social media profiles, website content, and promotional materials before launch</li>
+                <li>Develop internal processes and staff training for creating compliant marketing content on an ongoing basis</li>
+                <li>Understand obligations around patient reviews, referral arrangements, and promotional partnerships</li>
+              </ul>
+            </div>
+            <div class="clp-det-section">
+              <h5><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Key Considerations</h5>
+              <ul>
+                <li>Before/after photographs require informed consent, specific disclosures, and must not imply unrealistic outcomes</li>
+                <li>Testimonials referencing a registered health practitioner's services are prohibited under AHPRA advertising guidelines</li>
+                <li>TGA prohibits advertising prescription medicines (anti-wrinkle injectables) by brand or generic name to the general public</li>
+                <li>Promotional pricing requires careful wording to avoid implying reduced safety or quality standards</li>
+                <li>Non-compliance can result in formal complaints, mandatory corrective action, fines, and AHPRA registration proceedings</li>
+              </ul>
+            </div>
+          </div>
+          <div class="clp-pathway-note clp-ong-note">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 4v6h6"/><path d="M3.51 15a9 9 0 1 0 .49-3.1"/></svg>
+            <span><strong>Ongoing responsibility.</strong> Advertising compliance requires continuous review as social media platforms evolve and regulatory interpretations are updated by AHPRA and TGA.</span>
+          </div>
+        </div>
+        <div class="clp-panel-pane" id="clp-pane-6">
+          <div class="clp-panel-hd">
+            <div class="clp-panel-hd-info">
+              <span class="clp-step-tag clp-learn-tag">STEP 6</span>
+              <h4 class="clp-panel-title">Ongoing CPD & Continuous Learning</h4>
+              <span class="clp-cat clp-learn">Continuous Learning</span>
+            </div>
+            <button class="clp-panel-close" onclick="toggleClpCard('clp-6')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Close</button>
+          </div>
+          <div class="clp-panel-body">
+            <div class="clp-det-section">
+              <h5><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>What This Involves</h5>
+              <ul>
+                <li>Meet annual AHPRA CPD requirements — typically 20 hours for RNs/ENs and 35+ hours for medical practitioners per registration year</li>
+                <li>Include cosmetic-specific CPD activities each year — general clinical CPD does not fully substitute for specialty-relevant learning</li>
+                <li>Maintain emergency management competency including anaphylaxis and vascular occlusion protocols — refresh at least annually</li>
+                <li>Attend industry conferences and training events: ASAM, ACAM, and AIAM annual meetings offer high-quality CPD and peer learning</li>
+                <li>Build a documented Professional Development Plan aligned with your clinical goals for AHPRA compliance and career progression</li>
+              </ul>
+            </div>
+            <div class="clp-det-section">
+              <h5><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Key Considerations</h5>
+              <ul>
+                <li>CPD must be relevant to your scope of practice and properly documented — vague records are insufficient for AHPRA compliance audits</li>
+                <li>Vascular occlusion and anaphylaxis management training should be refreshed annually given the high-stakes nature of these emergencies</li>
+                <li>Online CPD must be genuinely educational and verifiable — random online courses may not meet AHPRA quality standards</li>
+                <li>Professional association membership (ASAM, ACAM, AIAM) typically includes CPD opportunities, peer networks, and advocacy resources</li>
+                <li>Advanced training in cannula technique, facial anatomy, and new product indications can expand your clinical scope and market positioning</li>
+              </ul>
+            </div>
+          </div>
+          <div class="clp-pathway-note clp-learn-note">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
+            <span><strong>Learning never stops.</strong> The cosmetic injectable industry evolves rapidly — practitioners who invest in ongoing education consistently achieve better clinical outcomes and long-term business success.</span>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /clp-cards -->
+
+  </div>
+</section>
+
+<!-- ▸ NEXT STEP CTA -->
+<section class="section section-next-step">
+  <div class="container">
+    <div class="nxt-wrap reveal">
+      <div class="nxt-flag-icon">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>
+      </div>
+      <div class="nxt-body">
+        <div class="nxt-left">
+          <h2 class="nxt-heading">Ready to take the next step?</h2>
+          <p class="nxt-sub">IAHPA is here to support you with expert training, resources and a clear pathway to build a safe, successful and compliant practice.</p>
+          <div class="nxt-trust">
+            <div class="nxt-trust-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              <span>Industry recognised training</span>
+            </div>
+            <div class="nxt-trust-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+              <span>Evidence-based education</span>
+            </div>
+            <div class="nxt-trust-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              <span>Expert guidance every step</span>
+            </div>
+            <div class="nxt-trust-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <span>Support for your future goals</span>
+            </div>
+          </div>
+        </div>
+        <div class="nxt-actions">
+          <a href="#contact" class="nxt-btn-primary">Explore Our Courses <span>→</span></a>
+          <a href="#contact" class="nxt-btn-outline">
+            Talk to Our Team
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -644,128 +1142,197 @@
 <section class="section section-scope" id="scope">
   <div class="container">
 
-    <!-- Scope comparison table -->
-    <div class="scope-wrap">
-
-      <div class="scope-left reveal">
-        <p class="eyebrow">Understanding Your Scope</p>
-        <h2>Can you inject, prescribe or own a clinic?</h2>
-        <p class="scope-intro">Your scope of practice depends on your registration type, qualifications, and the laws in your state or territory.</p>
-        <p class="scope-intro">The table alongside provides a general overview. Always check with your regulatory body for specific guidance before making decisions.</p>
-        <div class="scope-note">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-          <div>
-            <strong>Important</strong>
-            <p>Requirements vary by state and individual circumstances. Supervision or collaborative arrangements may be required.</p>
+    <!-- Scope header -->
+    <div class="scope-header-wrap">
+      <p class="eyebrow reveal">Understanding Your Scope</p>
+      <div class="scope-header-cols">
+        <div class="scope-header scope-header-text reveal">
+          <h2>Can you inject, prescribe<br>or own a <em>clinic?</em></h2>
+          <p class="scope-intro">Your scope of practice depends on your registration type, qualifications, and the laws in your state or territory.</p>
+          <p class="scope-intro">The table below provides a general overview. Always check with your regulatory body for specific guidance before making decisions.</p>
+        </div>
+        <div class="scope-header-img-wrap reveal-right">
+          <div class="scope-header-img-frame">
+            <img src="images/Understanding%20Your%20Scope.png" alt="Understanding Your Scope">
           </div>
         </div>
       </div>
+    </div>
 
-      <div class="scope-table-wrap reveal-right">
-        <table class="scope-table">
-          <thead>
-            <tr>
-              <th class="st-role-h">Role</th>
-              <th>
-                <div class="sth-inner">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 2l4 4-3 3-4-4 3-3z"/><line x1="15" y1="5" x2="19" y2="9"/><line x1="3" y1="21" x2="15" y2="9"/></svg>
-                  Inject<small>(Schedule 4)</small>
-                </div>
-              </th>
-              <th>
-                <div class="sth-inner">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="2"/><line x1="12" y1="11" x2="12" y2="17"/><line x1="9" y1="14" x2="15" y2="14"/></svg>
-                  Prescribe<small>(Schedule 4)</small>
-                </div>
-              </th>
-              <th>
-                <div class="sth-inner">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-                  Own &amp; Operate<small>a Clinic</small>
-                </div>
-              </th>
-            </tr>
-          </thead>
-          <tbody>
+    <!-- Full-width scope table -->
+    <div class="scope-table-wrap reveal">
+      <table class="scope-table">
+        <thead>
+          <tr>
+            <th class="st-role-h">
+              <div class="sth-role-inner">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                <div><span>ROLE</span><small>Your registration type</small></div>
+              </div>
+            </th>
+            <th>
+              <div class="sth-inner">
+                <div class="sth-col-ico teal"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 2l4 4-14 14H4v-4L18 2z"/><path d="m14 6 4 4"/></svg></div>
+                <div><span>INJECT</span><small>Can you inject?</small></div>
+              </div>
+            </th>
+            <th>
+              <div class="sth-inner">
+                <div class="sth-col-ico purple"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="2"/><line x1="12" y1="11" x2="12" y2="17"/><line x1="9" y1="14" x2="15" y2="14"/></svg></div>
+                <div><span>PRESCRIBE</span><small>Can you prescribe?</small></div>
+              </div>
+            </th>
+            <th>
+              <div class="sth-inner">
+                <div class="sth-col-ico green"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+                <div><span>OWN &amp; OPERATE</span><small>Can you own &amp; operate a clinic?</small></div>
+              </div>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
 
-            <tr>
-              <td class="st-role">
-                <div class="str-inner">
-                  <div class="str-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
-                  <div class="str-text"><strong>Registered Nurse</strong><span>(RN)</span></div>
-                </div>
-              </td>
-              <td><div class="sc-cell"><div class="sc-ico yes"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></div><div class="sc-text"><strong>Yes</strong><p>With training &amp; within scope. May require supervision initially.</p></div></div></td>
-              <td><div class="sc-cell"><div class="sc-ico no"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round"><line x1="3" y1="3" x2="9" y2="9"/><line x1="9" y1="3" x2="3" y2="9"/></svg></div><div class="sc-text"><strong>No</strong><p>RNs cannot prescribe. A formal prescriber arrangement with a doctor or NP is required.</p></div></div></td>
-              <td><div class="sc-cell"><div class="sc-ico yes"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></div><div class="sc-text"><strong>Yes</strong><p>Can own and operate a clinic providing non-prescriptive cosmetic services.</p></div></div></td>
-            </tr>
+          <!-- Registered Nurse -->
+          <tr class="scope-row" onclick="toggleScopeRow(this)" data-row="rn">
+            <td class="st-role">
+              <div class="str-inner">
+                <div class="str-ico"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" y1="8" x2="19" y2="14"/><line x1="22" y1="11" x2="16" y2="11"/></svg></div>
+                <div class="str-text"><strong>Registered Nurse</strong><span>(RN)</span></div>
+                <svg class="str-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+              </div>
+            </td>
+            <td><div class="sc-cell"><div class="sc-ico yes"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></div><div class="sc-text"><strong>Yes</strong><p>With training &amp; within scope. May require supervision initially.</p></div></div></td>
+            <td><div class="sc-cell"><div class="sc-ico no"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round"><line x1="3" y1="3" x2="9" y2="9"/><line x1="9" y1="3" x2="3" y2="9"/></svg></div><div class="sc-text"><strong>No</strong><p>RNs cannot prescribe. A formal prescriber arrangement with a doctor or NP is required.</p></div></div></td>
+            <td><div class="sc-cell"><div class="sc-ico yes"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></div><div class="sc-text"><strong>Yes</strong><p>Can own and operate a clinic providing non-prescriptive cosmetic services.</p></div></div></td>
+          </tr>
+          <tr class="scope-exp-row" data-for="rn">
+            <td class="scope-exp-role-td"></td>
+            <td class="scope-exp-item-td"><div class="scope-exp-cell-inner"><div class="scope-exp-item"><div class="sei-ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div><div><strong>Training Required</strong><p>Cosmetic injectable training from an approved provider must be completed before treating patients.</p></div></div></div></td>
+            <td class="scope-exp-item-td"><div class="scope-exp-cell-inner"><div class="scope-exp-item"><div class="sei-ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="2"/><path d="m9 12 2 2 4-4"/></svg></div><div><strong>Prescriber Arrangement</strong><p>Must have a formal written prescriber arrangement with a doctor or NP in place before injecting.</p></div></div></div></td>
+            <td class="scope-exp-item-td"><div class="scope-exp-cell-inner"><div class="scope-exp-item"><div class="sei-ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div><div><strong>Clinic Ownership</strong><p>Can own and operate a clinic providing non-prescriptive cosmetic services independently.</p></div></div></div></td>
+          </tr>
 
-            <tr>
-              <td class="st-role">
-                <div class="str-inner">
-                  <div class="str-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/><path d="M9 11l2 2 4-4"/></svg></div>
-                  <div class="str-text"><strong>Nurse Practitioner</strong><span>(NP)</span></div>
-                </div>
-              </td>
-              <td><div class="sc-cell"><div class="sc-ico yes"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></div><div class="sc-text"><strong>Yes</strong><p>Can inject independently within scope of NP endorsement.</p></div></div></td>
-              <td><div class="sc-cell"><div class="sc-ico yes"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></div><div class="sc-text"><strong>Yes</strong><p>Can prescribe Schedule 4 medications with NMBA endorsement.</p></div></div></td>
-              <td><div class="sc-cell"><div class="sc-ico yes"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></div><div class="sc-text"><strong>Yes</strong><p>Full ownership rights. Can own and operate a clinic independently.</p></div></div></td>
-            </tr>
+          <!-- Nurse Practitioner -->
+          <tr class="scope-row" onclick="toggleScopeRow(this)" data-row="np">
+            <td class="st-role">
+              <div class="str-inner">
+                <div class="str-ico"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 4v2a6 6 0 0 0 12 0V4"/><line x1="12" y1="10" x2="12" y2="15"/><circle cx="12" cy="18" r="3"/></svg></div>
+                <div class="str-text"><strong>Nurse Practitioner</strong><span>(NP)</span></div>
+                <svg class="str-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+              </div>
+            </td>
+            <td><div class="sc-cell"><div class="sc-ico yes"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></div><div class="sc-text"><strong>Yes</strong><p>Can inject independently within scope of NP endorsement.</p></div></div></td>
+            <td><div class="sc-cell"><div class="sc-ico yes"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></div><div class="sc-text"><strong>Yes</strong><p>Can prescribe Schedule 4 medications with NMBA endorsement.</p></div></div></td>
+            <td><div class="sc-cell"><div class="sc-ico yes"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></div><div class="sc-text"><strong>Yes</strong><p>Full ownership rights. Can own and operate a clinic independently.</p></div></div></td>
+          </tr>
+          <tr class="scope-exp-row" data-for="np">
+            <td class="scope-exp-role-td"></td>
+            <td class="scope-exp-item-td"><div class="scope-exp-cell-inner"><div class="scope-exp-item"><div class="sei-ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg></div><div><strong>Endorsement Required</strong><p>NMBA NP endorsement is required to inject cosmetic injectables independently within scope.</p></div></div></div></td>
+            <td class="scope-exp-item-td"><div class="scope-exp-cell-inner"><div class="scope-exp-item"><div class="sei-ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="2"/><line x1="12" y1="11" x2="12" y2="17"/><line x1="9" y1="14" x2="15" y2="14"/></svg></div><div><strong>Prescribing Scope</strong><p>Can prescribe cosmetic injectables within the scope of their NMBA NP endorsement only.</p></div></div></div></td>
+            <td class="scope-exp-item-td"><div class="scope-exp-cell-inner"><div class="scope-exp-item"><div class="sei-ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div><div><strong>Independent Practice</strong><p>NPs can own and operate a clinic without a collaborative arrangement with a medical practitioner.</p></div></div></div></td>
+          </tr>
 
-            <tr>
-              <td class="st-role">
-                <div class="str-inner">
-                  <div class="str-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/><line x1="9" y1="11" x2="15" y2="11"/></svg></div>
-                  <div class="str-text"><strong>Enrolled Nurse</strong><span>(EN)</span></div>
-                </div>
-              </td>
-              <td><div class="sc-cell"><div class="sc-ico ltd"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"><line x1="2" y1="6" x2="10" y2="6"/></svg></div><div class="sc-text"><strong>Limited</strong><p>May inject in specific circumstances under RN/NP/medical supervision and delegation.</p></div></div></td>
-              <td><div class="sc-cell"><div class="sc-ico no"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round"><line x1="3" y1="3" x2="9" y2="9"/><line x1="9" y1="3" x2="3" y2="9"/></svg></div><div class="sc-text"><strong>No</strong><p>ENs cannot prescribe under any circumstances.</p></div></div></td>
-              <td><div class="sc-cell"><div class="sc-ico ltd"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"><line x1="2" y1="6" x2="10" y2="6"/></svg></div><div class="sc-text"><strong>Limited</strong><p>May operate under direction of an RN, NP or doctor. Cannot be the sole operator.</p></div></div></td>
-            </tr>
+          <!-- Enrolled Nurse -->
+          <tr class="scope-row" onclick="toggleScopeRow(this)" data-row="en">
+            <td class="st-role">
+              <div class="str-inner">
+                <div class="str-ico"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/><line x1="8" y1="22" x2="16" y2="22"/></svg></div>
+                <div class="str-text"><strong>Enrolled Nurse</strong><span>(EN)</span></div>
+                <svg class="str-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+              </div>
+            </td>
+            <td><div class="sc-cell"><div class="sc-ico ltd"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"><line x1="2" y1="6" x2="10" y2="6"/></svg></div><div class="sc-text"><strong>Limited</strong><p>May inject in specific circumstances under RN/NP/medical supervision and delegation.</p></div></div></td>
+            <td><div class="sc-cell"><div class="sc-ico no"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round"><line x1="3" y1="3" x2="9" y2="9"/><line x1="9" y1="3" x2="3" y2="9"/></svg></div><div class="sc-text"><strong>No</strong><p>ENs cannot prescribe under any circumstances.</p></div></div></td>
+            <td><div class="sc-cell"><div class="sc-ico ltd"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"><line x1="2" y1="6" x2="10" y2="6"/></svg></div><div class="sc-text"><strong>Limited</strong><p>May operate under direction of an RN, NP or doctor. Cannot be the sole operator.</p></div></div></td>
+          </tr>
+          <tr class="scope-exp-row" data-for="en">
+            <td class="scope-exp-role-td"></td>
+            <td class="scope-exp-item-td"><div class="scope-exp-cell-inner"><div class="scope-exp-item"><div class="sei-ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><div><strong>Supervision Required</strong><p>Must be supervised by an RN, NP or Medical Practitioner at all times when injecting.</p></div></div></div></td>
+            <td class="scope-exp-item-td"><div class="scope-exp-cell-inner"><div class="scope-exp-item"><div class="sei-ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="2"/><path d="m9 12 2 2 4-4"/></svg></div><div><strong>Delegation</strong><p>Injection must be formally delegated and documented by a supervising clinician before each session.</p></div></div></div></td>
+            <td class="scope-exp-item-td"><div class="scope-exp-cell-inner"><div class="scope-exp-item"><div class="sei-ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div><strong>Legislation</strong><p>Scope varies by state and your employer's policies. Always verify current requirements locally.</p></div></div></div></td>
+          </tr>
 
-            <tr>
-              <td class="st-role">
-                <div class="str-inner">
-                  <div class="str-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
-                  <div class="str-text"><strong>Medical Practitioner</strong><span>(Doctor)</span></div>
-                </div>
-              </td>
-              <td><div class="sc-cell"><div class="sc-ico yes"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></div><div class="sc-text"><strong>Yes</strong><p>Can inject independently and act as prescriber for other practitioners.</p></div></div></td>
-              <td><div class="sc-cell"><div class="sc-ico yes"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></div><div class="sc-text"><strong>Yes</strong><p>Full prescribing authority for all Schedule 4 medications within scope.</p></div></div></td>
-              <td><div class="sc-cell"><div class="sc-ico yes"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></div><div class="sc-text"><strong>Yes</strong><p>Can own and operate a clinic with full prescribing and clinical authority.</p></div></div></td>
-            </tr>
+          <!-- Medical Practitioner -->
+          <tr class="scope-row" onclick="toggleScopeRow(this)" data-row="doctor">
+            <td class="st-role">
+              <div class="str-inner">
+                <div class="str-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+                <div class="str-text"><strong>Medical Practitioner</strong><span>(Doctor)</span></div>
+                <svg class="str-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+              </div>
+            </td>
+            <td><div class="sc-cell"><div class="sc-ico yes"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></div><div class="sc-text"><strong>Yes</strong><p>Can inject independently and act as prescriber for other practitioners.</p></div></div></td>
+            <td><div class="sc-cell"><div class="sc-ico yes"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></div><div class="sc-text"><strong>Yes</strong><p>Full prescribing authority for all Schedule 4 medications within scope.</p></div></div></td>
+            <td><div class="sc-cell"><div class="sc-ico yes"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></div><div class="sc-text"><strong>Yes</strong><p>Can own and operate a clinic with full prescribing and clinical authority.</p></div></div></td>
+          </tr>
+          <tr class="scope-exp-row" data-for="doctor">
+            <td class="scope-exp-role-td"></td>
+            <td class="scope-exp-item-td"><div class="scope-exp-cell-inner"><div class="scope-exp-item"><div class="sei-ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="2"/><line x1="12" y1="11" x2="12" y2="17"/><line x1="9" y1="14" x2="15" y2="14"/></svg></div><div><strong>Prescribing Authority</strong><p>Full Schedule 4 prescribing authority for cosmetic injectables. No collaborative arrangement required.</p></div></div></div></td>
+            <td class="scope-exp-item-td"><div class="scope-exp-cell-inner"><div class="scope-exp-item"><div class="sei-ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><div><strong>Full Scope</strong><p>Full Schedule 4 prescribing authority. Can act as prescriber for nurses and other practitioners.</p></div></div></div></td>
+            <td class="scope-exp-item-td"><div class="scope-exp-cell-inner"><div class="scope-exp-item"><div class="sei-ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div><div><strong>Clinic Ownership</strong><p>Can own and operate clinics with full prescribing and clinical authority under the Medical Board.</p></div></div></div></td>
+          </tr>
 
-            <tr>
-              <td class="st-role">
-                <div class="str-inner">
-                  <div class="str-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2a4 4 0 0 1 4 4c0 1.5-.5 2.8-1.4 3.8L12 22l-2.6-12.2A5 5 0 0 1 8 6a4 4 0 0 1 4-4z"/><circle cx="12" cy="6" r="1.5" fill="currentColor"/></svg></div>
-                  <div class="str-text"><strong>Dentist</strong><span>Dental Practitioner</span></div>
-                </div>
-              </td>
-              <td><div class="sc-cell"><div class="sc-ico yes"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></div><div class="sc-text"><strong>Yes</strong><p>Can inject within scope of dental practice including facial aesthetics.</p></div></div></td>
-              <td><div class="sc-cell"><div class="sc-ico ltd"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"><line x1="2" y1="6" x2="10" y2="6"/></svg></div><div class="sc-text"><strong>Limited</strong><p>Can prescribe within dental scope. Some Schedule 4 medications may require additional approvals.</p></div></div></td>
-              <td><div class="sc-cell"><div class="sc-ico yes"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></div><div class="sc-text"><strong>Yes</strong><p>Can own and operate a cosmetic clinic alongside or separately from dental practice.</p></div></div></td>
-            </tr>
+          <!-- Dentist -->
+          <tr class="scope-row" onclick="toggleScopeRow(this)" data-row="dentist">
+            <td class="st-role">
+              <div class="str-inner">
+                <div class="str-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a4 4 0 0 1 4 4c0 1.5-.5 2.8-1.4 3.8L12 22l-2.6-12.2A5 5 0 0 1 8 6a4 4 0 0 1 4-4z"/></svg></div>
+                <div class="str-text"><strong>Dentist</strong><span>Dental Practitioner</span></div>
+                <svg class="str-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+              </div>
+            </td>
+            <td><div class="sc-cell"><div class="sc-ico yes"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></div><div class="sc-text"><strong>Yes</strong><p>Can inject within scope of dental practice including facial aesthetics.</p></div></div></td>
+            <td><div class="sc-cell"><div class="sc-ico ltd"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"><line x1="2" y1="6" x2="10" y2="6"/></svg></div><div class="sc-text"><strong>Limited</strong><p>Can prescribe within dental scope. Some Schedule 4 medications may require additional approvals.</p></div></div></td>
+            <td><div class="sc-cell"><div class="sc-ico yes"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></div><div class="sc-text"><strong>Yes</strong><p>Can own and operate a cosmetic clinic alongside or separately from dental practice.</p></div></div></td>
+          </tr>
+          <tr class="scope-exp-row" data-for="dentist">
+            <td class="scope-exp-role-td"></td>
+            <td class="scope-exp-item-td"><div class="scope-exp-cell-inner"><div class="scope-exp-item"><div class="sei-ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2a4 4 0 0 1 4 4c0 1.5-.5 2.8-1.4 3.8L12 22l-2.6-12.2A5 5 0 0 1 8 6a4 4 0 0 1 4-4z"/></svg></div><div><strong>Dental Scope Only</strong><p>Injectable scope is limited to areas within recognised dental practice. Cosmetic areas may vary.</p></div></div></div></td>
+            <td class="scope-exp-item-td"><div class="scope-exp-cell-inner"><div class="scope-exp-item"><div class="sei-ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div><div><strong>Prescribing Limits</strong><p>Some Schedule 4 medications for cosmetics require additional Dental Board approvals beyond standard scope.</p></div></div></div></td>
+            <td class="scope-exp-item-td"><div class="scope-exp-cell-inner"><div class="scope-exp-item"><div class="sei-ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div><div><strong>Separate Clinic</strong><p>Can own and operate a separate cosmetic clinic with appropriate staffing arrangements.</p></div></div></div></td>
+          </tr>
 
-          </tbody>
-        </table>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Legend + CTA footer -->
+    <div class="scope-footer reveal">
+      <div class="scope-legend">
+        <div class="scope-leg-item">
+          <div class="sc-ico yes"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></div>
+          <div><span>Yes</span><small>Permitted within scope</small></div>
+        </div>
+        <div class="scope-leg-item">
+          <div class="sc-ico ltd"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"><line x1="2" y1="6" x2="10" y2="6"/></svg></div>
+          <div><span>Limited</span><small>Conditional / Supervised</small></div>
+        </div>
+        <div class="scope-leg-item">
+          <div class="sc-ico no"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round"><line x1="3" y1="3" x2="9" y2="9"/><line x1="9" y1="3" x2="3" y2="9"/></svg></div>
+          <div><span>No</span><small>Not permitted</small></div>
+        </div>
       </div>
     </div>
 
     <!-- State & Territory considerations -->
     <div class="states-section reveal">
       <div class="states-head">
-        <div class="states-map-ico">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
-        </div>
-        <div class="states-head-text">
-          <span class="states-eyebrow">State &amp; Territory Considerations</span>
+        <div class="states-head-left">
+          <div class="states-head-top">
+            <div class="states-map-ico">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <span class="states-eyebrow">State &amp; Territory Considerations</span>
+          </div>
           <p>While core national regulations apply, each state and territory has its own health laws, facility requirements, and notification processes. Always verify current requirements with the relevant authority.</p>
+        </div>
+        <div class="states-head-img">
+          <img src="images/location%20custom.png" alt="Location">
         </div>
       </div>
       <div class="states-grid">
         <div class="state-col">
+          <div class="state-loc-ico"><svg viewBox="170 2 112 136" xmlns="http://www.w3.org/2000/svg"><path d="M 204.81875,5.2875 L 203.975,5.50625 L 203.31875,6.7875 L 202.06875,7.19375 L 202.25625,8.25625 L 201.63125,11.0375 L 201.4125,11.0375 L 201.19375,12.5375 L 201.85,12.5375 L 201.00625,12.725 L 200.7875,14.00625 L 201.19375,14.6625 L 201.63125,14.225 L 201.19375,14.88125 L 200.7875,14.6625 L 200.56875,15.50625 L 200.35,14.00625 L 199.2875,15.725 L 199.9125,15.94375 L 199.2875,15.94375 L 198.44375,18.06875 L 199.06875,18.06875 L 198.85,17.225 L 199.50625,17.4125 L 199.06875,17.63125 L 199.9125,18.2875 L 201.00625,18.2875 L 199.9125,18.69375 L 201.00625,19.13125 L 200.56875,19.35 L 200.7875,20.4125 L 199.9125,18.9125 L 199.50625,19.975 L 198.44375,20.81875 L 199.06875,22.75625 L 198.85,23.38125 L 199.2875,23.1625 L 199.06875,23.38125 L 199.50625,23.6 L 198.6625,23.6 L 197.56875,26.7875 L 198.6625,29.13125 L 198.00625,31.25625 L 198.85,35.1 L 197.56875,38.50625 L 196.94375,41.06875 L 197.38125,42.13125 L 195.88125,46.38125 L 194.1625,48.50625 L 193.75625,51.2875 L 191.81875,52.7875 L 188.225,53.63125 L 187.7875,53.4125 L 186.50625,52.56875 L 185.00625,52.35 L 184.1625,51.2875 L 182.6625,50.63125 L 182.25625,48.725 L 181.4125,47.88125 L 178.63125,47.0375 L 175.225,46.6 L 173.4125,44.19375 L 173.4125,117.35 L 194.1625,117.35 L 194.1625,134.2875 L 247.2875,134.35 L 248.1625,133.88125 L 248.1,133.35 L 248.81875,133.2875 L 248.9125,132.1625 L 250.00625,132.25625 L 250.7875,131.06875 L 251.35,131.0375 L 252.6625,131.44375 L 253.94375,131.6625 L 255.38125,131.1625 L 256.2875,131.06875 L 256.50625,131.6 L 257.225,131.5375 L 257.975,131.81875 L 258.56875,132.13125 L 260.19375,132.1625 L 261.31875,132.4125 L 261.975,133.25625 L 262.38125,133.75625 L 262.81875,134.44375 L 262.88125,135.1625 L 263.35,136.225 L 264.0375,135.7875 L 264.35,135.225 L 265.00625,134.4125 L 265.6625,133.63125 L 266.06875,134.31875 L 266.85,134.6 L 267.88125,134.13125 L 268.00625,133.56875 L 268.6625,132.7875 L 267.94375,132.85 L 267.6625,131.7875 L 267.75625,131.0375 L 268.6625,130.94375 L 269.75625,130.85 L 270.4125,130.225 L 271.2875,129.6 L 272.225,129.88125 L 273.0375,130.69375 L 274.06875,130.225 L 275.00625,130.50625 L 275.56875,130.44375 L 276.06875,130.225 L 276.6,129.81875 L 277.50625,129.9125 L 278.475,129.88125 L 278.50625,129.44375 L 277.6625,128.6 L 277.06875,126.0375 L 276.6,124.13125 L 275.975,123.25625 L 275.31875,123.69375 L 275.75625,123.0375 L 274.88125,122.63125 L 275.5375,121.975 L 274.88125,121.35 L 275.75625,120.9125 L 275.1,120.2875 L 275.1,119.63125 L 276.1625,120.9125 L 275.5375,119.00625 L 275.31875,119.63125 L 275.75625,117.94375 L 275.31875,117.6625 L 275.5375,115.81875 L 275.1,115.81875 L 275.975,112.4125 L 275.5375,112.4125 L 275.1,111.5375 L 274.69375,112.81875 L 274.88125,111.75625 L 274.25625,111.75625 L 274.69375,111.35 L 273.81875,110.69375 L 273.81875,109.4125 L 274.475,108.7875 L 273.19375,109.19375 L 274.25625,108.7875 L 274.0375,107.725 L 271.69375,107.06875 L 272.35,106.6625 L 271.06875,105.1625 L 271.2875,104.31875 L 270.63125,103.88125 L 270.4125,104.31875 L 270.63125,103.6625 L 269.35,103.0375 L 269.35,103.25625 L 268.2875,102.19375 L 267.225,99.4125 L 266.38125,99.19375 L 266.6,98.35 L 266.1625,98.975 L 266.1625,98.35 L 265.5375,98.13125 L 265.94375,98.975 L 265.1,98.56875 L 265.1,98.975 L 264.25625,98.56875 L 264.25625,98.975 L 261.475,95.1625 L 260.85,96.00625 L 259.975,94.725 L 260.4125,94.50625 L 259.7875,93.225 L 260.19375,92.81875 L 259.56875,90.475 L 259.975,90.475 L 260.19375,88.75625 L 259.7875,87.69375 L 259.7875,88.35 L 259.35,88.13125 L 258.9125,87.2875 L 259.56875,87.50625 L 259.7875,87.2875 L 259.13125,86.225 L 259.13125,87.06875 L 258.9125,86.225 L 258.50625,86.00625 L 258.2875,86.63125 L 258.9125,87.69375 L 258.50625,87.50625 L 258.9125,88.56875 L 255.94375,86.4125 L 254.88125,84.725 L 254.6625,85.1625 L 254.0375,86.225 L 254.6625,87.69375 L 255.1,88.56875 L 254.6625,88.13125 L 253.38125,86.63125 L 252.1,88.13125 L 252.75625,86.63125 L 251.88125,86.63125 L 252.31875,86.4125 L 252.1,86.00625 L 251.25625,86.225 L 252.1,85.7875 L 250.81875,82.81875 L 251.25625,80.475 L 251.0375,80.88125 L 250.19375,80.0375 L 249.975,80.475 L 249.975,78.5375 L 249.13125,78.975 L 249.35,78.31875 L 249.13125,78.31875 L 249.5375,77.25625 L 248.69375,76.4125 L 248.06875,76.85 L 248.25625,76.00625 L 246.7875,76.00625 L 246.56875,75.35 L 247.00625,75.13125 L 245.94375,74.50625 L 246.13125,74.06875 L 245.50625,73.44375 L 246.13125,73.225 L 245.725,72.7875 L 246.35,73.00625 L 246.56875,72.56875 L 247.63125,73.44375 L 246.35,71.31875 L 245.94375,71.50625 L 245.94375,70.88125 L 245.2875,70.88125 L 245.06875,70.0375 L 244.44375,70.0375 L 244.225,70.0375 L 244.225,70.88125 L 243.6,70.6625 L 242.725,69.81875 L 242.94375,69.6 L 242.94375,69.38125 L 241.88125,68.75625 L 240.6,68.975 L 240.19375,67.475 L 239.5375,67.475 L 239.975,68.5375 L 239.1,68.31875 L 237.85,67.0375 L 238.69375,67.475 L 237.4125,64.69375 L 237.4125,65.56875 L 235.50625,65.75625 L 234.63125,63.85 L 234.44375,64.69375 L 233.7875,64.69375 L 233.1625,63.85 L 231.00625,63.00625 L 229.75625,61.50625 L 230.1625,59.1625 L 229.31875,59.1625 L 227.81875,56.6 L 228.88125,52.975 L 228.475,52.975 L 228.475,51.2875 L 227.19375,48.94375 L 227.6,47.88125 L 226.5375,48.1 L 224.00625,44.69375 L 224.00625,43.63125 L 224.4125,43.63125 L 224.4125,42.13125 L 223.56875,41.06875 L 223.35,38.725 L 222.50625,37.88125 L 223.56875,36.6 L 223.56875,36.38125 L 222.9125,36.6 L 222.725,35.5375 L 223.56875,34.475 L 223.13125,34.475 L 222.725,33.6 L 221.44375,33.4125 L 220.56875,32.13125 L 219.1,31.69375 L 218.0375,28.9125 L 216.75625,29.975 L 215.9125,29.56875 L 215.475,30.85 L 214.19375,31.475 L 213.13125,30.63125 L 212.50625,27.85 L 211.4125,26.1625 L 211.85,24.0375 L 211.225,21.9125 L 211.4125,19.975 L 210.1625,20.4125 L 210.7875,18.475 L 209.50625,17.63125 L 209.50625,16.7875 L 208.44375,16.56875 L 208.225,15.06875 L 209.50625,14.00625 L 208.44375,13.6 L 207.6,13.81875 L 206.94375,13.1625 L 206.94375,9.975 L 206.1,7.4125 L 205.475,7.4125 L 205.0375,6.56875 L 205.0375,6.975 L 204.19375,7.4125 L 205.25625,5.69375 L 205.0375,5.50625 L 204.81875,5.2875 z"/></svg></div>
           <h6 class="state-name">Queensland</h6>
           <ul class="state-list">
             <li>Health Facilities Act 1999 applies</li>
@@ -775,6 +1342,7 @@
           </ul>
         </div>
         <div class="state-col">
+          <div class="state-loc-ico"><svg viewBox="191 127 91 86" xmlns="http://www.w3.org/2000/svg"><path d="M 271.2875,129.6 L 270.4125,130.225 L 269.75625,130.85 L 268.6625,130.94375 L 267.75625,131.0375 L 267.6625,131.7875 L 267.94375,132.85 L 268.6625,132.7875 L 268.00625,133.56875 L 267.88125,134.13125 L 266.85,134.6 L 266.06875,134.31875 L 265.6625,133.63125 L 265.00625,134.4125 L 264.35,135.225 L 264.0375,135.7875 L 263.35,136.225 L 262.88125,135.1625 L 262.81875,134.44375 L 262.38125,133.75625 L 261.975,133.25625 L 261.31875,132.4125 L 260.19375,132.1625 L 258.56875,132.13125 L 257.975,131.81875 L 257.225,131.5375 L 256.50625,131.6 L 256.2875,131.06875 L 255.38125,131.1625 L 253.94375,131.6625 L 252.6625,131.44375 L 251.35,131.0375 L 250.7875,131.06875 L 250.00625,132.25625 L 248.9125,132.1625 L 248.81875,133.2875 L 248.1,133.35 L 248.1625,133.88125 L 247.2875,134.35 L 194.1625,134.2875 L 194.1625,179.35 L 194.1625,179.38125 L 194.225,179.6 L 195.35,179.4125 L 197.19375,180.2875 L 198.225,179.56875 L 199.975,179.85 L 202.1,180.1 L 203.81875,181.5375 L 204.31875,183.56875 L 205.4125,184.5375 L 205.44375,183.56875 L 206.50625,183.0375 L 207.475,183.25625 L 209.19375,183.38125 L 210.19375,183.7875 L 210.81875,186.5375 L 212.25625,188.6 L 213.38125,188.63125 L 215.00625,189.31875 L 216.975,191.1 L 217.35,192.38125 L 218.63125,193.31875 L 220.25625,194.00625 L 221.56875,193.81875 L 221.31875,192.35 L 221.81875,191.69375 L 222.5375,191.6 L 223.38125,192.0375 L 225.225,191.75625 L 226.6625,192.475 L 227.56875,192.35 L 228.7875,192.9125 L 229.975,193.13125 L 230.63125,192.44375 L 231.50625,192.13125 L 232.56875,192.725 L 234.50625,193.19375 L 235.975,192.7875 L 237.0375,192.44375 L 237.7875,192.31875 L 238.50625,192.0375 L 239.4125,191.69375 L 240.81875,192.44375 L 240.63125,193.6 L 241.19375,194.81875 L 241.9125,195.85 L 242.25625,196.94375 L 242.1,198.2875 L 250.2875,202.35 L 252.00625,202.475 L 252.725,203.13125 L 253.38125,203.13125 L 253.225,203.56875 L 253.35,203.6625 L 254.44375,203.13125 L 254.225,201.4125 L 254.6625,201.19375 L 255.1,201.19375 L 254.6625,200.13125 L 253.81875,199.9125 L 254.225,199.06875 L 253.81875,198.00625 L 254.225,198.225 L 254.6625,196.725 L 255.50625,193.31875 L 255.2875,191.19375 L 255.725,189.9125 L 255.2875,189.9125 L 256.35,189.06875 L 255.725,188.225 L 256.56875,188.4125 L 258.2875,184.38125 L 259.75625,183.94375 L 259.13125,182.6625 L 259.75625,182.475 L 259.75625,183.31875 L 260.19375,183.1 L 259.75625,181.81875 L 259.35,182.0375 L 259.56875,181.6 L 258.69375,181.4125 L 260.19375,180.75625 L 260.63125,179.25625 L 260.19375,178.63125 L 260.85,178.4125 L 260.85,176.9125 L 262.5375,175.225 L 261.9125,175.00625 L 262.975,174.7875 L 261.69375,174.38125 L 263.1625,174.1625 L 263.38125,173.1 L 262.75625,173.50625 L 262.31875,173.1 L 262.975,173.31875 L 262.75625,172.6625 L 263.38125,173.1 L 263.6,171.38125 L 263.6,171.1625 L 263.1625,171.6 L 263.1625,170.975 L 262.975,171.1625 L 262.75625,170.5375 L 263.38125,170.975 L 263.6,169.9125 L 263.6,170.75625 L 264.44375,170.31875 L 264.6625,169.25625 L 264.25625,168.85 L 265.1,168.85 L 265.725,167.13125 L 265.1,167.975 L 264.88125,167.13125 L 265.50625,167.13125 L 265.50625,166.2875 L 265.725,167.13125 L 266.6,165.63125 L 266.38125,165.225 L 266.7875,165.225 L 266.7875,165.85 L 269.35,164.35 L 268.50625,164.1625 L 267.6625,164.7875 L 267.44375,164.56875 L 267.85,164.1625 L 267.6625,163.725 L 268.50625,164.1625 L 269.13125,163.725 L 269.35,164.1625 L 270.19375,162.88125 L 271.69375,162.00625 L 271.9125,160.31875 L 271.25625,160.1 L 271.25625,160.5375 L 270.4125,160.1 L 271.25625,160.1 L 271.475,160.1 L 271.69375,158.6 L 273.19375,157.35 L 275.1,151.1625 L 274.88125,146.9125 L 276.38125,143.06875 L 276.6,142.4125 L 277.225,138.81875 L 276.6,138.38125 L 277.225,138.6 L 277.0375,137.75625 L 278.725,134.5375 L 278.2875,134.5375 L 278.725,134.35 L 278.94375,132.63125 L 278.2875,131.7875 L 278.475,129.88125 L 277.50625,129.9125 L 276.6,129.81875 L 276.06875,130.225 L 275.56875,130.44375 L 275.00625,130.50625 L 274.06875,130.225 L 273.0375,130.69375 L 272.225,129.88125 L 271.2875,129.6 z"/></svg></div>
           <h6 class="state-name">New South Wales</h6>
           <ul class="state-list">
             <li>Health Services Act 1997 applies</li>
@@ -784,6 +1352,7 @@
           </ul>
         </div>
         <div class="state-col">
+          <div class="state-loc-ico"><svg viewBox="192 177 64 42" xmlns="http://www.w3.org/2000/svg"><path d="M 253.1625,203.75625 L 252.5375,203.13125 L 252.725,203.13125 L 252.00625,202.475 L 250.2875,202.35 L 242.1,198.2875 L 242.25625,196.94375 L 241.9125,195.85 L 241.19375,194.81875 L 240.63125,193.6 L 240.81875,192.44375 L 239.4125,191.69375 L 238.50625,192.0375 L 237.7875,192.31875 L 237.0375,192.44375 L 235.975,192.7875 L 234.50625,193.19375 L 232.56875,192.725 L 231.50625,192.13125 L 230.63125,192.44375 L 229.975,193.13125 L 228.7875,192.9125 L 227.56875,192.35 L 226.6625,192.475 L 225.225,191.75625 L 223.38125,192.0375 L 222.5375,191.6 L 221.81875,191.69375 L 221.31875,192.35 L 221.56875,193.81875 L 220.25625,194.00625 L 218.63125,193.31875 L 217.35,192.38125 L 216.975,191.1 L 215.00625,189.31875 L 213.38125,188.63125 L 212.25625,188.6 L 210.81875,186.5375 L 210.19375,183.7875 L 209.19375,183.38125 L 207.475,183.25625 L 206.50625,183.0375 L 205.44375,183.56875 L 205.4125,184.5375 L 204.31875,183.56875 L 203.81875,181.5375 L 202.1,180.1 L 199.975,179.85 L 198.225,179.56875 L 197.19375,180.2875 L 195.35,179.4125 L 194.225,179.6 L 194.1625,179.38125 L 194.1625,207.7875 L 194.6,207.81875 L 196.94375,209.725 L 196.94375,210.7875 L 197.6,210.56875 L 198.225,211.00625 L 199.50625,209.50625 L 202.06875,210.7875 L 203.75625,210.35 L 211.63125,214.63125 L 214.85,211.44375 L 217.38125,209.725 L 218.88125,209.725 L 219.31875,208.44375 L 217.81875,208.88125 L 216.975,208.225 L 218.0375,208.225 L 220.7875,206.1 L 222.06875,208.6625 L 220.7875,210.35 L 218.88125,209.94375 L 220.7875,211.63125 L 222.06875,210.7875 L 222.725,211.00625 L 222.9125,209.2875 L 224.4125,209.2875 L 224.85,210.56875 L 224.00625,210.7875 L 223.7875,212.06875 L 225.25625,213.13125 L 226.75625,212.9125 L 226.975,213.35 L 226.35,213.13125 L 227.4125,215.0375 L 228.25625,214.4125 L 229.1,214.85 L 228.88125,214.19375 L 229.75625,215.9125 L 230.81875,216.975 L 231.225,214.19375 L 229.94375,215.0375 L 229.5375,213.35 L 231.6625,213.35 L 234.19375,212.50625 L 238.25625,208.225 L 241.0375,206.5375 L 237.63125,208.00625 L 239.5375,206.75625 L 239.475,206.6625 L 238.9125,206.1 L 240.38125,206.5375 L 242.1,205.88125 L 241.88125,206.31875 L 251.25625,205.475 L 253.1625,203.75625 z"/></svg></div>
           <h6 class="state-name">Victoria</h6>
           <ul class="state-list">
             <li>Health Services Act 1988 applies</li>
@@ -793,6 +1362,7 @@
           </ul>
         </div>
         <div class="state-col">
+          <div class="state-loc-ico"><svg viewBox="3 20 116 168" xmlns="http://www.w3.org/2000/svg"><path d="M 113.85,156.31875 L 113.85,117.35 L 113.85,33.81875 L 112.6,33.81875 L 112.19375,33.38125 L 111.35,33.19375 L 110.06875,33.38125 L 110.9125,34.0375 L 111.13125,34.88125 L 110.2875,33.81875 L 110.9125,34.88125 L 110.69375,34.6625 L 110.475,35.1 L 110.06875,34.6625 L 109.85,35.5375 L 109.4125,34.44375 L 109.00625,35.1 L 110.06875,38.06875 L 109.63125,38.06875 L 109.4125,37.00625 L 108.35,35.94375 L 108.35,37.6625 L 107.725,38.2875 L 108.13125,37.44375 L 107.725,36.7875 L 108.13125,36.6 L 107.9125,35.31875 L 108.56875,33.81875 L 108.13125,33.81875 L 109.00625,33.6 L 108.56875,32.975 L 109.00625,32.75625 L 107.50625,31.69375 L 107.2875,32.13125 L 105.38125,29.13125 L 103.88125,28.2875 L 103.6625,27.44375 L 103.0375,27.225 L 103.25625,27.85 L 102.6,27.225 L 102.1625,27.63125 L 102.1625,27.225 L 101.75625,27.63125 L 101.31875,26.56875 L 100.0375,26.1625 L 100.0375,26.56875 L 99.19375,26.38125 L 99.63125,27.44375 L 100.475,27.85 L 100.1,27.81875 L 98.975,27.63125 L 99.19375,28.2875 L 98.75625,28.725 L 98.56875,28.2875 L 98.35,29.56875 L 97.69375,28.2875 L 97.2875,28.50625 L 97.69375,27.44375 L 96.4125,28.2875 L 96.225,28.725 L 96.63125,29.13125 L 95.7875,29.56875 L 95.56875,28.50625 L 95.1625,28.50625 L 95.56875,28.06875 L 95.1625,28.06875 L 95.56875,27.63125 L 94.94375,28.06875 L 94.2875,27.85 L 94.2875,28.2875 L 94.1,27.85 L 94.1,28.2875 L 95.35,28.9125 L 94.50625,29.56875 L 94.725,30.19375 L 94.1,30.63125 L 94.50625,31.475 L 93.6625,31.475 L 93.6625,32.5375 L 93.00625,31.9125 L 93.225,31.06875 L 92.38125,31.25625 L 92.38125,30.63125 L 91.75625,32.31875 L 91.94375,30.4125 L 92.38125,29.7875 L 91.5375,29.35 L 91.5375,31.69375 L 90.88125,31.475 L 90.475,32.31875 L 90.25625,31.69375 L 89.81875,32.13125 L 90.0375,31.25625 L 89.19375,32.13125 L 89.6,32.31875 L 88.31875,32.975 L 88.975,33.81875 L 89.6,33.81875 L 88.75625,34.475 L 90.0375,34.88125 L 90.25625,34.475 L 90.6625,34.6625 L 89.81875,35.5375 L 90.88125,35.94375 L 89.81875,35.94375 L 89.4125,35.31875 L 88.5375,35.94375 L 87.9125,34.475 L 87.475,34.6625 L 87.69375,35.5375 L 86.4125,35.725 L 86.85,35.94375 L 86.63125,36.6 L 87.9125,35.725 L 86.63125,36.81875 L 87.06875,37.225 L 88.13125,36.6 L 88.13125,37.00625 L 88.5375,37.00625 L 87.9125,37.6625 L 89.19375,38.725 L 88.13125,37.88125 L 87.69375,38.2875 L 87.25625,37.44375 L 86.4125,37.225 L 86.4125,36.7875 L 85.7875,37.225 L 85.35,38.06875 L 85.13125,37.6625 L 84.9125,38.2875 L 84.06875,38.06875 L 84.2875,38.2875 L 83.44375,38.94375 L 83.85,39.13125 L 83.225,39.35 L 84.06875,41.69375 L 84.2875,41.31875 L 84.725,40.85 L 84.35,41.19375 L 84.9125,40.19375 L 85.56875,39.7875 L 85.13125,40.19375 L 85.7875,40.19375 L 84.9125,40.85 L 84.725,42.35 L 85.13125,42.35 L 84.2875,42.75625 L 84.725,42.975 L 84.2875,43.19375 L 83.85,42.13125 L 83.44375,44.0375 L 84.9125,43.81875 L 85.75625,44.25625 L 83.85,44.475 L 83.44375,44.0375 L 83.00625,44.475 L 83.38125,44.69375 L 82.38125,44.88125 L 83.00625,44.69375 L 82.38125,44.475 L 81.725,43.63125 L 80.25625,42.975 L 80.88125,43.63125 L 80.44375,43.63125 L 80.88125,44.25625 L 80.0375,43.63125 L 79.38125,43.4125 L 79.1625,42.975 L 79.6,42.975 L 78.75625,42.5375 L 78.75625,42.975 L 78.1,42.75625 L 78.31875,43.19375 L 77.9125,42.75625 L 78.31875,43.4125 L 77.9125,43.63125 L 78.75625,43.81875 L 78.975,44.25625 L 78.31875,44.0375 L 78.975,44.475 L 78.5375,44.475 L 78.31875,44.475 L 77.475,44.475 L 78.5375,45.1 L 77.06875,45.1 L 77.475,45.75625 L 77.69375,45.31875 L 78.31875,45.5375 L 77.475,46.1625 L 78.975,46.6 L 79.38125,47.88125 L 80.25625,47.44375 L 80.25625,47.0375 L 80.6625,47.225 L 79.6,48.2875 L 80.0375,48.725 L 79.38125,48.50625 L 80.475,50.44375 L 78.5375,48.50625 L 77.9125,48.725 L 78.75625,50.225 L 78.31875,50.00625 L 77.9125,51.06875 L 77.9125,52.13125 L 76.63125,50.85 L 75.975,48.725 L 75.13125,48.1 L 75.13125,46.38125 L 74.50625,46.38125 L 73.85,45.75625 L 74.06875,44.88125 L 74.725,44.69375 L 74.2875,44.0375 L 73.63125,44.25625 L 72.38125,46.38125 L 73.00625,47.0375 L 71.2875,46.81875 L 71.1,47.44375 L 71.50625,48.2875 L 70.6625,47.88125 L 70.6625,48.2875 L 69.81875,48.50625 L 69.1625,49.38125 L 69.6,49.56875 L 68.5375,50.44375 L 68.31875,52.35 L 68.94375,53.85 L 68.5375,55.31875 L 70.0375,55.5375 L 70.0375,56.38125 L 67.0375,58.5375 L 66.19375,58.725 L 65.5375,59.6 L 65.975,60.225 L 64.9125,60.44375 L 65.13125,61.2875 L 64.06875,63.225 L 61.50625,66.4125 L 55.5375,68.975 L 54.0375,69.1625 L 52.56875,69.1625 L 51.9125,69.6 L 51.06875,70.225 L 50.44375,69.6 L 48.50625,69.1625 L 48.725,69.6 L 48.1,69.38125 L 47.88125,69.6 L 46.38125,71.50625 L 41.9125,72.38125 L 41.9125,71.94375 L 40.225,73.00625 L 40.4125,73.44375 L 39.7875,73.44375 L 39.35,74.2875 L 38.2875,74.50625 L 38.2875,74.2875 L 36.6,75.13125 L 35.31875,74.50625 L 35.1,73.85 L 33.6,74.725 L 32.975,74.50625 L 32.5375,74.2875 L 33.19375,73.225 L 32.75625,73.225 L 31.69375,74.50625 L 31.9125,74.725 L 31.475,74.725 L 29.35,75.7875 L 28.69375,75.35 L 28.50625,76.4125 L 26.7875,77.25625 L 26.1625,78.5375 L 25.1,78.75625 L 24.0375,80.475 L 19.975,81.5375 L 18.2875,82.6 L 18.06875,83.88125 L 17.63125,84.06875 L 17.19375,83.88125 L 17.4125,84.725 L 16.7875,85.7875 L 17.19375,86.225 L 16.7875,86.00625 L 17.00625,86.4125 L 16.13125,87.475 L 15.725,86.85 L 14.6625,87.475 L 15.06875,86.00625 L 14.6625,86.4125 L 14.44375,84.94375 L 15.2875,82.38125 L 13.7875,82.81875 L 11.6625,87.9125 L 12.725,90.69375 L 12.31875,91.975 L 12.5375,94.50625 L 10.38125,97.50625 L 9.975,101.31875 L 11.6625,104.1 L 11.44375,104.5375 L 11.88125,106.225 L 12.725,106.88125 L 15.06875,111.56875 L 15.725,111.75625 L 15.94375,112.81875 L 15.2875,112.81875 L 15.50625,115.1625 L 14.44375,116.44375 L 13.38125,114.75625 L 13.1625,112.4125 L 13.1625,113.475 L 12.1,114.31875 L 12.31875,111.975 L 10.6,109.225 L 9.975,110.9125 L 10.38125,111.35 L 10.38125,110.475 L 11.0375,113.69375 L 13.1625,115.38125 L 12.94375,117.31875 L 11.6625,117.94375 L 11.44375,116.44375 L 11.25625,117.725 L 10.81875,115.1625 L 10.6,116.44375 L 9.75625,113.0375 L 9.975,115.81875 L 9.31875,115.38125 L 9.31875,113.0375 L 9.13125,114.75625 L 8.25625,114.1 L 13.7875,122.19375 L 15.06875,125.6 L 14.6625,126.6625 L 15.06875,128.81875 L 17.4125,131.56875 L 18.06875,132.85 L 17.85,133.69375 L 19.75625,136.25625 L 20.63125,139.25625 L 20.4125,143.06875 L 21.0375,146.9125 L 25.2875,155.85 L 25.50625,159.0375 L 25.725,160.1 L 25.2875,160.75625 L 25.50625,162.25625 L 24.6625,163.94375 L 25.2875,168.85 L 22.975,171.6 L 21.88125,171.6 L 20.63125,170.75625 L 20.63125,175.225 L 21.475,177.56875 L 22.94375,176.94375 L 25.2875,178.225 L 27.225,181.19375 L 29.7875,182.0375 L 30.85,182.0375 L 31.475,183.1 L 32.13125,182.475 L 33.38125,183.1 L 36.38125,182.69375 L 38.06875,183.75625 L 38.50625,182.88125 L 40.4125,183.5375 L 40.85,183.31875 L 40.225,182.0375 L 40.63125,181.81875 L 42.13125,182.69375 L 41.9125,182.0375 L 43.4125,181.81875 L 43.63125,180.5375 L 45.5375,179.69375 L 45.75625,178.85 L 46.81875,178.4125 L 49.1625,178.85 L 49.38125,178.00625 L 50.225,178.225 L 50.225,177.35 L 51.2875,177.56875 L 50.44375,176.725 L 53.4125,173.94375 L 54.0375,173.94375 L 56.81875,174.38125 L 57.88125,173.5375 L 63.225,172.88125 L 65.975,173.725 L 67.475,173.1 L 68.31875,174.6 L 69.38125,174.6 L 69.81875,173.725 L 71.2875,174.1625 L 71.50625,173.5375 L 74.2875,173.31875 L 74.9125,173.725 L 75.13125,174.6 L 76.63125,173.5375 L 77.69375,173.94375 L 80.6625,170.975 L 81.5375,167.56875 L 82.38125,166.69375 L 86.225,165.44375 L 93.88125,160.94375 L 95.56875,160.5375 L 98.7875,160.94375 L 102.38125,160.75625 L 109.225,158.63125 L 113.85,156.31875 z"/></svg></div>
           <h6 class="state-name">Western Australia</h6>
           <ul class="state-list">
             <li>Health Services Act 2016 applies</li>
@@ -802,6 +1372,7 @@
           </ul>
         </div>
         <div class="state-col state-col-last">
+          <div class="state-loc-ico"><svg viewBox="215 226 35 37" xmlns="http://www.w3.org/2000/svg"><path d="M 239.118,250.619 L 238.693,251.897 L 239.544,252.109 L 239.118,252.536 L 239.757,253.387 L 240.397,253.174 L 240.397,252.322 L 241.248,253.387 L 240.821,251.47 L 239.757,251.683 L 239.118,250.619 z M 243.377,238.692 L 242.952,237.415 L 243.59,235.711 L 242.952,235.073 L 243.59,233.368 L 241.887,231.239 L 240.821,231.026 L 240.397,232.304 L 239.118,231.665 L 237.627,233.368 L 236.563,232.729 L 235.498,233.582 L 234.646,233.156 L 233.156,233.794 L 234.22,234.86 L 234.006,235.285 L 232.729,233.794 L 231.666,234.646 L 231.876,235.499 L 231.452,234.433 L 229.536,234.86 L 224.637,231.877 L 223.359,231.877 L 222.932,230.813 L 222.932,231.665 L 222.082,231.452 L 222.082,231.877 L 219.1,230.387 L 219.314,232.09 L 218.674,233.368 L 219.525,236.989 L 221.017,239.119 L 220.59,239.544 L 222.721,242.313 L 222.721,244.229 L 223.359,243.59 L 224.424,245.507 L 224.849,245.507 L 224.424,246.998 L 224.211,245.721 L 222.294,244.016 L 222.932,247.85 L 223.572,248.063 L 224.637,251.257 L 225.702,251.683 L 226.766,254.026 L 227.406,254.026 L 226.979,253.813 L 227.406,252.96 L 227.832,254.239 L 229.536,254.239 L 229.322,254.665 L 227.832,254.239 L 227.832,254.877 L 227.406,254.665 L 228.044,256.369 L 229.536,255.729 L 231.876,256.156 L 231.666,255.517 L 232.516,257.007 L 233.793,257.007 L 234.646,255.729 L 234.006,255.09 L 234.86,255.304 L 235.073,254.452 L 234.433,254.239 L 235.286,253.813 L 234.433,252.749 L 234.646,252.322 L 234.646,252.96 L 235.073,253.387 L 235.286,252.749 L 235.286,253.387 L 236.136,253.813 L 236.35,251.47 L 236.99,251.683 L 236.99,250.406 L 235.923,248.702 L 237.414,250.619 L 237.84,250.406 L 237.414,251.683 L 238.267,251.044 L 238.053,249.98 L 238.693,249.767 L 237.627,249.128 L 238.693,249.34 L 239.118,250.406 L 239.97,250.193 L 241.035,248.276 L 240.397,247.211 L 241.248,246.785 L 241.46,245.082 L 240.821,245.294 L 241.887,243.165 L 242.525,243.165 L 241.887,242.952 L 242.738,241.674 L 242.313,242.952 L 243.377,243.377 L 243.377,244.656 L 243.804,244.016 L 243.165,242.526 L 243.377,238.692 z"/></svg></div>
           <h6 class="state-name">Other Territories</h6>
           <p class="state-note">NT, ACT and Tasmania have their own health legislation and facility requirements.</p>
           <a href="https://www.health.gov.au" target="_blank" rel="noopener" class="state-link">Check with the relevant health department →</a>
@@ -816,18 +1387,16 @@
 <section class="section section-states" id="states">
   <div class="container">
 
-    <!-- Heading (left, unchanged from old layout) + interactive map (right, kept old position) -->
-    <div class="st-hero reveal">
-      <div class="st-hero-left">
+    <!-- State tabs (left) + map (right) combined layout -->
+    <div class="st-mid reveal">
+      <div class="st-mid-left">
         <p class="eyebrow">State Requirements</p>
         <h2>Explore Requirements<br><em>Across Australia</em></h2>
         <p class="qld-desc">Cosmetic injectables are regulated at the state and territory level. Select a state and your profession below to see the specific requirements, guidelines and restrictions that apply.</p>
-        <div class="qld-s4-note">
-          <div class="qld-s4-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><circle cx="12" cy="8" r=".5" fill="currentColor"/></svg></div>
-          <p>Regulations change. Always refer to the official state health department websites for the most current information.</p>
-        </div>
+        <div class="st-row-lbl"><span class="st-step-num">1</span>Select a State or Territory</div>
+        <div class="st-tabs" id="st-state-grid"></div>
       </div>
-      <div class="st-hero-right">
+      <div class="st-mid-right">
         <div class="st-map-wrap" id="st-map-wrap">
           <svg class="st-map-svg" id="st-map-svg" viewBox="-0.4 -0.4 290 262" aria-label="Map of Australia — select a state to view its requirements">
             <!-- Base map data: Australia_map,_States.svg by Lokal_Profil (based on work by Papayoung),
@@ -837,7 +1406,7 @@
                    stacked feOffsets fill 1-10 SVG units below with no gap.
                    filterUnits="userSpaceOnUse" so dy="10" always means 10 SVG units, even for tiny ACT. -->
               <filter id="st-wf-gray" filterUnits="userSpaceOnUse" x="-5" y="-5" width="300" height="290" color-interpolation-filters="sRGB">
-                <feFlood flood-color="#B8BEC8" result="c"/>
+                <feFlood flood-color="#93ADC4" result="c"/>
                 <feComposite in="c" in2="SourceGraphic" operator="in" result="m"/>
                 <feOffset in="m" dy="1" result="o1"/><feOffset in="m" dy="2" result="o2"/>
                 <feOffset in="m" dy="3" result="o3"/><feOffset in="m" dy="4" result="o4"/>
@@ -902,14 +1471,14 @@
 
             <!-- State labels, positioned at each shape's real bounding-box centre -->
             <g class="st-labels">
-              <text class="st-label" data-state="WA"  x="60.4"  y="106">WA</text>
-              <text class="st-label" data-state="NT"  x="143.6" y="64">NT</text>
-              <text class="st-label" data-state="QLD" x="226"   y="90">QLD</text>
-              <text class="st-label" data-state="SA"  x="158"   y="164">SA</text>
-              <text class="st-label" data-state="NSW" x="236.6" y="167">NSW</text>
-              <text class="st-label" data-state="VIC" x="220"   y="200">VIC</text>
-              <text class="st-label" data-state="TAS" x="229"   y="240">TAS</text>
-              <text class="st-label st-label-act" data-state="ACT" x="250" y="187">ACT</text>
+              <text class="st-label" data-state="WA"  x="60.4"  y="99">WA</text>
+              <text class="st-label" data-state="NT"  x="143.6" y="57">NT</text>
+              <text class="st-label" data-state="QLD" x="226"   y="83">QLD</text>
+              <text class="st-label" data-state="SA"  x="158"   y="157">SA</text>
+              <text class="st-label" data-state="NSW" x="236.6" y="160">NSW</text>
+              <text class="st-label" data-state="VIC" x="220"   y="193">VIC</text>
+              <text class="st-label" data-state="TAS" x="229"   y="233">TAS</text>
+              <text class="st-label st-label-act" data-state="ACT" x="250" y="180">ACT</text>
             </g>
           </svg>
           <!-- Floating badge — shows active state name + difficulty -->
@@ -926,14 +1495,8 @@
       </div>
     </div>
 
-    <!-- State selector tabs -->
-    <div class="st-selector reveal">
-      <div class="st-row-lbl"><span class="st-step-num">1</span>Select a State or Territory</div>
-      <div class="st-tabs" id="st-state-grid"></div>
-    </div>
-
     <!-- Workspace: profession picker + detail panels side-by-side -->
-    <div class="st-workspace reveal">
+    <div class="st-workspace reveal" id="st-workspace">
       <div class="st-ws-left">
         <div class="st-row-lbl"><span class="st-step-num">2</span>Your Profession</div>
         <div id="st-prof-grid"></div>
@@ -1062,6 +1625,146 @@
   </div>
 </section>
 
+<!-- ▸ CONTACT -->
+<section class="section section-contact" id="contact">
+  <div class="ct-bg-glow ct-bg-glow-1"></div>
+  <div class="ct-bg-glow ct-bg-glow-2"></div>
+  <div class="container">
+
+    <div class="ct-header">
+      <p class="eyebrow ct-ew reveal">Get In Touch</p>
+      <h2 class="ct-title reveal">Have a question?<br><em>We'd love to help.</em></h2>
+      <p class="ct-sub reveal">Whether you're just starting out, planning your next step, or need clarity on compliance — reach out and we'll do our best to point you in the right direction.</p>
+    </div>
+
+    <div class="ct-grid">
+
+      <!-- Left: Form -->
+      <div class="ct-form-wrap reveal" id="ct-form-wrap">
+        <form class="ct-form" id="contact-form" novalidate>
+          <div class="ct-form-row">
+            <div class="ct-field">
+              <label for="ct-name">Full Name</label>
+              <input type="text" id="ct-name" name="name" placeholder="Your full name" required>
+            </div>
+            <div class="ct-field">
+              <label for="ct-email">Email Address</label>
+              <input type="email" id="ct-email" name="email" placeholder="your@email.com" required>
+            </div>
+          </div>
+          <div class="ct-form-row">
+            <div class="ct-field">
+              <label for="ct-role">Professional Role</label>
+              <select id="ct-role" name="role">
+                <option value="" disabled selected>Select your role</option>
+                <option>Registered Nurse (RN)</option>
+                <option>Nurse Practitioner (NP)</option>
+                <option>Enrolled Nurse (EN)</option>
+                <option>Medical Doctor (GP / Specialist)</option>
+                <option>Dentist</option>
+                <option>Student / Trainee</option>
+                <option>Other Healthcare Professional</option>
+              </select>
+            </div>
+            <div class="ct-field">
+              <label for="ct-state">State / Territory</label>
+              <select id="ct-state" name="state">
+                <option value="" disabled selected>Select your state</option>
+                <option>Australian Capital Territory</option>
+                <option>New South Wales</option>
+                <option>Northern Territory</option>
+                <option>Queensland</option>
+                <option>South Australia</option>
+                <option>Tasmania</option>
+                <option>Victoria</option>
+                <option>Western Australia</option>
+              </select>
+            </div>
+          </div>
+          <div class="ct-field">
+            <label for="ct-topic">Topic</label>
+            <select id="ct-topic" name="topic">
+              <option value="" disabled selected>What can we help with?</option>
+              <option>Career pathways and scope of practice</option>
+              <option>Training and qualifications</option>
+              <option>Prescriber arrangements</option>
+              <option>Clinic setup and compliance</option>
+              <option>Advertising and marketing compliance</option>
+              <option>State-specific regulations</option>
+              <option>General enquiry</option>
+            </select>
+          </div>
+          <div class="ct-field">
+            <label for="ct-msg">Your Message</label>
+            <textarea id="ct-msg" name="message" rows="5" placeholder="Tell us what you'd like to know or discuss..." required></textarea>
+          </div>
+          <button type="submit" class="ct-submit">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+            Send Message
+          </button>
+        </form>
+        <div class="ct-success" id="ct-success">
+          <div class="ct-success-ico">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          </div>
+          <h4>Message received!</h4>
+          <p>Thank you for reaching out. We'll review your enquiry and get back to you within 48 hours.</p>
+        </div>
+      </div>
+
+      <!-- Right: Info -->
+      <div class="ct-info-wrap reveal-right">
+        <div class="ct-info-cards">
+          <div class="ct-info-card">
+            <div class="ct-info-card-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+            <div>
+              <div class="ct-info-card-lbl">Email Us</div>
+              <div class="ct-info-card-val">hello@injectablescareerguide.com.au</div>
+            </div>
+          </div>
+          <div class="ct-info-card">
+            <div class="ct-info-card-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+            <div>
+              <div class="ct-info-card-lbl">Response Time</div>
+              <div class="ct-info-card-val">Usually within 48 business hours</div>
+            </div>
+          </div>
+          <div class="ct-info-card">
+            <div class="ct-info-card-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+            <div>
+              <div class="ct-info-card-lbl">Based In</div>
+              <div class="ct-info-card-val">Australia — serving all states &amp; territories</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ct-disclaimer-card">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          <div>
+            <strong>Educational resource only</strong>
+            <p>We provide general information and career guidance for healthcare professionals. We are not a regulatory body, legal firm, or training provider. For regulatory, legal, or clinical advice, always consult a qualified professional.</p>
+          </div>
+        </div>
+
+        <div class="ct-social-strip">
+          <span class="ct-social-lbl">Follow for updates</span>
+          <a href="#" class="ct-social-btn" aria-label="Instagram">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+          <a href="#" class="ct-social-btn" aria-label="Facebook">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          </a>
+          <a href="#" class="ct-social-btn" aria-label="LinkedIn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
 <footer class="site-footer">
   <div class="container ft-grid">
     <div class="ft-brand">
@@ -1071,12 +1774,399 @@
       </div>
       <p>An independent educational resource for AHPRA registered healthcare professionals exploring cosmetic injectables in Australia. Not affiliated with any training provider or regulatory body.</p>
     </div>
-    <div class="ft-nav"><h5>Navigate</h5><a href="#professional">Pathways</a><a href="#why">Industry</a><a href="#careers-section">Careers</a><a href="#jobs">RN Jobs</a><a href="#business">Business</a><a href="#scope">Scope</a></div>
+    <div class="ft-nav"><h5>Navigate</h5><a href="#professional">Pathways</a><a href="#why">Industry</a><a href="#careers-section">Careers</a><a href="#jobs">RN Jobs</a><a href="#business">Business</a><a href="#scope">Scope</a><a href="#contact">Contact</a></div>
     <div class="ft-nav"><h5>Regulatory Bodies</h5><a href="https://www.ahpra.gov.au" target="_blank" rel="noopener">AHPRA</a><a href="https://www.nursingmidwiferyboard.gov.au" target="_blank" rel="noopener">NMBA</a><a href="https://www.tga.gov.au" target="_blank" rel="noopener">TGA</a><a href="https://www.dentalboard.gov.au" target="_blank" rel="noopener">Dental Board</a><a href="https://www.medicalboard.gov.au" target="_blank" rel="noopener">Medical Board</a></div>
   </div>
   <div class="ft-bottom"><div class="container"><p>This website is an independent educational resource and is not affiliated with any training provider, regulatory body, or industry organisation. Not legal or regulatory advice.</p><p class="ft-copy">© 2025 Cosmetic Injectables Career Guide. Educational purposes only.</p></div></div>
 </footer>
 
 <script src="script.js"></script>
+
+<!-- ▸ GET JOB GUIDANCE MODAL -->
+<div id="gg-modal" class="gg-overlay" onclick="ggOverlayClick(event)" aria-hidden="true">
+  <div class="gg-box" role="dialog" aria-modal="true" aria-labelledby="gg-title">
+
+    <!-- Header: progress + close -->
+    <div class="gg-header">
+      <div class="gg-progress">
+        <div class="gg-prog-step active" id="gg-prog-1">
+          <div class="gg-prog-dot"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <span>Assessment</span>
+        </div>
+        <div class="gg-prog-line" id="gg-prog-line-1"></div>
+        <div class="gg-prog-step" id="gg-prog-2">
+          <div class="gg-prog-dot"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <span>Results</span>
+        </div>
+        <div class="gg-prog-line" id="gg-prog-line-2"></div>
+        <div class="gg-prog-step" id="gg-prog-3">
+          <div class="gg-prog-dot"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <span>Connect</span>
+        </div>
+      </div>
+      <button class="gg-close-btn" onclick="closeGgModal()" aria-label="Close">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+
+    <div class="gg-steps-wrap">
+
+      <!-- ── STEP 1: Career Assessment ─────────────────── -->
+      <div class="gg-step active" id="gg-step-1">
+        <div class="gg-step-inner">
+          <div class="gg-step-lede">
+            <div class="gg-step-tag">Step 1 of 3 · ~30 seconds</div>
+            <h3 id="gg-title">Let's Understand Your Situation</h3>
+            <p class="gg-step-sub">Answer a few questions and we'll recommend the most suitable pathway and guidance options for you.</p>
+          </div>
+
+          <div class="gg-form">
+            <div class="gg-form-row">
+              <div class="gg-field">
+                <label for="gg-profession">Profession</label>
+                <div class="gg-select-wrap">
+                  <select id="gg-profession" class="gg-select">
+                    <option value="" disabled selected>Select your profession</option>
+                    <option value="rn">Registered Nurse (RN)</option>
+                    <option value="en">Enrolled Nurse (EN)</option>
+                    <option value="np">Nurse Practitioner (NP)</option>
+                    <option value="doctor">Doctor</option>
+                    <option value="dentist">Dentist</option>
+                    <option value="other">Other</option>
+                  </select>
+                  <svg class="gg-sel-arr" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+                </div>
+              </div>
+              <div class="gg-field">
+                <label for="gg-state">State / Territory</label>
+                <div class="gg-select-wrap">
+                  <select id="gg-state" class="gg-select">
+                    <option value="" disabled selected>Select your state</option>
+                    <option value="qld">Queensland</option>
+                    <option value="nsw">New South Wales</option>
+                    <option value="vic">Victoria</option>
+                    <option value="wa">Western Australia</option>
+                    <option value="sa">South Australia</option>
+                    <option value="tas">Tasmania</option>
+                    <option value="act">ACT</option>
+                    <option value="nt">Northern Territory</option>
+                  </select>
+                  <svg class="gg-sel-arr" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+                </div>
+              </div>
+            </div>
+
+            <div class="gg-field">
+              <label>Experience with Cosmetic Injectables</label>
+              <div class="gg-option-cards" id="gg-exp-cards">
+                <button type="button" class="gg-opt-card" data-group="experience" data-val="none" onclick="ggSelectCard(this)">
+                  <div class="gg-opt-ico">🌱</div>
+                  <span>Just completed training</span>
+                </button>
+                <button type="button" class="gg-opt-card" data-group="experience" data-val="lt1" onclick="ggSelectCard(this)">
+                  <div class="gg-opt-ico">📅</div>
+                  <span>Less than 1 year</span>
+                </button>
+                <button type="button" class="gg-opt-card" data-group="experience" data-val="1to3" onclick="ggSelectCard(this)">
+                  <div class="gg-opt-ico">⭐</div>
+                  <span>1–3 years</span>
+                </button>
+                <button type="button" class="gg-opt-card" data-group="experience" data-val="3plus" onclick="ggSelectCard(this)">
+                  <div class="gg-opt-ico">🏆</div>
+                  <span>3+ years</span>
+                </button>
+              </div>
+            </div>
+
+            <div class="gg-field">
+              <label>What's your primary goal?</label>
+              <div class="gg-option-cards gg-opt-5" id="gg-goal-cards">
+                <button type="button" class="gg-opt-card" data-group="goal" data-val="injector" onclick="ggSelectCard(this)">
+                  <div class="gg-opt-ico">💉</div>
+                  <span>Become an Injector</span>
+                </button>
+                <button type="button" class="gg-opt-card" data-group="goal" data-val="clinic" onclick="ggSelectCard(this)">
+                  <div class="gg-opt-ico">🏥</div>
+                  <span>Open My Own Clinic</span>
+                </button>
+                <button type="button" class="gg-opt-card" data-group="goal" data-val="prescribing" onclick="ggSelectCard(this)">
+                  <div class="gg-opt-ico">📋</div>
+                  <span>Understand Prescribing</span>
+                </button>
+                <button type="button" class="gg-opt-card" data-group="goal" data-val="career" onclick="ggSelectCard(this)">
+                  <div class="gg-opt-ico">🧭</div>
+                  <span>Career Guidance</span>
+                </button>
+                <button type="button" class="gg-opt-card" data-group="goal" data-val="business" onclick="ggSelectCard(this)">
+                  <div class="gg-opt-ico">📈</div>
+                  <span>Business Advice</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <p class="gg-error" id="gg-s1-err" style="display:none">Please complete all fields and selections before continuing.</p>
+          <div class="gg-foot">
+            <span></span>
+            <button class="gg-btn-primary" onclick="ggStep1Next()">Continue <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── STEP 2: Personalised Results ──────────────── -->
+      <div class="gg-step" id="gg-step-2">
+        <div class="gg-step-inner">
+          <div class="gg-step-lede">
+            <div class="gg-step-tag">Step 2 of 3</div>
+            <h3>Your Personalised Results</h3>
+            <p class="gg-step-sub" id="gg-result-sub">Based on your selections, here's what applies to your situation.</p>
+          </div>
+
+          <div class="gg-results-grid">
+            <div id="gg-insights"><!-- dynamically filled --></div>
+            <div class="gg-readiness">
+              <h4>Readiness Snapshot</h4>
+              <div class="gg-ready-item">
+                <div class="gg-ready-lbl"><span>Career Readiness</span><span class="gg-ready-pct" id="gg-r1-pct">0%</span></div>
+                <div class="gg-ready-track"><div class="gg-ready-fill" id="gg-r1-fill"></div></div>
+              </div>
+              <div class="gg-ready-item">
+                <div class="gg-ready-lbl"><span>Clinic Readiness</span><span class="gg-ready-pct" id="gg-r2-pct">0%</span></div>
+                <div class="gg-ready-track"><div class="gg-ready-fill gg-fill-blue" id="gg-r2-fill"></div></div>
+              </div>
+              <div class="gg-ready-item">
+                <div class="gg-ready-lbl"><span>Prescribing Knowledge</span><span class="gg-ready-pct" id="gg-r3-pct">0%</span></div>
+                <div class="gg-ready-track"><div class="gg-ready-fill gg-fill-purple" id="gg-r3-fill"></div></div>
+              </div>
+              <div class="gg-rec-steps">
+                <h5>Recommended Next Steps</h5>
+                <div id="gg-rec-list"><!-- dynamically filled --></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="gg-cta-pair">
+            <div class="gg-cta-card gg-cta-primary">
+              <div class="gg-cta-icon gg-icon-dark">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+              </div>
+              <div class="gg-cta-text">
+                <h4>Connect with a Doctor</h4>
+                <p>Get personalised one-on-one guidance from an experienced cosmetic medicine practitioner.</p>
+                <div class="gg-cta-meta-row">
+                  <span class="gg-cta-pill">30 min consultation</span>
+                  <span class="gg-cta-price">$29 AUD</span>
+                </div>
+              </div>
+              <button class="gg-btn-primary gg-cta-action" onclick="ggGoStep('3a')">Book Career Guidance <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></button>
+            </div>
+            <div class="gg-cta-card">
+              <div class="gg-cta-icon gg-icon-teal">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+              </div>
+              <div class="gg-cta-text">
+                <h4>Speak with Our Team</h4>
+                <p>Get general advice and course recommendations from our guidance team.</p>
+                <div class="gg-cta-meta-row">
+                  <span class="gg-cta-pill">General enquiry</span>
+                  <span class="gg-cta-price gg-price-free">Free</span>
+                </div>
+              </div>
+              <button class="gg-btn-outline-ink gg-cta-action" onclick="ggGoStep('3b')">Ask Our Team <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></button>
+            </div>
+          </div>
+
+          <div class="gg-foot">
+            <button class="gg-btn-ghost" onclick="ggGoStep(1)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg> Back</button>
+            <span></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── STEP 3A: Doctor Matching ───────────────────── -->
+      <div class="gg-step" id="gg-step-3a">
+        <div class="gg-step-inner">
+          <div class="gg-step-lede">
+            <div class="gg-step-tag">Step 3 of 3</div>
+            <h3>Choose a Doctor to Connect With</h3>
+            <p class="gg-step-sub">Based on your goals, these doctors may be suitable for your situation.</p>
+          </div>
+
+          <div class="gg-doc-layout">
+            <div class="gg-doc-list">
+              <div class="gg-doc-card" onclick="ggSelectDoc(this)" data-doc="1">
+                <div class="gg-doc-av" style="--av:#0f766e">SC</div>
+                <div class="gg-doc-info">
+                  <div class="gg-doc-top">
+                    <div>
+                      <h4>Dr Sarah Chen</h4>
+                      <p class="gg-doc-role">Cosmetic Medicine Physician</p>
+                    </div>
+                    <span class="gg-doc-exp-badge">10+ Years</span>
+                  </div>
+                  <div class="gg-doc-specs">
+                    <span>Clinic Setup</span>
+                    <span>Prescribing Arrangements</span>
+                  </div>
+                </div>
+                <div class="gg-doc-sel"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+              </div>
+              <div class="gg-doc-card" onclick="ggSelectDoc(this)" data-doc="2">
+                <div class="gg-doc-av" style="--av:#2563eb">JW</div>
+                <div class="gg-doc-info">
+                  <div class="gg-doc-top">
+                    <div>
+                      <h4>Dr James Wilson</h4>
+                      <p class="gg-doc-role">FRACGP Cosmetic GP</p>
+                    </div>
+                    <span class="gg-doc-exp-badge">8+ Years</span>
+                  </div>
+                  <div class="gg-doc-specs">
+                    <span>RN Career Pathways</span>
+                    <span>Business Growth</span>
+                  </div>
+                </div>
+                <div class="gg-doc-sel"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+              </div>
+              <div class="gg-doc-card" onclick="ggSelectDoc(this)" data-doc="3">
+                <div class="gg-doc-av" style="--av:#7c3aed">EP</div>
+                <div class="gg-doc-info">
+                  <div class="gg-doc-top">
+                    <div>
+                      <h4>Dr Emily Park</h4>
+                      <p class="gg-doc-role">Aesthetic Medicine Specialist</p>
+                    </div>
+                    <span class="gg-doc-exp-badge">12+ Years</span>
+                  </div>
+                  <div class="gg-doc-specs">
+                    <span>Cosmetic Injectables</span>
+                    <span>Clinic Setup</span>
+                  </div>
+                </div>
+                <div class="gg-doc-sel"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+              </div>
+              <div class="gg-doc-card" onclick="ggSelectDoc(this)" data-doc="4">
+                <div class="gg-doc-av" style="--av:#b45309">MT</div>
+                <div class="gg-doc-info">
+                  <div class="gg-doc-top">
+                    <div>
+                      <h4>Dr Michael Torres</h4>
+                      <p class="gg-doc-role">GP &amp; Aesthetic Consultant</p>
+                    </div>
+                    <span class="gg-doc-exp-badge">7+ Years</span>
+                  </div>
+                  <div class="gg-doc-specs">
+                    <span>Business Growth</span>
+                    <span>Prescribing Arrangements</span>
+                  </div>
+                </div>
+                <div class="gg-doc-sel"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+              </div>
+            </div>
+
+            <div class="gg-booking-sidebar">
+              <div class="gg-booking-card">
+                <div class="gg-booking-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                </div>
+                <h4>1:1 Career Guidance Session</h4>
+                <div class="gg-booking-meta">
+                  <span><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 30 Minutes</span>
+                  <strong>$29 AUD</strong>
+                </div>
+                <div class="gg-booking-includes">
+                  <div class="gg-bi"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#0f766e" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Personalised career guidance</div>
+                  <div class="gg-bi"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#0f766e" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Professional recommendations</div>
+                  <div class="gg-bi"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#0f766e" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Clear next steps</div>
+                  <div class="gg-bi"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#0f766e" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Confidential session</div>
+                </div>
+                <button class="gg-btn-primary" style="width:100%;justify-content:center" onclick="ggBookNow()">Continue to Booking <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></button>
+                <p class="gg-booking-note">Doctor contact details are shared only after booking confirmation.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="gg-foot">
+            <button class="gg-btn-ghost" onclick="ggGoStep(2)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg> Back</button>
+            <span></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── STEP 3B: Contact / Lead Capture ───────────── -->
+      <div class="gg-step" id="gg-step-3b">
+        <div class="gg-step-inner">
+          <div class="gg-step-tag" style="margin-bottom:20px">Step 3 of 3</div>
+          <div class="gg-contact-layout">
+            <div class="gg-contact-left">
+              <div class="gg-contact-illo">
+                <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              </div>
+              <h3>Let's Help You Find the Right Path</h3>
+              <p>Our team can answer general questions about training, career pathways and course recommendations.</p>
+              <div class="gg-contact-perks">
+                <div class="gg-perk"><div class="gg-perk-dot"></div>Free advice</div>
+                <div class="gg-perk"><div class="gg-perk-dot"></div>Course recommendations</div>
+                <div class="gg-perk"><div class="gg-perk-dot"></div>General pathway information</div>
+              </div>
+            </div>
+            <div class="gg-contact-right">
+              <form class="gg-contact-form" id="gg-3b-form" onsubmit="ggSubmit3B(event)">
+                <div class="gg-form-row">
+                  <div class="gg-field">
+                    <label for="gg-name">Name</label>
+                    <input type="text" id="gg-name" class="gg-input" placeholder="Your full name" required>
+                  </div>
+                  <div class="gg-field">
+                    <label for="gg-email">Email</label>
+                    <input type="email" id="gg-email" class="gg-input" placeholder="you@example.com" required>
+                  </div>
+                </div>
+                <div class="gg-form-row">
+                  <div class="gg-field">
+                    <label for="gg-phone">Phone Number</label>
+                    <input type="tel" id="gg-phone" class="gg-input" placeholder="04XX XXX XXX">
+                  </div>
+                  <div class="gg-field">
+                    <label for="gg-prof2">Profession</label>
+                    <div class="gg-select-wrap">
+                      <select id="gg-prof2" class="gg-select">
+                        <option value="" disabled selected>Select profession</option>
+                        <option>Registered Nurse (RN)</option>
+                        <option>Enrolled Nurse (EN)</option>
+                        <option>Nurse Practitioner (NP)</option>
+                        <option>Doctor</option>
+                        <option>Dentist</option>
+                        <option>Other</option>
+                      </select>
+                      <svg class="gg-sel-arr" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+                    </div>
+                  </div>
+                </div>
+                <div class="gg-field">
+                  <label for="gg-msg">Message <span class="gg-opt-label">(optional)</span></label>
+                  <textarea id="gg-msg" class="gg-input gg-textarea" placeholder="Tell us what you're looking for…" rows="3"></textarea>
+                </div>
+                <button type="submit" class="gg-btn-primary" style="width:100%;justify-content:center;padding:14px 24px">Request Guidance <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></button>
+                <p class="gg-3b-disc">Our team provides general guidance only. Personalised mentoring and one-on-one consultations are available through our doctor guidance sessions.</p>
+              </form>
+              <div class="gg-3b-success" id="gg-3b-success">
+                <div class="gg-success-ring"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="20 6 9 17 4 12"/></svg></div>
+                <h4>We'll be in touch soon!</h4>
+                <p>Our team will review your enquiry and respond within 1–2 business days.</p>
+              </div>
+            </div>
+          </div>
+          <div class="gg-foot">
+            <button class="gg-btn-ghost" onclick="ggGoStep(2)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg> Back</button>
+            <span></span>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /gg-steps-wrap -->
+  </div>
+</div>
+
 </body>
 </html>
